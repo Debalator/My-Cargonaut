@@ -1,0 +1,28 @@
+.center {
+  display: flex;
+  justify-content: center;
+}
+
+header {
+  display: flex;
+  justify-content: center;
+}
+#seats {
+  margin-left: 5%;
+  border-left: 5px;
+}
+
+.row {
+  width: 100%;
+}
+
+.formclass {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+}
+
+mat-form-field {
+  justify-content: center;
+  width: 200px;
+}

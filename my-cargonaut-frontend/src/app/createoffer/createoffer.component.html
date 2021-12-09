@@ -1,0 +1,72 @@
+
+<header class="container">
+  <h1>Create an Offer</h1>
+</header>
+
+<div class="container">
+
+  <div class="center">
+
+    <form class="formclass" [formGroup]="checkoutForm">
+<!--      <div class="row">-->
+<!--        <h1>Create an Offer</h1>-->
+<!--      </div>-->
+      <div class="row">
+        <mat-form-field appearance="fill">
+          <input id="start" matInput placeholder="From">
+        </mat-form-field>
+      </div>
+      <div class="row">
+        <mat-form-field appearance="fill">
+          <input id="stop" matInput placeholder="To">
+        </mat-form-field>
+      </div>
+
+      <div class="row">
+        <mat-form-field appearance="fill">
+          <input id="date" placeholder="When" matInput [matDatepicker]="picker">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+      </div>
+
+      <div class="row">
+        <mat-form-field appearance="fill">
+          <mat-select id="vehicle" placeholder="Vehicle">
+            <mat-option value="primary">Audi Q7</mat-option>
+            <mat-option value="accent">BMW X1</mat-option>
+            <mat-option value="warn">Seat Ibiza</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div class="row">
+        <mat-form-field appearance="fill">
+          <input id="space" matInput placeholder="Free Space">
+          <mat-icon matSuffix>m</mat-icon>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <input id="seats" matInput placeholder="Free Seats">
+        </mat-form-field>
+      </div>
+
+      <div class="row">
+        <mat-form-field appearance="fill">
+          <textarea id="moreInfo" matInput></textarea>
+        </mat-form-field>
+      </div>
+
+      <section>
+        <div class="example-button-row">
+          <button mat-raised-button type="submit">Create Offer</button>
+          <!--      <a mat-raised-button href="https://www.google.com/" target="_blank">Link</a>-->
+        </div>
+      </section>
+    </form>
+  </div>
+</div>
+
+
+
+

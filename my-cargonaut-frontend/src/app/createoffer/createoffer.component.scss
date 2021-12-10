@@ -7,22 +7,34 @@ header {
   display: flex;
   justify-content: center;
 }
-#seats {
-  margin-left: 5%;
-  border-left: 5px;
-}
-
-.row {
-  width: 100%;
-}
-
-.formclass {
-  min-width: 150px;
-  max-width: 500px;
-  width: 100%;
-}
 
 mat-form-field {
   justify-content: center;
-  width: 200px;
+  width: 100%;
 }
+
+.mat-form-field--inline .mat-form-field {
+  display: inline-block;
+  width: 100%;
+  vertical-align: middle;
+}
+
+#spaceField {
+  width: 50%;
+  margin-right: 5px;
+}
+
+#seatsField {
+  width: 48%;
+}
+
+.formclass {
+  width: 20%;
+}
+
+.example-button-row {
+  display: flex;
+  justify-content: center;
+}
+
+

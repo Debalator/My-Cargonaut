@@ -13,6 +13,7 @@ import {MatSelectModule} from "@angular/material/select";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatButtonModule} from "@angular/material/button";
 import {MatIconModule} from "@angular/material/icon";
+import {MatSnackBarModule} from "@angular/material/snack-bar";
 
 
 @NgModule({
@@ -25,6 +26,7 @@ import {MatIconModule} from "@angular/material/icon";
     MatDatepickerModule,
     MatFormFieldModule,
     MatSelectModule,
+    MatSnackBarModule,
     MatNativeDateModule,
     ReactiveFormsModule, MatButtonModule, MatIconModule],
   providers: [],

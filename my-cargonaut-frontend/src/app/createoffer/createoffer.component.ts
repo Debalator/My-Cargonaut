@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import { FormBuilder } from '@angular/forms';
+import {MatSnackBar} from "@angular/material/snack-bar";
 
 
 @Component({
@@ -10,6 +11,9 @@ import { FormBuilder } from '@angular/forms';
 
 
 export class CreateofferComponent {
+  constructor(private formBuilder: FormBuilder, private snackbar: MatSnackBar) {
+
+  }
 
   checkoutForm = this.formBuilder.group({
     start: '',
@@ -21,9 +25,14 @@ export class CreateofferComponent {
     moreInfo: ''
   });
 
-  constructor(private formBuilder: FormBuilder) {
+  //kein bereits vergangenes Datum auswählbar
+  minDate = new Date();
 
+  sendData(message: string){
+    this.snackbar.open(message,'' ,{duration: 2000});
   }
+
+
 
   onSubmit(): void {
     // Process checkout data here

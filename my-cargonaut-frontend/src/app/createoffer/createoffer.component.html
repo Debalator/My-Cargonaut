@@ -8,9 +8,6 @@
   <div class="center">
 
     <form class="formclass" [formGroup]="checkoutForm">
-<!--      <div class="row">-->
-<!--        <h1>Create an Offer</h1>-->
-<!--      </div>-->
       <div class="row">
         <mat-form-field appearance="fill">
           <input id="start" matInput placeholder="From">
@@ -24,7 +21,7 @@
 
       <div class="row">
         <mat-form-field appearance="fill">
-          <input id="date" placeholder="When" matInput [matDatepicker]="picker">
+          <input id="date" placeholder="When" matInput [matDatepicker]="picker" [min]="minDate">
           <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
           <mat-datepicker #picker></mat-datepicker>
         </mat-form-field>
@@ -40,13 +37,13 @@
         </mat-form-field>
       </div>
 
-      <div class="row">
-        <mat-form-field appearance="fill">
+      <div class="mat-form-field--inline">
+        <mat-form-field id="spaceField" class="mat-form-field-flex" appearance="fill">
           <input id="space" matInput placeholder="Free Space">
-          <mat-icon matSuffix>m</mat-icon>
+          <mat-icon matSuffix>㎡</mat-icon>
         </mat-form-field>
 
-        <mat-form-field appearance="fill">
+        <mat-form-field id="seatsField" class="mat-form-field-flex" appearance="fill">
           <input id="seats" matInput placeholder="Free Seats">
         </mat-form-field>
       </div>
@@ -59,8 +56,7 @@
 
       <section>
         <div class="example-button-row">
-          <button mat-raised-button type="submit">Create Offer</button>
-          <!--      <a mat-raised-button href="https://www.google.com/" target="_blank">Link</a>-->
+          <button mat-raised-button (click)="sendData('Offer was created')">Create Offer</button>
         </div>
       </section>
     </form>

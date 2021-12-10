@@ -1,27 +1,24 @@
-
 <header class="container">
   <h1>Create an Offer</h1>
 </header>
 
 <div class="container">
-
   <div class="center">
-
     <form class="formclass" [formGroup]="checkoutForm">
       <div class="row">
         <mat-form-field appearance="fill">
-          <input id="start" matInput placeholder="From">
+          <input id="start" matInput placeholder="From" formControlName="startInput">
         </mat-form-field>
       </div>
       <div class="row">
         <mat-form-field appearance="fill">
-          <input id="stop" matInput placeholder="To">
+          <input id="stop" matInput placeholder="To" formControlName="stopInput">
         </mat-form-field>
       </div>
 
       <div class="row">
         <mat-form-field appearance="fill">
-          <input id="date" placeholder="When" matInput [matDatepicker]="picker" [min]="minDate">
+          <input id="date" placeholder="When" matInput [matDatepicker]="picker" [min]="minDate"  formControlName="DateInput">
           <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
           <mat-datepicker #picker></mat-datepicker>
         </mat-form-field>
@@ -29,7 +26,7 @@
 
       <div class="row">
         <mat-form-field appearance="fill">
-          <mat-select id="vehicle" placeholder="Vehicle">
+          <mat-select id="vehicle" placeholder="Vehicle" formControlName="vehicleInput">
             <mat-option value="primary">Audi Q7</mat-option>
             <mat-option value="accent">BMW X1</mat-option>
             <mat-option value="warn">Seat Ibiza</mat-option>
@@ -39,18 +36,18 @@
 
       <div class="mat-form-field--inline">
         <mat-form-field id="spaceField" class="mat-form-field-flex" appearance="fill">
-          <input id="space" matInput placeholder="Free Space">
+          <input id="space" matInput placeholder="Free Space" formControlName="spaceInput">
           <mat-icon matSuffix>㎡</mat-icon>
         </mat-form-field>
 
         <mat-form-field id="seatsField" class="mat-form-field-flex" appearance="fill">
-          <input id="seats" matInput placeholder="Free Seats">
+          <input id="seats" matInput placeholder="Free Seats" formControlName="seatsInput">
         </mat-form-field>
       </div>
 
       <div class="row">
         <mat-form-field appearance="fill">
-          <textarea id="moreInfo" matInput></textarea>
+          <textarea id="moreInfo" matInput formControlName="moreInfoInput"></textarea>
         </mat-form-field>
       </div>
 

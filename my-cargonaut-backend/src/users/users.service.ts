@@ -24,13 +24,17 @@ export class UsersService {
     return await getRepository(User).findOne(id);
   }
 
+  async findIdByName(username: string): Promise<User> {
+    return await getRepository(User).findOne({ where: { username }});
+  }
+
   async update(id: number, updateUser: UpdateUserDto) {
     if (updateUser.password)
       updateUser.password = await bcrypt.hash(updateUser.password, this.saltRounds);
 
     const user = await getRepository(User).findOne(id);
     if (!user)
-      throw BadRequestException;
+      throw new BadRequestException();
     
     getRepository(User).merge(user, updateUser);
     return await getRepository(User).save(user);

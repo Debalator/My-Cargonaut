@@ -3,5 +3,5 @@ export class CreateUserDto {
     birthDate: Date;
     mail: string;
     password: string;
-    profilePicturePath: string = "default.png";
+    profilePicturePath: string;
 }

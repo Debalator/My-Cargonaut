@@ -13,5 +13,5 @@ export class User {
     @Column("varchar", { length: 255})
     password: string;
     @Column("varchar", { length: 255})
-    profilePicturePath: string;
+    profilePicturePath: string = "default.png";
 }

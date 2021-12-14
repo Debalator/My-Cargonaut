@@ -1,43 +1,42 @@
-import { Injectable } from '@nestjs/common';
+import { BadRequestException, Injectable } from '@nestjs/common';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import * as bcrypt from 'bcrypt';
+import { getRepository } from 'typeorm';
+import { User } from './entities/user.entity';
 
 @Injectable()
 export class UsersService {
 
-  private users: CreateUserDto[] = []
   private readonly saltRounds = 10;
 
-  async create(user: CreateUserDto) {
-    const hash = await bcrypt.hash(user.password, this.saltRounds);
-    user.password = hash;
-    return this.users.push(user);
+  async create(createUser: CreateUserDto) {
+    createUser.password = await bcrypt.hash(createUser.password, this.saltRounds);
+    const user = await getRepository(User).create(createUser);
+    return await getRepository(User).save(user);
   }
 
-  findAll() {
-    return this.users;
+  async findAll(): Promise<User[]> {
+    return await getRepository(User).find();
   }
 
-  async findOne(username: string): Promise<CreateUserDto | undefined> {
-    return this.users.find(user => user.username === username);
+  async findOne(id: number): Promise<User> {
+    return await getRepository(User).findOne(id);
   }
 
-  update(username: string, updateUserDto: UpdateUserDto) {
-    let user = this.users.find(user => user.username === username)[0];
-    const index = this.users?.findIndex(user);
+  async update(id: number, updateUser: UpdateUserDto) {
+    if (updateUser.password)
+      updateUser.password = await bcrypt.hash(updateUser.password, this.saltRounds);
 
-    user = updateUserDto;
+    const user = await getRepository(User).findOne(id);
+    if (!user)
+      throw BadRequestException;
+    
+    getRepository(User).merge(user, updateUser);
+    return await getRepository(User).save(user);
+  } 
 
-    this.users[index] = user;
-    return user;
-  }
-
-  remove(username: string) {
-    const user = this.users.find(user => user.username === username)[0];
-    const index = this.users?.indexOf(user);
-    if (index > -1)
-      return this.users.splice(index, 1);
-    return null;
+  async remove(id: number) {
+    return await getRepository(User).delete(id);
   }
 }

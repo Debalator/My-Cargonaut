@@ -7,17 +7,21 @@ import { jwtConstants } from "./constants";
 
 @Injectable()
 export class JwtStrategy extends PassportStrategy(Strategy) {
-
     constructor(private userService: UsersService) {
         super({
             jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
             ignoreExpiration: false,
-            secretOrKey: jwtConstants.secret
+            secretOrKey: jwtConstants.secret,
         });
     }
 
     async validate(payload: any) {
         const id = this.userService.findIdByName(payload.username);
-        return {sub: payload.sub, username: payload.username, mail: payload.mail, id};
+        return {
+            sub: payload.sub,
+            username: payload.username,
+            mail: payload.mail,
+            id,
+        };
     }
 }

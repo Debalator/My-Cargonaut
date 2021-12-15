@@ -23,5 +23,4 @@ export class LoginPageComponent implements OnInit {
   save(){
     console.log(this.username)
   }
-
 }

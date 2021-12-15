@@ -1,8 +1,9 @@
+import { User } from "src/users/entities/user.entity";
+
 export class CreateOfferDto {
-  vehicleID: number;
-  startAddressID: number;
-  destAddressID: number;
-  price: number;
-  startDate: Date;
-  destDate: Date;
+    startDate: Date;
+    destDate: Date;
+    price: number;
+    //active: boolean;
+    creator: User;
 }

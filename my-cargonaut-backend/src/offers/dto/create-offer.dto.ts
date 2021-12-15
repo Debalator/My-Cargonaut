@@ -4,6 +4,6 @@ export class CreateOfferDto {
     startDate: Date;
     destDate: Date;
     price: number;
-    active: boolean;
+    //active: boolean;
     creator: User;
 }

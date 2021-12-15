@@ -14,11 +14,14 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatButtonModule} from "@angular/material/button";
 import {MatIconModule} from "@angular/material/icon";
 import {MatSnackBarModule} from "@angular/material/snack-bar";
+import { HttpClientModule } from '@angular/common/http';
+import { AuthComponent } from './auth/auth.component';
 
 
 @NgModule({
-  declarations: [AppComponent, CreateofferComponent],
+  declarations: [AppComponent, CreateofferComponent, AuthComponent],
   imports: [BrowserModule,
+    HttpClientModule,
     AppRoutingModule,
     FormsModule,
     NoopAnimationsModule,

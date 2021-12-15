@@ -1,0 +1,41 @@
+.center {
+  display: flex;
+  justify-content: center;
+}
+
+header {
+  display: flex;
+  justify-content: center;
+}
+
+mat-form-field {
+  justify-content: center;
+  width: 100%;
+}
+
+.mat-form-field--inline .mat-form-field {
+  display: inline-block;
+  width: 100%;
+  vertical-align: middle;
+}
+
+#spaceField {
+  width: 50%;
+  margin-right: 5px;
+}
+
+#seatsField {
+  width: 48%;
+}
+
+.formclass {
+  width: 20%;
+}
+
+.example-button-row {
+  display: flex;
+  justify-content: center;
+}
+
+//TODO: wenn Fenster schmal wird --> seats und space gleichgroß (100%)!
+

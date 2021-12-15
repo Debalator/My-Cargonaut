@@ -3,6 +3,7 @@ import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {MatInput} from "@angular/material/input";
 import {Observable} from "rxjs";
+import { ApiService } from '../api/api.service';
 
 
 @Component({
@@ -32,13 +33,14 @@ import {Observable} from "rxjs";
 
 export class CreateofferComponent implements OnInit{
 
-  constructor(private formBuilder: FormBuilder, private snackbar: MatSnackBar) {
+  constructor(private formBuilder: FormBuilder, private snackbar: MatSnackBar, private api: ApiService) {
 
   }
 
   checkoutForm = new FormGroup({
     startInput: new FormControl(''),
     stopInput: new FormControl(''),
+    priceInput: new FormControl(''),
     datePicker: new FormControl(''),
     vehicleInput: new FormControl(''),
     spaceInput: new FormControl(''),
@@ -64,20 +66,22 @@ export class CreateofferComponent implements OnInit{
 
   sendData(message: string){
     //TODO: ERROR undefined
-    // this.sendInput();
+    this.sendInput();
     this.snackbar.open(message,'' ,{duration: 2000});
     this.checkoutForm.reset();
     // this.checkoutForm.value.reset;
   }
 
   sendInput(){
-    this.post("http://localhost:...", {
-      startinput: this.checkoutForm.value.startInput,
-      stopInput: this.checkoutForm.value.stopInput,
-      vehicleInput: this.checkoutForm.value.vehicleInput,
-      spaceInput: this.checkoutForm.value.spaceInput,
-      seatsInput: this.checkoutForm.value.seatsInput,
-      moreInfo: this.checkoutForm.value.moreInfo
+    console.log(this.checkoutForm.value.startInput)
+    this.api.post("/api/offers", {
+      startDate: this.checkoutForm.value.startInput || '2021-12-15',
+      destDate: this.checkoutForm.value.stopInput || '2021-12-15',
+      price: this.checkoutForm.value.priceInput,
+      //vehicleInput: this.checkoutForm.value.vehicleInput,
+      //spaceInput: this.checkoutForm.value.spaceInput,
+      //seatsInput: this.checkoutForm.value.seatsInput,
+      //moreInfo: this.checkoutForm.value.moreInfo
     }).subscribe({
       next: (res: any) => {
         console.log(res);
@@ -85,10 +89,6 @@ export class CreateofferComponent implements OnInit{
       error: (e: any) => console.error(e),
       complete: () => console.info('complete')
     });
-}
-
-  public post(url: string, body: any | null, options?: any): Observable<any> {
-    return this.post(url, body, options);
   }
 
   clearDate(date: HTMLInputElement) {

@@ -7,17 +7,18 @@ export class Offer {
     id: number;
 
     @Column("datetime")
-    startDate;
+    startDate: Date;
 
     @Column("datetime")
-    destDate;
+    destDate: Date;
 
     @Column("decimal", { precision: 6, scale: 2 })
-    price;
+    price: number;
 
+    /*
     @Column("boolean")
-    active;
-
+    active = true;
+    */
     @ManyToOne(() => User, (user) => user.offers)
     public creator: User;
 }

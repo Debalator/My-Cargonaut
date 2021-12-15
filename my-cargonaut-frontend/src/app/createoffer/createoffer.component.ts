@@ -41,7 +41,8 @@ export class CreateofferComponent implements OnInit{
     startInput: new FormControl(''),
     stopInput: new FormControl(''),
     priceInput: new FormControl(''),
-    datePicker: new FormControl(''),
+    startDate: new FormControl(''),
+    stopDate: new FormControl(''),
     vehicleInput: new FormControl(''),
     spaceInput: new FormControl(''),
     seatsInput: new FormControl(''),
@@ -73,10 +74,10 @@ export class CreateofferComponent implements OnInit{
   }
 
   sendInput(){
-    console.log(this.checkoutForm.value.startInput)
+    console.log(this.checkoutForm.value.startDate)
     this.api.post("/api/offers", {
-      startDate: this.checkoutForm.value.startInput || '2021-12-15',
-      destDate: this.checkoutForm.value.stopInput || '2021-12-15',
+      startDate: this.checkoutForm.value.startDate || '2021-12-15',
+      destDate: this.checkoutForm.value.stopDate || '2021-12-15',
       price: this.checkoutForm.value.priceInput,
       //vehicleInput: this.checkoutForm.value.vehicleInput,
       //spaceInput: this.checkoutForm.value.spaceInput,

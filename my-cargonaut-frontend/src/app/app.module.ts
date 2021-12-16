@@ -19,9 +19,14 @@ import { AuthComponent } from './auth/auth.component';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import {MatSidenavModule} from '@angular/material/sidenav';
+import { FooterComponent } from './footer/footer.component';
+import { SocialComponent } from './footer/social/social.component';
+import { ImprintComponent } from './footer/imprint/imprint.component';
+import { PrivacyNotesComponent } from './footer/privacy-notes/privacy-notes.component';
+import { CookieNoticeComponent } from './footer/cookie-notice/cookie-notice.component';
 
 @NgModule({
-  declarations: [AppComponent, CreateofferComponent, AuthComponent],
+  declarations: [AppComponent, CreateofferComponent, AuthComponent, FooterComponent, SocialComponent, ImprintComponent, PrivacyNotesComponent, CookieNoticeComponent],
   imports: [BrowserModule,
     HttpClientModule,
     AppRoutingModule,

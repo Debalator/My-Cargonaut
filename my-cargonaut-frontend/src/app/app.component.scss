@@ -1,0 +1,24 @@
+.spacer {
+    flex: 1 1 auto;
+}
+
+.menu {
+    padding: 0;
+    min-width: 0;
+}
+
+.active {
+    text-decoration: underline;
+}
+
+mat-toolbar {
+    height: 64px;
+}
+
+mat-sidenav-container {
+    min-height: calc(100vh - 2 * 64px);
+}
+
+.logo {
+    max-height: 56px;
+}

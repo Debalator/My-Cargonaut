@@ -1,1 +1,33 @@
-<router-outlet></router-outlet>
+
+<div class="mat-app-background" style="min-height: 100vh;">
+    <!--Navbar-->
+    <mat-toolbar>
+        <!--burger menu when on mobile-->
+        <div fxShow="true" fxHide.gt-sm="true">
+            <a mat-button href="#" (click)="sidenav.toggle()" class="menu"><mat-icon>menu</mat-icon></a>
+        </div>
+
+        <!--Logo-->
+        <a mat-button routerLink=""><img src="/assets/logo.png" class="logo"></a>
+        <span class="spacer"></span>
+
+        <!--Links when not on mobile-->
+        <div fxShow="true" fxHide.lt-md="true">
+            <a mat-button routerLink="create_offer">Angebot anlegen</a>
+        </div>
+    </mat-toolbar>
+
+    <mat-sidenav-container (backdropClick)="sidenav.close()">
+        <!--Sidenav when on mobile-->
+        <mat-sidenav #sidenav fxLayout="column" mode="side" opened="false">
+            <div fxLayout="column">
+                <!--Links when on mobile-->
+                <a mat-button routerLink="create_offer">Angebot anlegen</a>
+            </div>
+        </mat-sidenav>
+        <mat-sidenav-content>
+            <!--Main Content-->
+            <router-outlet></router-outlet>
+        </mat-sidenav-content>
+    </mat-sidenav-container>
+</div>

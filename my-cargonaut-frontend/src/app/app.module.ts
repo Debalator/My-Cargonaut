@@ -16,7 +16,9 @@ import {MatIconModule} from "@angular/material/icon";
 import {MatSnackBarModule} from "@angular/material/snack-bar";
 import { HttpClientModule } from '@angular/common/http';
 import { AuthComponent } from './auth/auth.component';
-
+import {MatToolbarModule} from '@angular/material/toolbar';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import {MatSidenavModule} from '@angular/material/sidenav';
 
 @NgModule({
   declarations: [AppComponent, CreateofferComponent, AuthComponent],
@@ -31,7 +33,13 @@ import { AuthComponent } from './auth/auth.component';
     MatSelectModule,
     MatSnackBarModule,
     MatNativeDateModule,
-    ReactiveFormsModule, MatButtonModule, MatIconModule],
+    ReactiveFormsModule,
+    MatButtonModule,
+    MatIconModule,
+    MatToolbarModule,
+    FlexLayoutModule,
+    MatSidenavModule
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })

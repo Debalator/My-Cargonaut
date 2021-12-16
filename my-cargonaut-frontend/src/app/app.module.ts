@@ -16,10 +16,17 @@ import {MatIconModule} from "@angular/material/icon";
 import {MatSnackBarModule} from "@angular/material/snack-bar";
 import { HttpClientModule } from '@angular/common/http';
 import { AuthComponent } from './auth/auth.component';
-
+import {MatToolbarModule} from '@angular/material/toolbar';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import { FooterComponent } from './footer/footer.component';
+import { SocialComponent } from './footer/social/social.component';
+import { ImprintComponent } from './footer/imprint/imprint.component';
+import { PrivacyNotesComponent } from './footer/privacy-notes/privacy-notes.component';
+import { CookieNoticeComponent } from './footer/cookie-notice/cookie-notice.component';
 
 @NgModule({
-  declarations: [AppComponent, CreateofferComponent, AuthComponent],
+  declarations: [AppComponent, CreateofferComponent, AuthComponent, FooterComponent, SocialComponent, ImprintComponent, PrivacyNotesComponent, CookieNoticeComponent],
   imports: [BrowserModule,
     HttpClientModule,
     AppRoutingModule,
@@ -31,7 +38,13 @@ import { AuthComponent } from './auth/auth.component';
     MatSelectModule,
     MatSnackBarModule,
     MatNativeDateModule,
-    ReactiveFormsModule, MatButtonModule, MatIconModule],
+    ReactiveFormsModule,
+    MatButtonModule,
+    MatIconModule,
+    MatToolbarModule,
+    FlexLayoutModule,
+    MatSidenavModule
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })

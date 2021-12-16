@@ -24,9 +24,18 @@
 
       <div class="row">
         <mat-form-field appearance="fill">
-          <input id="date" formControlName="datePicker" placeholder="When" matInput [matDatepicker]="picker" [min]="minDate">
+
+          <mat-date-range-input [rangePicker]="picker" [min]="minDate">
+            <input matStartDate placeholder="Earliest" formControlName="startDate">
+            <input matEndDate placeholder="Latest" formControlName="stopDate">
+          </mat-date-range-input>
           <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-          <mat-datepicker #picker></mat-datepicker>
+          <mat-date-range-picker #picker></mat-date-range-picker>
+
+
+<!--          <input id="date" formControlName="datePicker" placeholder="When" matInput [matDatepicker]="picker" [min]="minDate">-->
+<!--          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>-->
+<!--          <mat-datepicker #picker></mat-datepicker>-->
         </mat-form-field>
       </div>
 

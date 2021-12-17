@@ -1,4 +1,5 @@
 import { Offer } from "src/offers/entities/offer.entity";
+import { Vehicle } from "src/vehicles/entities/vehicle.entity";
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()
@@ -23,4 +24,7 @@ export class User {
 
     @OneToMany(() => Offer, (offer) => offer.creator)
     offers: Offer[];
+
+    @OneToMany(() => Vehicle, (vehicle) => vehicle.owner)
+    vehicles: Offer[];
 }

@@ -4,23 +4,41 @@ import { UpdateRequestDto } from "./dto/update-request.dto";
 import { InjectRepository } from "@nestjs/typeorm";
 import { Repository } from "typeorm";
 import { Request } from "./entities/request.entity";
+import { Item } from "./entities/item.entity";
 
 @Injectable()
 export class RequestsService {
     constructor(
         @InjectRepository(Request)
-        private requestRepository: Repository<Request>
+        private requestRepository: Repository<Request>,
+        @InjectRepository(Item)
+        private itemRepository: Repository<Item>
     ) {}
 
-    private defaultRelations = ["creator", "startAddress", "destAddress"];
+    private defaultRelations = [
+        "creator",
+        "startAddress",
+        "destAddress",
+        "items",
+    ];
 
-    create(createRequestDto: CreateRequestDto) {
+    async create(createRequestDto: CreateRequestDto) {
+        await this.itemRepository.save(createRequestDto.items);
         return this.requestRepository.save(createRequestDto);
     }
 
     findAll() {
         return this.requestRepository.find({
             relations: this.defaultRelations,
+        });
+    }
+
+    findAllByCreator(creatorID: number) {
+        return this.requestRepository.find({
+            relations: this.defaultRelations,
+            where: {
+                creator: creatorID,
+            },
         });
     }
 

@@ -6,7 +6,11 @@ import {
     Patch,
     Param,
     Delete,
+    UseGuards,
+    Request,
+    Query,
 } from "@nestjs/common";
+import { JwtAuthGuard } from "../auth/jwt-auth.guard";
 import { RequestsService } from "./requests.service";
 import { CreateRequestDto } from "./dto/create-request.dto";
 import { UpdateRequestDto } from "./dto/update-request.dto";
@@ -19,8 +23,9 @@ export class RequestsController {
         private readonly addressService: AddressesService
     ) {}
 
+    @UseGuards(JwtAuthGuard)
     @Post()
-    async create(@Body() createRequestDto: CreateRequestDto) {
+    async create(@Request() req, @Body() createRequestDto: CreateRequestDto) {
         const startAddress = await this.addressService.create(
             createRequestDto.startAddress
         );
@@ -30,13 +35,15 @@ export class RequestsController {
 
         return this.requestsService.create({
             ...createRequestDto,
+            creator: req.user.sub,
             startAddress,
             destAddress,
         });
     }
 
     @Get()
-    findAll() {
+    findAll(@Query("creator") creator: number) {
+        if (creator) return this.requestsService.findAllByCreator(creator);
         return this.requestsService.findAll();
     }
 

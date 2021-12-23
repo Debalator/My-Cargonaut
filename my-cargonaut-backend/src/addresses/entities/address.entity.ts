@@ -15,6 +15,9 @@ export class Address {
     @Column("varchar")
     city: string;
 
-    @OneToMany(() => Request, (request) => request.address)
-    requests: Request[];
+    @OneToMany(() => Request, (req) => req.startAddress)
+    requestsStart: Request[];
+
+    @OneToMany(() => Request, (req) => req.destAddress)
+    requestsDest: Request[];
 }

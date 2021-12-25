@@ -37,6 +37,8 @@ export class CreateofferComponent implements OnInit{
 
   }
 
+  dataSend = false;
+
   checkoutForm = new FormGroup({
     startInput: new FormControl(''),
     stopInput: new FormControl(''),
@@ -68,27 +70,36 @@ export class CreateofferComponent implements OnInit{
   sendData(message: string){
     //TODO: ERROR undefined
     this.sendInput();
-    this.snackbar.open(message,'' ,{duration: 2000});
-    this.checkoutForm.reset();
+    if(this.dataSend){
+      this.snackbar.open(message,'' ,{duration: 2000});
+      this.checkoutForm.reset('', {emitEvent: false});
+    }
+
+
+
     // this.checkoutForm.value.reset;
   }
 
-  sendInput(){
-    console.log(this.checkoutForm.value.startDate)
+  //TODO: missing vehicle and more Info, Alert bei fehlenden Attributen
+
+  public sendInput(){
+    // console.log(this.checkoutForm.value.startDate)
     this.api.post("/api/offers", {
-      startDate: this.checkoutForm.value.startDate || '2021-12-15',
-      destDate: this.checkoutForm.value.stopDate || '2021-12-15',
+      startPoint: this.checkoutForm.value.startInput,
+      destPoint: this.checkoutForm.value.stopInput,
+      startDate: this.checkoutForm.value.startDate,
+      destDate: this.checkoutForm.value.stopDate,
       price: this.checkoutForm.value.priceInput,
       //vehicleInput: this.checkoutForm.value.vehicleInput,
-      //spaceInput: this.checkoutForm.value.spaceInput,
-      //seatsInput: this.checkoutForm.value.seatsInput,
+      space: this.checkoutForm.value.spaceInput,
+      seats: this.checkoutForm.value.seatsInput,
       //moreInfo: this.checkoutForm.value.moreInfo
     }).subscribe({
       next: (res: any) => {
         console.log(res);
       },
       error: (e: any) => console.error(e),
-      complete: () => console.info('complete')
+      complete: () => this.dataSend = true,
     });
   }
 

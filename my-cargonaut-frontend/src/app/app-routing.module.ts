@@ -5,7 +5,7 @@ import { CreateofferComponent } from './createoffer/createoffer.component';
 
 const routes: Routes = [
   {
-    path: "create_offer",
+    path: "createoffer",
     component: CreateofferComponent
   },
   {

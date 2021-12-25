@@ -7,18 +7,18 @@
     <form class="formclass" [formGroup]="checkoutForm">
       <div class="row">
         <mat-form-field appearance="fill">
-          <input id="start" formControlName="startInput" matInput placeholder="From">
+          <input id="start" formControlName="startInput" matInput placeholder="From *" required>
         </mat-form-field>
       </div>
       <div class="row">
         <mat-form-field appearance="fill">
-          <input id="stop" formControlName="stopInput" matInput placeholder="To">
+          <input id="stop" formControlName="stopInput" matInput placeholder="To *" required>
         </mat-form-field>
       </div>
 
       <div class="row">
         <mat-form-field appearance="fill">
-          <input id="price" formControlName="priceInput" matInput placeholder="Price">
+          <input id="price" formControlName="priceInput" matInput placeholder="Price *" required>
         </mat-form-field>
       </div>
 
@@ -26,8 +26,8 @@
         <mat-form-field appearance="fill">
 
           <mat-date-range-input [rangePicker]="picker" [min]="minDate">
-            <input matStartDate placeholder="Earliest" formControlName="startDate">
-            <input matEndDate placeholder="Latest" formControlName="stopDate">
+            <input matStartDate placeholder="Earliest *" formControlName="startDate" required>
+            <input matEndDate placeholder="Latest *" formControlName="stopDate" required>
           </mat-date-range-input>
           <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
           <mat-date-range-picker #picker></mat-date-range-picker>
@@ -41,7 +41,7 @@
 
       <div class="row">
         <mat-form-field appearance="fill">
-          <mat-select id="vehicle" formControlName="vehicleInput" placeholder="Vehicle" >
+          <mat-select id="vehicle" formControlName="vehicleInput" placeholder="Vehicle *" required>
             <mat-option value="primary">Audi Q7</mat-option>
             <mat-option value="accent">BMW X1</mat-option>
             <mat-option value="warn">Seat Ibiza</mat-option>
@@ -51,12 +51,12 @@
 
       <div class="mat-form-field--inline">
         <mat-form-field id="spaceField" class="mat-form-field-flex" appearance="fill">
-          <input id="space" formControlName="spaceInput" matInput placeholder="Free Space">
+          <input id="space" formControlName="spaceInput" matInput placeholder="Free Space *" required>
           <mat-icon matSuffix>㎡</mat-icon>
         </mat-form-field>
 
         <mat-form-field id="seatsField" class="mat-form-field-flex" appearance="fill">
-          <input id="seats" formControlName="seatsInput" matInput placeholder="Free Seats">
+          <input id="seats" formControlName="seatsInput" matInput placeholder="Free Seats *" required>
         </mat-form-field>
       </div>
 

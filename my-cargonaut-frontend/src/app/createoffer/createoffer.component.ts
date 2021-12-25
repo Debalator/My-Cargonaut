@@ -80,7 +80,7 @@ export class CreateofferComponent implements OnInit{
     // this.checkoutForm.value.reset;
   }
 
-  //TODO: missing vehicle and more Info, Alert bei fehlenden Attributen
+  //TODO: missing vehicle and more Info, Alert bei fehlenden Attributen, Skalierung Fenstergröße
 
   public sendInput(){
     // console.log(this.checkoutForm.value.startDate)

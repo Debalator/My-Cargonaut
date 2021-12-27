@@ -9,9 +9,10 @@ import { OffersModule } from "./offers/offers.module";
 import { VehiclesModule } from './vehicles/vehicles.module';
 import { RequestsModule } from './requests/requests.module';
 import { AddressesModule } from './addresses/addresses.module';
+import { OrdersModule } from './orders/orders.module';
 
 @Module({
-    imports: [OffersModule, TypeOrmModule.forRoot(), UsersModule, AuthModule, VehiclesModule, RequestsModule, AddressesModule],
+    imports: [OffersModule, TypeOrmModule.forRoot(), UsersModule, AuthModule, VehiclesModule, RequestsModule, AddressesModule, OrdersModule],
     controllers: [AppController, UsersController],
     providers: [AppService],
 })

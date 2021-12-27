@@ -15,6 +15,7 @@ import { RequestsService } from "./requests.service";
 import { CreateRequestDto } from "./dto/create-request.dto";
 import { UpdateRequestDto } from "./dto/update-request.dto";
 import { AddressesService } from "../addresses/addresses.service";
+import { CreateRequestFromOfferDto } from "./dto/create-request-from-offer.dto";
 
 @Controller("requests")
 export class RequestsController {
@@ -63,5 +64,21 @@ export class RequestsController {
     @Delete(":id")
     remove(@Param("id") id: string) {
         return this.requestsService.remove(+id);
+    }
+
+    @UseGuards(JwtAuthGuard)
+    @Post("/offers/:id")
+    createFromOffer(
+        @Request() req,
+        @Param("id") id: string,
+        @Body() createRequestFromOfferDto: CreateRequestFromOfferDto
+    ) {
+        return this.requestsService.createFromOffer(
+            {
+                ...createRequestFromOfferDto,
+                creator: req.user.sub,
+            },
+            +id
+        );
     }
 }

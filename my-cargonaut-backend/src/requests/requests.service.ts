@@ -5,6 +5,8 @@ import { InjectRepository } from "@nestjs/typeorm";
 import { Repository } from "typeorm";
 import { Request } from "./entities/request.entity";
 import { Item } from "./entities/item.entity";
+import { CreateRequestFromOfferDto } from "./dto/create-request-from-offer.dto";
+import { OffersService } from "../offers/offers.service";
 
 @Injectable()
 export class RequestsService {
@@ -12,7 +14,8 @@ export class RequestsService {
         @InjectRepository(Request)
         private requestRepository: Repository<Request>,
         @InjectRepository(Item)
-        private itemRepository: Repository<Item>
+        private itemRepository: Repository<Item>,
+        private readonly offersService: OffersService
     ) {}
 
     private defaultRelations = [
@@ -25,6 +28,20 @@ export class RequestsService {
     async create(createRequestDto: CreateRequestDto) {
         await this.itemRepository.save(createRequestDto.items);
         return this.requestRepository.save(createRequestDto);
+    }
+
+    async createFromOffer(
+        createRequestFromOfferDto: CreateRequestFromOfferDto,
+        offerID: number
+    ) {
+        const offer = await this.offersService.findOne(offerID);
+        if (!offer) throw new NotFoundException("Offer not found");
+
+        const request = Request.fromOffer(offer);
+        request.creator = createRequestFromOfferDto.creator;
+        request.items = createRequestFromOfferDto.items;
+
+        return this.create(request);
     }
 
     findAll() {

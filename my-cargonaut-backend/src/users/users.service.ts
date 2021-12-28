@@ -19,11 +19,11 @@ export class UsersService {
     }
 
     async findAll(): Promise<User[]> {
-        return await getRepository(User).find();
+        return await getRepository(User).find({ select: ["id", "username", "profilePicturePath"] });
     }
 
     async findOne(id: number): Promise<User> {
-        return await getRepository(User).findOne(id);
+        return await getRepository(User).findOne(id, { select: ["id", "username", "profilePicturePath"] });
     }
 
     async findIdByName(username: string): Promise<User> {

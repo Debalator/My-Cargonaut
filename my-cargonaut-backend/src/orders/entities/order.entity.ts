@@ -4,9 +4,11 @@ import {
     PrimaryGeneratedColumn,
     OneToOne,
     JoinColumn,
+    CreateDateColumn,
 } from "typeorm";
 import { Request } from "../../requests/entities/request.entity";
 import { Offer } from "../../offers/entities/offer.entity";
+import { Location } from "./location.entity";
 
 export enum OrderStatus {
     RECEIVED = "received",
@@ -20,8 +22,8 @@ export class Order {
     @PrimaryGeneratedColumn()
     id: number;
 
-    @Column("datetime", { default: () => "CURRENT_TIMESTAMP" })
-    purchaseDate: Date;
+    @CreateDateColumn()
+    created: Date;
 
     @Column({
         type: "enum",
@@ -41,4 +43,10 @@ export class Order {
     })
     @JoinColumn()
     offer: Offer;
+
+    @OneToOne(() => Location, {
+        onDelete: "SET NULL",
+    })
+    @JoinColumn()
+    location: Location;
 }

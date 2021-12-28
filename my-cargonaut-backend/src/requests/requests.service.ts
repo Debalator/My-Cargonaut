@@ -5,7 +5,6 @@ import { InjectRepository } from "@nestjs/typeorm";
 import { Repository } from "typeorm";
 import { Request } from "./entities/request.entity";
 import { Item } from "./entities/item.entity";
-import { Offer } from "../offers/entities/offer.entity";
 import { CreateRequestFromOfferDto } from "./dto/create-request-from-offer.dto";
 import { OffersService } from "../offers/offers.service";
 
@@ -36,14 +35,13 @@ export class RequestsService {
         offerID: number
     ) {
         const offer = await this.offersService.findOne(offerID);
-        if (!offer) throw new NotFoundException();
+        if (!offer) throw new NotFoundException("Offer not found");
 
         const request = Request.fromOffer(offer);
         request.creator = createRequestFromOfferDto.creator;
         request.items = createRequestFromOfferDto.items;
 
-        await this.itemRepository.save(createRequestFromOfferDto.items);
-        return this.requestRepository.save(request);
+        return this.create(request);
     }
 
     findAll() {

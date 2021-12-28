@@ -6,6 +6,7 @@ import {
     OneToMany,
     OneToOne,
     JoinColumn,
+    CreateDateColumn,
 } from "typeorm";
 import { User } from "../../users/entities/user.entity";
 import { Address } from "../../addresses/entities/address.entity";
@@ -15,6 +16,7 @@ import { Offer } from "../../offers/entities/offer.entity";
 @Entity()
 export class Request {
     public static fromOffer(offer: Offer) {
+        // TODO: add missing attributes
         const request = new Request();
         request.startDate = offer.startDate;
         request.destDate = offer.destDate;
@@ -39,6 +41,9 @@ export class Request {
 
     @Column("boolean", { default: true })
     active: boolean;
+
+    @CreateDateColumn()
+    created: Date;
 
     @ManyToOne(() => User, (user) => user.requests, {
         onDelete: "RESTRICT",

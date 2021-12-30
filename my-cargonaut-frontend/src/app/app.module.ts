@@ -18,6 +18,7 @@ import {MatButtonModule} from "@angular/material/button";
 import {MatIconModule} from "@angular/material/icon";
 import {MatSnackBarModule} from "@angular/material/snack-bar";
 import { HttpClientModule } from '@angular/common/http';
+import { MatCardModule } from '@angular/material/card';
 
 @NgModule({
   declarations: [AppComponent, LoginPageComponent, RegisterPageComponent, CreateofferComponent],
@@ -34,7 +35,10 @@ import { HttpClientModule } from '@angular/common/http';
     MatSelectModule,
     MatSnackBarModule,
     MatNativeDateModule,
-    ReactiveFormsModule, MatButtonModule, MatIconModule
+    ReactiveFormsModule, 
+    MatButtonModule, 
+    MatIconModule,
+    MatCardModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

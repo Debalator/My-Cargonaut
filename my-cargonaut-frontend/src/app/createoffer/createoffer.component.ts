@@ -40,15 +40,15 @@ export class CreateofferComponent implements OnInit{
   dataSend = false;
 
   checkoutForm = new FormGroup({
-    startInput: new FormControl(''),
-    stopInput: new FormControl(''),
-    priceInput: new FormControl(''),
-    startDate: new FormControl(''),
-    stopDate: new FormControl(''),
-    vehicleInput: new FormControl(''),
-    spaceInput: new FormControl(''),
-    seatsInput: new FormControl(''),
-    moreInfo: new FormControl(''),
+    startInput: new FormControl(),
+    stopInput: new FormControl(),
+    priceInput: new FormControl(),
+    startDate: new FormControl(),
+    stopDate: new FormControl(),
+    vehicleInput: new FormControl(),
+    spaceInput: new FormControl(),
+    seatsInput: new FormControl(),
+    moreInfo: new FormControl(),
   });
 
   // checkoutForm = this.formBuilder.group({
@@ -68,19 +68,21 @@ export class CreateofferComponent implements OnInit{
 
 
   sendData(message: string){
-    //TODO: ERROR undefined
-    this.sendInput();
-    if(this.dataSend){
+    if(this.checkoutForm.value.startInput == null || this.checkoutForm.value.stopInput == null
+      || this.checkoutForm.value.startDate == null || this.checkoutForm.value.stopDate == null
+      || this.checkoutForm.value.priceInput == null || this.checkoutForm.value.spaceInput == null
+      || this.checkoutForm.value.seatsInput == null /* && this.checkoutForm.value.vehicleInput != null */)
+    {
+      this.snackbar.open('Fill out required fields','' ,{duration: 2000});
+    } else {
+      this.sendInput();
+      window.location.reload();
       this.snackbar.open(message,'' ,{duration: 2000});
-      this.checkoutForm.reset('', {emitEvent: false});
+      // this.checkoutForm.reset('', {emitEvent: false});
     }
+   }
 
-
-
-    // this.checkoutForm.value.reset;
-  }
-
-  //TODO: missing vehicle and more Info, Alert bei fehlenden Attributen, Skalierung Fenstergröße
+  //TODO: missing vehicle and more Info, Skalierung Fenstergröße
 
   public sendInput(){
     // console.log(this.checkoutForm.value.startDate)

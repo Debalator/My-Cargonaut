@@ -37,16 +37,18 @@ export class CreateofferComponent implements OnInit{
 
   }
 
+  dataSend = false;
+
   checkoutForm = new FormGroup({
-    startInput: new FormControl(''),
-    stopInput: new FormControl(''),
-    priceInput: new FormControl(''),
-    startDate: new FormControl(''),
-    stopDate: new FormControl(''),
-    vehicleInput: new FormControl(''),
-    spaceInput: new FormControl(''),
-    seatsInput: new FormControl(''),
-    moreInfo: new FormControl(''),
+    startInput: new FormControl(),
+    stopInput: new FormControl(),
+    priceInput: new FormControl(),
+    startDate: new FormControl(),
+    stopDate: new FormControl(),
+    vehicleInput: new FormControl(),
+    spaceInput: new FormControl(),
+    seatsInput: new FormControl(),
+    moreInfo: new FormControl(),
   });
 
   // checkoutForm = this.formBuilder.group({
@@ -66,29 +68,40 @@ export class CreateofferComponent implements OnInit{
 
 
   sendData(message: string){
-    //TODO: ERROR undefined
-    this.sendInput();
-    this.snackbar.open(message,'' ,{duration: 2000});
-    this.checkoutForm.reset();
-    // this.checkoutForm.value.reset;
-  }
+    if(this.checkoutForm.value.startInput == null || this.checkoutForm.value.stopInput == null
+      || this.checkoutForm.value.startDate == null || this.checkoutForm.value.stopDate == null
+      || this.checkoutForm.value.priceInput == null || this.checkoutForm.value.spaceInput == null
+      || this.checkoutForm.value.seatsInput == null /* && this.checkoutForm.value.vehicleInput != null */)
+    {
+      this.snackbar.open('Fill out required fields','' ,{duration: 2000});
+    } else {
+      this.sendInput();
+      window.location.reload();
+      this.snackbar.open(message,'' ,{duration: 2000});
+      // this.checkoutForm.reset('', {emitEvent: false});
+    }
+   }
 
-  sendInput(){
-    console.log(this.checkoutForm.value.startDate)
+  //TODO: missing vehicle and more Info, Skalierung Fenstergröße
+
+  public sendInput(){
+    // console.log(this.checkoutForm.value.startDate)
     this.api.post("/api/offers", {
-      startDate: this.checkoutForm.value.startDate || '2021-12-15',
-      destDate: this.checkoutForm.value.stopDate || '2021-12-15',
+      startPoint: this.checkoutForm.value.startInput,
+      destPoint: this.checkoutForm.value.stopInput,
+      startDate: this.checkoutForm.value.startDate,
+      destDate: this.checkoutForm.value.stopDate,
       price: this.checkoutForm.value.priceInput,
       //vehicleInput: this.checkoutForm.value.vehicleInput,
-      //spaceInput: this.checkoutForm.value.spaceInput,
-      //seatsInput: this.checkoutForm.value.seatsInput,
+      space: this.checkoutForm.value.spaceInput,
+      seats: this.checkoutForm.value.seatsInput,
       //moreInfo: this.checkoutForm.value.moreInfo
     }).subscribe({
       next: (res: any) => {
         console.log(res);
       },
       error: (e: any) => console.error(e),
-      complete: () => console.info('complete')
+      complete: () => this.dataSend = true,
     });
   }
 

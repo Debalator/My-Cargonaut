@@ -9,7 +9,7 @@ import { SocialComponent } from './footer/social/social.component';
 
 const routes: Routes = [
   {
-    path: "create_offer",
+    path: "createoffer",
     component: CreateofferComponent
   },
   {

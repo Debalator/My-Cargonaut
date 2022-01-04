@@ -1,0 +1,20 @@
+<mat-card style="background-color:aliceblue; width: 80%; margin: 20px auto">
+    <mat-grid-list cols="4" rowHeight="3:2">
+        <mat-grid-tile>
+            <img src="{{item.image}}"/>
+        </mat-grid-tile>
+        <mat-grid-tile >
+            <div style="padding:3px 5px;">
+            <h2 >{{item.title}}</h2>
+                <p>{{item.decription}}</p>
+            </div>
+        </mat-grid-tile>
+        <mat-grid-tile>
+            <div>
+                <mat-icon aria-hidden="false" aria-label="Example home icon">{{item.stars}}</mat-icon>
+                <p>{{item.numberOfReviews}} Bewertungen</p>
+            </div>
+        </mat-grid-tile>
+        <mat-grid-tile><span style="font-size: 30px;font-weight: 800;">{{item.price}}€</span></mat-grid-tile>
+    </mat-grid-list>
+</mat-card>

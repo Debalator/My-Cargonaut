@@ -19,9 +19,11 @@ import {MatIconModule} from "@angular/material/icon";
 import {MatSnackBarModule} from "@angular/material/snack-bar";
 import { HttpClientModule } from '@angular/common/http';
 import { MatCardModule } from '@angular/material/card';
+import { ListItemComponent } from './list-item/list-item.component';
+import {MatGridListModule} from '@angular/material/grid-list';
 
 @NgModule({
-  declarations: [AppComponent, LoginPageComponent, RegisterPageComponent, CreateofferComponent],
+  declarations: [AppComponent, LoginPageComponent, RegisterPageComponent, CreateofferComponent, ListItemComponent],
   imports: [
     BrowserModule,
     HttpClientModule,
@@ -39,6 +41,7 @@ import { MatCardModule } from '@angular/material/card';
     MatButtonModule, 
     MatIconModule,
     MatCardModule,
+    MatGridListModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

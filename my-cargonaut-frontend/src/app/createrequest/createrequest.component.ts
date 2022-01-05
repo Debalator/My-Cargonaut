@@ -43,7 +43,7 @@ export class CreaterequestComponent implements OnInit {
   }
 
   public sendInput(){
-    this.api.post("/api/offers", {
+    this.api.post("/api/requests", {
       startAddress: this.requestForm.value.startInput,
       destAddress: this.requestForm.value.stopInput,
       startDate: this.requestForm.value.startDate,

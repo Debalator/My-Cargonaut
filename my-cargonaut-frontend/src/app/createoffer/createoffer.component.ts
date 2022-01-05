@@ -35,7 +35,6 @@ export class CreateofferComponent implements OnInit {
   //kein bereits vergangenes Datum auswählbar
   minDate = new Date();
 
-
   sendData(message: string) {
     if (this.checkoutForm.value.startInput == null || this.checkoutForm.value.stopInput == null
       || this.checkoutForm.value.startDate == null || this.checkoutForm.value.stopDate == null
@@ -53,8 +52,8 @@ export class CreateofferComponent implements OnInit {
 
   public sendInput() {
     this.api.post("/api/offers", {
-      startPoint: this.checkoutForm.value.startInput,
-      destPoint: this.checkoutForm.value.stopInput,
+      startAddress: this.checkoutForm.value.startInput,
+      destAddress: this.checkoutForm.value.stopInput,
       startDate: this.checkoutForm.value.startDate,
       destDate: this.checkoutForm.value.stopDate,
       price: this.checkoutForm.value.priceInput,

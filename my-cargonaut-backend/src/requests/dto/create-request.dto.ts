@@ -10,6 +10,6 @@ export class CreateRequestDto {
     items: Item[];
     persons: number;
     price: number;
-    active: boolean;
+    // active: boolean;
     creator: User;
 }

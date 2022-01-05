@@ -12,26 +12,7 @@ import { ApiService } from '../api/api.service';
   styleUrls: ['./createoffer.component.scss']
 })
 
-
-// export interface Offer {
-//   start: string,
-//   stop: string,
-//   date: Date,
-//   vehicle: Vehicle["id"],
-//   space: number,
-//   seats: number,
-//   moreInfo: string;
-// }
-//
-// export interface Vehicle {
-//   id: number,
-//   brand: string,
-//   model: string,
-//   seats: number,
-//   space: number;
-// }
-
-export class CreateofferComponent implements OnInit{
+export class CreateofferComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder, private snackbar: MatSnackBar, private api: ApiService) {
 
@@ -51,41 +32,26 @@ export class CreateofferComponent implements OnInit{
     moreInfo: new FormControl(),
   });
 
-  // checkoutForm = this.formBuilder.group({
-  //   start: '',
-  //   stop: '',
-  //   date: '',
-  //   vehicle: '',
-  //   space: '',
-  //   seats: '',
-  //   moreInfo: ''
-  // });
-
-  // moreInfo: any;
   //kein bereits vergangenes Datum auswählbar
   minDate = new Date();
 
 
-
-  sendData(message: string){
-    if(this.checkoutForm.value.startInput == null || this.checkoutForm.value.stopInput == null
+  sendData(message: string) {
+    if (this.checkoutForm.value.startInput == null || this.checkoutForm.value.stopInput == null
       || this.checkoutForm.value.startDate == null || this.checkoutForm.value.stopDate == null
       || this.checkoutForm.value.priceInput == null || this.checkoutForm.value.spaceInput == null
-      || this.checkoutForm.value.seatsInput == null /* && this.checkoutForm.value.vehicleInput != null */)
-    {
-      this.snackbar.open('Fill out required fields','' ,{duration: 2000});
+      || this.checkoutForm.value.seatsInput == null /* && this.checkoutForm.value.vehicleInput != null */) {
+      this.snackbar.open('Fill out required fields', '', { duration: 2000 });
     } else {
       this.sendInput();
       window.location.reload();
-      this.snackbar.open(message,'' ,{duration: 2000});
-      // this.checkoutForm.reset('', {emitEvent: false});
+      this.snackbar.open(message, '', { duration: 2000 });
     }
-   }
+  }
 
   //TODO: missing vehicle and more Info, Skalierung Fenstergröße
 
-  public sendInput(){
-    // console.log(this.checkoutForm.value.startDate)
+  public sendInput() {
     this.api.post("/api/offers", {
       startPoint: this.checkoutForm.value.startInput,
       destPoint: this.checkoutForm.value.stopInput,
@@ -112,36 +78,4 @@ export class CreateofferComponent implements OnInit{
   ngOnInit() {
     this.checkoutForm;
   }
-
-  // createForm(){
-  //   this.checkoutForm = this.formBuilder.group({
-  //     startInput: '',
-  //     stopInput: '',
-  //     dateInput: '',
-  //     vehicleInput: '',
-  //     spaceInput: '',
-  //     seatsInput: '',
-  //     moreInfoInput: ''
-  //   })
-  // }
-
-  // public createOffer(offer: Offer) {
-  //   this.httpService.post("http://localhost:9090/...", {
-  //     start: this.checkoutForm.start,
-  //     stop: offer.stop,
-  //     date: offer.date,
-  //     vehicle: offer.vehicle,
-  //     space: offer.space,
-  //     seats: offer.seats,
-  //     moreInfo: offer.moreInfo
-  //   }).subscribe({
-  //     next: (res: any) => {
-  //       console.log(res);
-  //     },
-  //     error: (e: any) => console.error(e),
-  //     complete: () => console.info('complete')
-  //   });
-  // }
-
-
 }

@@ -24,9 +24,10 @@ import { SocialComponent } from './footer/social/social.component';
 import { ImprintComponent } from './footer/imprint/imprint.component';
 import { PrivacyNotesComponent } from './footer/privacy-notes/privacy-notes.component';
 import { CookieNoticeComponent } from './footer/cookie-notice/cookie-notice.component';
+import { CreaterequestComponent } from './createrequest/createrequest.component';
 
 @NgModule({
-  declarations: [AppComponent, CreateofferComponent, AuthComponent, FooterComponent, SocialComponent, ImprintComponent, PrivacyNotesComponent, CookieNoticeComponent],
+  declarations: [AppComponent, CreateofferComponent, AuthComponent, FooterComponent, SocialComponent, ImprintComponent, PrivacyNotesComponent, CookieNoticeComponent, CreaterequestComponent],
   imports: [BrowserModule,
     HttpClientModule,
     AppRoutingModule,

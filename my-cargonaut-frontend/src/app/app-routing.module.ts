@@ -6,11 +6,16 @@ import { CookieNoticeComponent } from './footer/cookie-notice/cookie-notice.comp
 import { ImprintComponent } from './footer/imprint/imprint.component';
 import { PrivacyNotesComponent } from './footer/privacy-notes/privacy-notes.component';
 import { SocialComponent } from './footer/social/social.component';
+import { CreaterequestComponent } from "./createrequest/createrequest.component";
 
 const routes: Routes = [
   {
     path: "createoffer",
     component: CreateofferComponent
+  },
+  {
+    path: "createrequest",
+    component: CreaterequestComponent
   },
   {
     path: "auth",

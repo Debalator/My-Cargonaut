@@ -11,7 +11,13 @@
         </mat-grid-tile>
         <mat-grid-tile>
             <div>
-                <mat-icon aria-hidden="false" aria-label="Example home icon">{{item.stars}}</mat-icon>
+                <mat-icon aria-hidden="false" aria-label="Example home icon" *ngIf="item.stars == 5">"star star star star star"</mat-icon>
+                <mat-icon aria-hidden="false" aria-label="Example home icon" *ngIf="item.stars == 4">"star star star star star_border"</mat-icon>
+                <mat-icon aria-hidden="false" aria-label="Example home icon" *ngIf="item.stars == 3">"star star star  star_border star_border"</mat-icon>
+                <mat-icon aria-hidden="false" aria-label="Example home icon" *ngIf="item.stars == 2">"star star  star_border star_border star_border"</mat-icon>
+                <mat-icon aria-hidden="false" aria-label="Example home icon" *ngIf="item.stars == 1">"star  star_border star_border star_border star_border"</mat-icon>
+                <mat-icon aria-hidden="false" aria-label="Example home icon" *ngIf="item.stars == 0">"star_border star_border star_border star_border star_border"</mat-icon>
+                
                 <p>{{item.numberOfReviews}} Bewertungen</p>
             </div>
         </mat-grid-tile>

@@ -11,7 +11,7 @@ export class ListItemComponent implements OnInit {
 
   @Input() item = {
     title :"", 
-    decription:"", 
+    description:"", 
     stars : 0,
     price : 0, 
     numberOfReviews: 0,

@@ -5,10 +5,14 @@ import {
     OneToOne,
     JoinColumn,
     CreateDateColumn,
+    ManyToOne,
+    OneToMany,
 } from "typeorm";
 import { Request } from "../../requests/entities/request.entity";
 import { Offer } from "../../offers/entities/offer.entity";
 import { Location } from "./location.entity";
+import { User } from "../../users/entities/user.entity";
+import { Rating } from "./rating.entity";
 
 export enum OrderStatus {
     RECEIVED = "received",
@@ -45,8 +49,11 @@ export class Order {
     offer: Offer;
 
     @OneToOne(() => Location, {
-        onDelete: "SET NULL",
+        onDelete: "CASCADE",
     })
     @JoinColumn()
     location: Location;
+
+    @OneToMany(() => Rating, (rating) => rating.order)
+    public ratings: Rating[];
 }

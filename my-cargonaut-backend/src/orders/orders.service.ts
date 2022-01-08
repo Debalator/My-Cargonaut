@@ -123,6 +123,7 @@ export class OrdersService {
 
         const ratings = [];
 
+        // Fix author if we allow ratings from different users for one order
         for (const order of orders)
             for (const rating of order.ratings)
                 ratings.push({

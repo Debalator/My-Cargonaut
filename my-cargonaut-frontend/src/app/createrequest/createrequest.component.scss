@@ -1,42 +1,44 @@
-.center {
-  display: flex;
-  justify-content: center;
-}
+//.center {
+//  display: flex;
+//  justify-content: center;
+//}
 
 header {
   display: flex;
   justify-content: center;
 }
 
-mat-form-field {
+h1 {
+  display: flex;
   justify-content: center;
-  width: 100%;
 }
 
-.mat-form-field--inline .mat-form-field {
-  display: inline-block;
-  width: 100%;
-  vertical-align: middle;
+mat-form-field {
+  //justify-content: center;
+  width: 300px;
 }
 
-#spaceField {
-  width: 50%;
-  margin-right: 5px;
-}
+//.mat-form-field--inline .mat-form-field {
+//  display: inline-block;
+//  width: 100%;
+//  vertical-align: middle;
+//}
 
-#seatsField {
-  width: 48%;
-}
-
-.formclass {
-  width: 20%;
-}
-
+//.formclass {
+//  width: 200%;
+//}
+//
 .example-button-row {
   display: flex;
   justify-content: center;
+  margin-top: 10px;
   margin-bottom: 15px;
 }
 
-//TODO: wenn Fenster schmal wird --> seats und space gleichgroß (100%)!
-
+#addItem {
+  width: 50%;
+  margin-left: 5px;
+}
+//
+////TODO: wenn Fenster schmal wird --> seats und space gleichgroß (100%)!
+//

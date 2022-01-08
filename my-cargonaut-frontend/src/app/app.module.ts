@@ -26,27 +26,30 @@ import { PrivacyNotesComponent } from './footer/privacy-notes/privacy-notes.comp
 import { CookieNoticeComponent } from './footer/cookie-notice/cookie-notice.component';
 import { CreaterequestComponent } from './createrequest/createrequest.component';
 import { MatGridListModule } from "@angular/material/grid-list";
+import { AdditemComponent } from './additem/additem.component';
+import { MatDialogModule } from "@angular/material/dialog";
+import { MatChipsModule } from "@angular/material/chips";
 
 @NgModule({
-  declarations: [AppComponent, CreateofferComponent, AuthComponent, FooterComponent, SocialComponent, ImprintComponent, PrivacyNotesComponent, CookieNoticeComponent, CreaterequestComponent],
-  imports: [BrowserModule,
-    HttpClientModule,
-    AppRoutingModule,
-    FormsModule,
-    NoopAnimationsModule,
-    MatInputModule,
-    MatDatepickerModule,
-    MatFormFieldModule,
-    MatSelectModule,
-    MatSnackBarModule,
-    MatNativeDateModule,
-    ReactiveFormsModule,
-    MatButtonModule,
-    MatIconModule,
-    MatToolbarModule,
-    FlexLayoutModule,
-    MatSidenavModule, MatGridListModule,
-  ],
+  declarations: [AppComponent, CreateofferComponent, AuthComponent, FooterComponent, SocialComponent, ImprintComponent, PrivacyNotesComponent, CookieNoticeComponent, CreaterequestComponent, AdditemComponent],
+    imports: [BrowserModule,
+        HttpClientModule,
+        AppRoutingModule,
+        FormsModule,
+        NoopAnimationsModule,
+        MatInputModule,
+        MatDatepickerModule,
+        MatFormFieldModule,
+        MatSelectModule,
+        MatSnackBarModule,
+        MatNativeDateModule,
+        ReactiveFormsModule,
+        MatButtonModule,
+        MatIconModule,
+        MatToolbarModule,
+        FlexLayoutModule,
+        MatSidenavModule, MatGridListModule, MatDialogModule, MatChipsModule,
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })

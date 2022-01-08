@@ -23,9 +23,10 @@ import { ListItemComponent } from './list-item/list-item.component';
 import {MatGridListModule} from '@angular/material/grid-list';
 import { ProfileViewComponent } from './profile-view/profile-view.component';
 import { HomepageComponent } from './homepage/homepage.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
-  declarations: [AppComponent, LoginPageComponent, RegisterPageComponent, CreateofferComponent, ListItemComponent, ProfileViewComponent, HomepageComponent],
+  declarations: [AppComponent, LoginPageComponent, RegisterPageComponent, CreateofferComponent, ListItemComponent, ProfileViewComponent, HomepageComponent, FooterComponent],
   imports: [
     BrowserModule,
     HttpClientModule,

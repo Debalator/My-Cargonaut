@@ -8,34 +8,34 @@ import { PrivacyNotesComponent } from './footer/privacy-notes/privacy-notes.comp
 import { SocialComponent } from './footer/social/social.component';
 
 const routes: Routes = [
-  {
-    path: "createoffer",
-    component: CreateofferComponent
-  },
-  {
-    path: "auth",
-    component: AuthComponent
-  },
-  {
-    path: "impressum",
-    component: ImprintComponent
-  },
-  {
-    path: "social",
-    component: SocialComponent
-  },
-  {
-    path: "cookies",
-    component: CookieNoticeComponent
-  },
-  {
-    path: "datenschutz",
-    component: PrivacyNotesComponent
-  }
+    {
+        path: 'createoffer',
+        component: CreateofferComponent,
+    },
+    {
+        path: 'auth',
+        component: AuthComponent,
+    },
+    {
+        path: 'impressum',
+        component: ImprintComponent,
+    },
+    {
+        path: 'social',
+        component: SocialComponent,
+    },
+    {
+        path: 'cookies',
+        component: CookieNoticeComponent,
+    },
+    {
+        path: 'datenschutz',
+        component: PrivacyNotesComponent,
+    },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+    imports: [RouterModule.forRoot(routes)],
+    exports: [RouterModule],
 })
 export class AppRoutingModule {}

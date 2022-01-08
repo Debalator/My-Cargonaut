@@ -3,13 +3,12 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root',
 })
 export class ApiService {
+    constructor(private http: HttpClient) {}
 
-  constructor(private http: HttpClient) { }
-
-  public post(url: string, body: any | null, options?: any): Observable<any> {
-    return this.http.post(url, body, options);
-  }
+    public post(url: string, body: any | null, options?: any): Observable<any> {
+        return this.http.post(url, body, options);
+    }
 }

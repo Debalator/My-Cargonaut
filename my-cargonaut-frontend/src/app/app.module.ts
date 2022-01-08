@@ -22,9 +22,10 @@ import { MatCardModule } from '@angular/material/card';
 import { ListItemComponent } from './list-item/list-item.component';
 import {MatGridListModule} from '@angular/material/grid-list';
 import { ProfileViewComponent } from './profile-view/profile-view.component';
+import { HomepageComponent } from './homepage/homepage.component';
 
 @NgModule({
-  declarations: [AppComponent, LoginPageComponent, RegisterPageComponent, CreateofferComponent, ListItemComponent, ProfileViewComponent],
+  declarations: [AppComponent, LoginPageComponent, RegisterPageComponent, CreateofferComponent, ListItemComponent, ProfileViewComponent, HomepageComponent],
   imports: [
     BrowserModule,
     HttpClientModule,

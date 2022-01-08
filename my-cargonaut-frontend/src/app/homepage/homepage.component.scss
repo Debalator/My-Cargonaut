@@ -1,0 +1,28 @@
+.hero {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background:url("/assets/images/hero.jpg") center no-repeat ;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
+    width: 80%;
+    margin: 69px auto;
+}
+
+.grid > div {
+    padding: 10px 15px;
+    text-align: center;
+    border: solid black;
+    border-width: 0px 1px;
+}
+
+.grid > div:first-child {
+    border-width: 0px 1px 0px 2px;
+}
+
+.grid > div:last-child {
+    border-width: 0px 2px 0px 1px;
+}

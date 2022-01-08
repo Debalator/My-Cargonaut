@@ -27,7 +27,7 @@ export class AuthService {
             username: user.username,
             mail: user.mail,
             profilePicturePath: user.profilePicturePath,
-            birthDate: user.birthDate
+            birthDate: user.birthDate,
         };
         return {
             access_token: this.jwtService.sign(payload),

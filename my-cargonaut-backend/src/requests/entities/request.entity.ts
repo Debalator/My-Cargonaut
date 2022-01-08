@@ -16,10 +16,11 @@ import { Offer } from "../../offers/entities/offer.entity";
 @Entity()
 export class Request {
     public static fromOffer(offer: Offer) {
-        // TODO: add missing attributes
         const request = new Request();
         request.startDate = offer.startDate;
         request.destDate = offer.destDate;
+        request.startAddress = offer.startAddress;
+        request.destAddress = offer.destAddress;
         request.price = offer.price;
         return request;
     }

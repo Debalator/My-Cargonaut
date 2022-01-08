@@ -1,4 +1,8 @@
-import { Injectable, NotFoundException } from "@nestjs/common";
+import {
+    BadRequestException,
+    Injectable,
+    NotFoundException,
+} from "@nestjs/common";
 import { CreateRequestDto } from "./dto/create-request.dto";
 import { UpdateRequestDto } from "./dto/update-request.dto";
 import { InjectRepository } from "@nestjs/typeorm";
@@ -37,9 +41,26 @@ export class RequestsService {
         const offer = await this.offersService.findOne(offerID);
         if (!offer) throw new NotFoundException("Offer not found");
 
+        if (offer.vehicle.seats < createRequestFromOfferDto.persons)
+            throw new BadRequestException(
+                `Maximum number of persons (${offer.vehicle.seats}) exceeded`
+            );
+
+        if (
+            offer.vehicle.loadingArea <
+            createRequestFromOfferDto.items.reduce(
+                (prev, item) => prev + item.size,
+                0
+            )
+        )
+            throw new BadRequestException(
+                `Maximum loading area (${offer.vehicle.loadingArea}) exceeded`
+            );
+
         const request = Request.fromOffer(offer);
         request.creator = createRequestFromOfferDto.creator;
         request.items = createRequestFromOfferDto.items;
+        request.persons = createRequestFromOfferDto.persons;
 
         return this.create(request);
     }

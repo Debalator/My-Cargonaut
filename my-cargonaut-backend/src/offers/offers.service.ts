@@ -12,7 +12,7 @@ export class OffersService {
         @InjectRepository(Offer) private offerRepository: Repository<Offer>
     ) {}
 
-    private defaultRelations = ["creator"];
+    private defaultRelations = ["creator", "vehicle"];
 
     create(createOfferDto: CreateOfferDto) {
         return this.offerRepository.save(createOfferDto);

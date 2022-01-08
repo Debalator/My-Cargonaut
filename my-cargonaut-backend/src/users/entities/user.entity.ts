@@ -30,5 +30,5 @@ export class User {
     requests: Request[];
 
     @OneToMany(() => Vehicle, (vehicle) => vehicle.owner)
-    vehicles: Offer[];
+    vehicles: Vehicle[];
 }

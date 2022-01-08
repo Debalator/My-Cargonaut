@@ -25,6 +25,7 @@ import { ImprintComponent } from './footer/imprint/imprint.component';
 import { PrivacyNotesComponent } from './footer/privacy-notes/privacy-notes.component';
 import { CookieNoticeComponent } from './footer/cookie-notice/cookie-notice.component';
 import { CreaterequestComponent } from './createrequest/createrequest.component';
+import { MatGridListModule } from "@angular/material/grid-list";
 
 @NgModule({
   declarations: [AppComponent, CreateofferComponent, AuthComponent, FooterComponent, SocialComponent, ImprintComponent, PrivacyNotesComponent, CookieNoticeComponent, CreaterequestComponent],
@@ -44,7 +45,7 @@ import { CreaterequestComponent } from './createrequest/createrequest.component'
     MatIconModule,
     MatToolbarModule,
     FlexLayoutModule,
-    MatSidenavModule
+    MatSidenavModule, MatGridListModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,5 +1,6 @@
 import { User } from "src/users/entities/user.entity";
 import { Column, Entity, PrimaryGeneratedColumn, ManyToOne } from "typeorm";
+import { Address } from "../../addresses/entities/address.entity";
 
 @Entity()
 export class Offer {
@@ -7,10 +8,10 @@ export class Offer {
     id: number;
 
     @Column("varchar", {length: 255})
-    startPoint: string;
+    startAddress: Address;
 
     @Column("varchar", {length: 255})
-    destPoint: string;
+    destAddress: Address;
 
     @Column("datetime")
     startDate: Date;

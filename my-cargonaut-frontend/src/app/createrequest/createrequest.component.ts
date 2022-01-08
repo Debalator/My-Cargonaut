@@ -88,15 +88,15 @@ export class CreaterequestComponent implements OnInit {
       complete: () => console.log("destAddress sent"),
     });
 
-    this.api.post("/api/items", {
-
-    }).subscribe({
-      next: (res: any) => {
-        console.log(res);
-      },
-      error: (e: any) => console.error("items" + e),
-      complete: () => console.log("items sent"),
-    });
+    // this.api.post("/api/items", {
+    //
+    // }).subscribe({
+    //   next: (res: any) => {
+    //     console.log(res);
+    //   },
+    //   error: (e: any) => console.error("items" + e),
+    //   complete: () => console.log("items sent"),
+    // });
 
     this.api.post("/api/requests", {
       // startAddress: this.requestForm.value.startZip + ' ' + this.requestForm.value.startCity + ' ' + this.requestForm.value.startCountry,

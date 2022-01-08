@@ -6,10 +6,10 @@ export class Offer {
     @PrimaryGeneratedColumn()
     id: number;
 
-    @Column("varchar", {length: 255})
+    @Column("varchar", { length: 255 })
     startPoint: string;
 
-    @Column("varchar", {length: 255})
+    @Column("varchar", { length: 255 })
     destPoint: string;
 
     @Column("datetime")

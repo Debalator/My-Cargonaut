@@ -1,15 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-imprint',
-  templateUrl: './imprint.component.html',
-  styleUrls: ['./imprint.component.scss']
+    selector: 'app-imprint',
+    templateUrl: './imprint.component.html',
+    styleUrls: ['./imprint.component.scss'],
 })
-export class ImprintComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
-}
+export class ImprintComponent {}

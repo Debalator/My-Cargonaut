@@ -1,9 +1,10 @@
-
-<div class="mat-app-background" style="min-height: 100vh;">
+<div class="mat-app-background" style="min-height: 100vh">
     <!--Navbar-->
     <mat-toolbar>
         <!--Logo-->
-        <a mat-button routerLink=""><img src="/assets/logo.png" class="logo"></a>
+        <a mat-button routerLink=""
+            ><img src="/assets/logo.png" class="logo"
+        /></a>
         <span class="spacer"></span>
 
         <!--Links when not on mobile-->
@@ -15,18 +16,28 @@
 
         <!--burger menu when on mobile-->
         <div fxShow="true" fxHide.gt-sm="true">
-            <a mat-button href="#" (click)="sidenav.toggle()" class="menu"><mat-icon>menu</mat-icon></a>
+            <a mat-button href="#" (click)="sidenav.toggle()" class="menu"
+                ><mat-icon>menu</mat-icon></a
+            >
         </div>
     </mat-toolbar>
 
     <mat-sidenav-container (backdropClick)="sidenav.close()">
         <!--Sidenav when on mobile-->
-        <mat-sidenav #sidenav fxLayout="column" mode="side" position="end" opened="false">
+        <mat-sidenav
+            #sidenav
+            fxLayout="column"
+            mode="side"
+            position="end"
+            opened="false"
+        >
             <div fxLayout="column">
                 <!--Links when on mobile-->
                 <a mat-button routerLink="create_offer">Angebot suchen</a>
                 <a mat-button routerLink="suche">Angebot anlegen</a>
-                <a mat-raised-button routerLink="login" color="primary">Login</a>
+                <a mat-raised-button routerLink="login" color="primary"
+                    >Login</a
+                >
             </div>
         </mat-sidenav>
         <mat-sidenav-content>

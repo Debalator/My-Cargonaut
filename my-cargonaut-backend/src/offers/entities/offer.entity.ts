@@ -7,6 +7,7 @@ export class Offer {
     @PrimaryGeneratedColumn()
     id: number;
 
+
     @Column("varchar", {length: 255})
     startAddress: Address;
 

@@ -10,37 +10,37 @@ import { CreaterequestComponent } from "./createrequest/createrequest.component"
 
 const routes: Routes = [
   {
-    path: "createoffer",
-    component: CreateofferComponent
+    path: 'createoffer',
+    component: CreateofferComponent,
   },
   {
-    path: "createrequest",
-    component: CreaterequestComponent
+    path: 'createrequest',
+    component: CreaterequestComponent,
   },
   {
-    path: "auth",
-    component: AuthComponent
+    path: 'auth',
+    component: AuthComponent,
   },
   {
-    path: "impressum",
-    component: ImprintComponent
+    path: 'impressum',
+    component: ImprintComponent,
   },
   {
-    path: "social",
-    component: SocialComponent
+    path: 'social',
+    component: SocialComponent,
   },
   {
-    path: "cookies",
-    component: CookieNoticeComponent
+    path: 'cookies',
+    component: CookieNoticeComponent,
   },
   {
-    path: "datenschutz",
-    component: PrivacyNotesComponent
+    path: 'datenschutz',
+    component: PrivacyNotesComponent,
   }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+    imports: [RouterModule.forRoot(routes)],
+    exports: [RouterModule],
 })
 export class AppRoutingModule {}

@@ -1,15 +1,19 @@
-import {Component, Input, OnInit, ViewChild} from '@angular/core';
-import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
-import {MatSnackBar} from "@angular/material/snack-bar";
-import {MatInput} from "@angular/material/input";
-import {Observable} from "rxjs";
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
+import {
+    FormBuilder,
+    FormControl,
+    FormGroup,
+    Validators,
+} from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatInput } from '@angular/material/input';
+import { Observable } from 'rxjs';
 import { ApiService } from '../api/api.service';
 
-
 @Component({
-  selector: 'app-createoffer',
-  templateUrl: './createoffer.component.html',
-  styleUrls: ['./createoffer.component.scss']
+    selector: 'app-createoffer',
+    templateUrl: './createoffer.component.html',
+    styleUrls: ['./createoffer.component.scss'],
 })
 
 export class CreateofferComponent implements OnInit {
@@ -97,7 +101,6 @@ export class CreateofferComponent implements OnInit {
       error: (e: any) => console.error(e),
       complete: () => this.dataSend = true,
     });
-  }
 
   clearDate(date: HTMLInputElement) {
     date.value = "";

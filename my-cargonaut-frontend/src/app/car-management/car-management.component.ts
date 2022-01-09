@@ -70,20 +70,28 @@ export class CarManagementComponent implements OnInit {
     });
   }
 
+  editVehicle(){
+
+  }
+
+  deleteVehicle(){
+
+  }
+
   timeInterval!: Subscription;
 
-  private updateVehiclesEverySecond() {
-    this.timeInterval = interval(1000).pipe(
-      switchMap(() => this.api.get('/api/vehicles')),
-    ).subscribe({
-      next: (res: any) => {
-        // this.dataSource.data = res;
-        this.cars = res;
-      },
-      error: (e) => console.error(e),
-      complete: () => console.info('complete')
-    });
-  }
+  // private updateVehiclesEverySecond() {
+  //   this.timeInterval = interval(1000).pipe(
+  //     switchMap(() => this.api.get('/api/vehicles')),
+  //   ).subscribe({
+  //     next: (res: any) => {
+  //       // this.dataSource.data = res;
+  //       this.cars = res;
+  //     },
+  //     error: (e) => console.error(e),
+  //     complete: () => console.info('complete')
+  //   });
+  // }
 
   // dataSource = new MatTableDataSource(this.cars);
 

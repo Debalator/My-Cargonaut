@@ -1,25 +1,33 @@
-<h1 mat-dialog-title>Gegenstand hinzufügen {{data.description}}</h1>
+<h1 mat-dialog-title>Gegenstand hinzufügen {{ data.description }}</h1>
 <div mat-dialog-content>
-<!--  <p>Beschreibung</p>-->
-  <mat-form-field appearance="fill">
-    <input matInput [(ngModel)]="data.description" placeholder="Beschreibung" required>
-  </mat-form-field>
+    <!--  <p>Beschreibung</p>-->
+    <mat-form-field appearance="fill">
+        <input
+            matInput
+            [(ngModel)]="data.description"
+            placeholder="Beschreibung"
+            required
+        />
+    </mat-form-field>
 </div>
 <div mat-dialog-content>
-<!--  <p>Größe</p>-->
-  <mat-form-field appearance="fill">
-    <input matInput [(ngModel)]="data.size" placeholder="Größe" required>
-  </mat-form-field>
+    <!--  <p>Größe</p>-->
+    <mat-form-field appearance="fill">
+        <input matInput [(ngModel)]="data.size" placeholder="Größe" required />
+    </mat-form-field>
 </div>
 <div mat-dialog-content>
-<!--  <p>Gewicht</p>-->
-  <mat-form-field appearance="fill">
-    <input matInput [(ngModel)]="data.weight" placeholder="Gewicht" required>
-  </mat-form-field>
+    <!--  <p>Gewicht</p>-->
+    <mat-form-field appearance="fill">
+        <input
+            matInput
+            [(ngModel)]="data.weight"
+            placeholder="Gewicht"
+            required
+        />
+    </mat-form-field>
 </div>
 <div mat-dialog-actions>
-  <button mat-raised-button (click)="onNoClick()">Zurück</button>
-  <button mat-raised-button [mat-dialog-close]="data">Hinzufügen</button>
+    <button mat-raised-button (click)="onNoClick()">Zurück</button>
+    <button mat-raised-button [mat-dialog-close]="data">Hinzufügen</button>
 </div>
-
-

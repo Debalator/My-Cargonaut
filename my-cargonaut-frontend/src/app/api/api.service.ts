@@ -8,11 +8,11 @@ import { Observable } from 'rxjs';
 export class ApiService {
     constructor(private http: HttpClient) {}
 
-  public post(url: string, body: any | null, options?: any): Observable<any> {
-    return this.http.post(url, body, options);
-  }
+    public post(url: string, body: any | null, options?: any): Observable<any> {
+        return this.http.post(url, body, options);
+    }
 
-  public get(url: string, body: any | null, options?: any): Observable<any> {
-    return this.http.post(url, body, options);
-  }
+    public get(url: string, body: any | null, options?: any): Observable<any> {
+        return this.http.post(url, body, options);
+    }
 }

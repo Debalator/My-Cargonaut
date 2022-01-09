@@ -1,121 +1,181 @@
 <header class="container">
-  <h1>Angebot suchen</h1>
+    <h1>Angebot suchen</h1>
 </header>
 
-
 <mat-grid-list cols="3" rowHeight="40px">
-  <mat-grid-tile>
-    <h3>Start Adresse</h3>
-  </mat-grid-tile>
-  <mat-grid-tile>
-    <h3>Details</h3>
-  </mat-grid-tile>
-  <mat-grid-tile>
-    <h3>Ziel Adresse</h3>
-  </mat-grid-tile>
+    <mat-grid-tile>
+        <h3>Start Adresse</h3>
+    </mat-grid-tile>
+    <mat-grid-tile>
+        <h3>Details</h3>
+    </mat-grid-tile>
+    <mat-grid-tile>
+        <h3>Ziel Adresse</h3>
+    </mat-grid-tile>
 </mat-grid-list>
 
-
 <mat-grid-list cols="3" rowHeight="80px">
-  <!--  <div class="center">-->
-  <form class="formclass" [formGroup]="requestForm">
+    <!--  <div class="center">-->
+    <form class="formclass" [formGroup]="requestForm">
+        <mat-grid-tile>
+            <mat-form-field appearance="fill">
+                <input
+                    formControlName="startZip"
+                    matInput
+                    placeholder="Postleitzahl *"
+                    required
+                />
+            </mat-form-field>
+        </mat-grid-tile>
 
-    <mat-grid-tile>
+        <mat-grid-tile>
+            <mat-form-field appearance="fill">
+                <input
+                    id="price"
+                    formControlName="priceInput"
+                    matInput
+                    placeholder="Preis *"
+                    required
+                />
+            </mat-form-field>
+        </mat-grid-tile>
 
-      <mat-form-field appearance="fill">
-        <input formControlName="startZip" matInput placeholder="Postleitzahl *" required>
-      </mat-form-field>
-    </mat-grid-tile>
+        <mat-grid-tile>
+            <mat-form-field appearance="fill">
+                <input
+                    formControlName="destZip"
+                    matInput
+                    placeholder="Postleitzahl *"
+                    required
+                />
+            </mat-form-field>
+        </mat-grid-tile>
 
-    <mat-grid-tile>
-      <mat-form-field appearance="fill">
-        <input id="price" formControlName="priceInput" matInput placeholder="Preis *" required>
-      </mat-form-field>
-    </mat-grid-tile>
+        <!--        -->
 
-    <mat-grid-tile>
-      <mat-form-field appearance="fill">
-        <input formControlName="destZip" matInput placeholder="Postleitzahl *" required>
-      </mat-form-field>
-    </mat-grid-tile>
+        <mat-grid-tile>
+            <mat-form-field appearance="fill">
+                <input
+                    formControlName="startCity"
+                    matInput
+                    placeholder="Stadt *"
+                    required
+                />
+            </mat-form-field>
+        </mat-grid-tile>
 
-    <!--        -->
+        <mat-grid-tile>
+            <mat-form-field appearance="fill">
+                <mat-date-range-input [rangePicker]="picker" [min]="minDate">
+                    <input
+                        matStartDate
+                        placeholder="Frühstens *"
+                        formControlName="startDate"
+                        required
+                    />
+                    <input
+                        matEndDate
+                        placeholder="Spätestens *"
+                        formControlName="stopDate"
+                        required
+                    />
+                </mat-date-range-input>
+                <mat-datepicker-toggle
+                    matSuffix
+                    [for]="picker"
+                ></mat-datepicker-toggle>
+                <mat-date-range-picker #picker></mat-date-range-picker>
+            </mat-form-field>
+        </mat-grid-tile>
 
-    <mat-grid-tile>
-      <mat-form-field appearance="fill">
-        <input formControlName="startCity" matInput placeholder="Stadt *" required>
-      </mat-form-field>
-    </mat-grid-tile>
+        <mat-grid-tile>
+            <mat-form-field appearance="fill">
+                <input
+                    formControlName="destCity"
+                    matInput
+                    placeholder="Stadt *"
+                    required
+                />
+            </mat-form-field>
+        </mat-grid-tile>
 
-    <mat-grid-tile>
-      <mat-form-field appearance="fill">
-        <mat-date-range-input [rangePicker]="picker" [min]="minDate">
-          <input matStartDate placeholder="Frühstens *" formControlName="startDate" required>
-          <input matEndDate placeholder="Spätestens *" formControlName="stopDate" required>
-        </mat-date-range-input>
-        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-        <mat-date-range-picker #picker></mat-date-range-picker>
-      </mat-form-field>
-    </mat-grid-tile>
+        <!--        -->
+        <mat-grid-tile>
+            <mat-form-field appearance="fill">
+                <input
+                    formControlName="startCountry"
+                    matInput
+                    placeholder="Land *"
+                    required
+                />
+            </mat-form-field>
+        </mat-grid-tile>
 
-    <mat-grid-tile>
-      <mat-form-field appearance="fill">
-        <input formControlName="destCity" matInput placeholder="Stadt *" required>
-      </mat-form-field>
-    </mat-grid-tile>
+        <mat-grid-tile>
+            <mat-form-field id="seatsField" appearance="fill">
+                <input
+                    id="seats"
+                    formControlName="persons"
+                    matInput
+                    placeholder="Benötigte Sitze *"
+                    required
+                />
+            </mat-form-field>
+        </mat-grid-tile>
 
-    <!--        -->
-    <mat-grid-tile>
-      <mat-form-field appearance="fill">
-        <input formControlName="startCountry" matInput placeholder="Land *" required>
-      </mat-form-field>
-    </mat-grid-tile>
+        <mat-grid-tile>
+            <mat-form-field appearance="fill">
+                <input
+                    formControlName="destCountry"
+                    matInput
+                    placeholder="Land *"
+                    required
+                />
+            </mat-form-field>
+        </mat-grid-tile>
 
+        <mat-grid-tile id="items" colspan="3">
+            <h5>Zu transportierende Gegenstände:</h5>
+            <button id="addItem" mat-raised-button (click)="add()">+</button>
+        </mat-grid-tile>
 
+        <mat-grid-tile colspan="3">
+            <mat-chip-list #chiplist aria-label="Item selection">
+                <mat-chip
+                    *ngFor="let item of itemsInput"
+                    (removed)="remove(item)"
+                >
+                    {{ item.description }}
+                    <button matChipRemove>
+                        <mat-icon>cancel</mat-icon>
+                    </button>
+                </mat-chip>
+            </mat-chip-list>
+        </mat-grid-tile>
 
-    <mat-grid-tile >
-      <mat-form-field id="seatsField" appearance="fill">
-        <input id="seats" formControlName="persons" matInput placeholder="Benötigte Sitze *" required>
-      </mat-form-field>
-    </mat-grid-tile>
-
-    <mat-grid-tile>
-      <mat-form-field appearance="fill">
-        <input formControlName="destCountry" matInput placeholder="Land *" required>
-      </mat-form-field>
-    </mat-grid-tile>
-
-    <mat-grid-tile id="items" colspan="3">
-      <h5>Zu transportierende Gegenstände:</h5>
-      <button id="addItem" mat-raised-button (click)="add()">+</button>
-    </mat-grid-tile>
-
-    <mat-grid-tile colspan="3">
-      <mat-chip-list #chiplist aria-label="Item selection">
-        <mat-chip *ngFor="let item of itemsInput" (removed)="remove(item)">
-          {{item.description}}
-          <button matChipRemove>
-            <mat-icon>cancel</mat-icon>
-          </button>
-        </mat-chip>
-      </mat-chip-list>
-    </mat-grid-tile>
-
-    <mat-grid-tile colspan="3">
-      <mat-form-field appearance="fill">
-        <textarea formControlName="moreInfo" matInput placeholder="Zusätzliche Informationen"></textarea>
-      </mat-form-field>
-    </mat-grid-tile>
-
-  </form>
+        <mat-grid-tile colspan="3">
+            <mat-form-field appearance="fill">
+                <textarea
+                    formControlName="moreInfo"
+                    matInput
+                    placeholder="Zusätzliche Informationen"
+                ></textarea>
+            </mat-form-field>
+        </mat-grid-tile>
+    </form>
 </mat-grid-list>
 
 <mat-grid-list cols="1">
-  <section>
-    <div class="example-button-row">
-      <button mat-raised-button (click)="sendDataRequest('Gesuch wird erstellt')">Angebot suchen</button>
-    </div>
-  </section>
+    <section>
+        <div class="example-button-row">
+            <button
+                mat-raised-button
+                (click)="sendDataRequest('Gesuch wird erstellt')"
+            >
+                Angebot suchen
+            </button>
+        </div>
+    </section>
 </mat-grid-list>
 
 <!--<div class="container">-->
@@ -197,4 +257,3 @@
 <!--    </form>-->
 <!--  </div>-->
 <!--</div>-->
-

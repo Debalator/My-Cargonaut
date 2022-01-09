@@ -13,16 +13,21 @@ import { Request } from "./entities/request.entity";
 import { Item } from "./entities/item.entity";
 import { CreateRequestFromOfferDto } from "./dto/create-request-from-offer.dto";
 import { OffersService } from "../offers/offers.service";
+import { AddressesService } from "../addresses/addresses.service";
 
 @Injectable()
 export class RequestsService {
     constructor(
         @InjectRepository(Request)
         private requestRepository: Repository<Request>,
+
         @InjectRepository(Item)
         private itemRepository: Repository<Item>,
+
         @Inject(forwardRef(() => OffersService))
-        private offersService: OffersService
+        private offersService: OffersService,
+
+        private readonly addressService: AddressesService
     ) {}
 
     private defaultRelations = [
@@ -64,6 +69,9 @@ export class RequestsService {
         request.creator = createRequestFromOfferDto.creator;
         request.items = createRequestFromOfferDto.items;
         request.persons = createRequestFromOfferDto.persons;
+
+        await this.addressService.create(request.startAddress);
+        await this.addressService.create(request.destAddress);
 
         return this.create(request);
     }

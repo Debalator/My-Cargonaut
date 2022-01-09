@@ -14,6 +14,7 @@ import { Offer } from "./entities/offer.entity";
 import { CreateOfferFromRequestDto } from "./dto/create-offer-from-request.dto";
 import { RequestsService } from "../requests/requests.service";
 import { VehiclesService } from "../vehicles/vehicles.service";
+import { AddressesService } from "../addresses/addresses.service";
 
 @Injectable()
 export class OffersService {
@@ -23,10 +24,16 @@ export class OffersService {
         @Inject(forwardRef(() => RequestsService))
         private requestService: RequestsService,
 
-        private readonly vehicleService: VehiclesService
+        private readonly vehicleService: VehiclesService,
+        private readonly addressService: AddressesService
     ) {}
 
-    private defaultRelations = ["creator", "vehicle"];
+    private defaultRelations = [
+        "creator",
+        "vehicle",
+        "startAddress",
+        "destAddress",
+    ];
 
     create(createOfferDto: CreateOfferDto) {
         return this.offerRepository.save(createOfferDto);
@@ -87,6 +94,9 @@ export class OffersService {
         const offer = Offer.fromRequest(request);
         offer.creator = createOfferFromRequestDto.creator;
         offer.vehicle = createOfferFromRequestDto.vehicle;
+
+        await this.addressService.create(offer.startAddress);
+        await this.addressService.create(offer.destAddress);
 
         return this.create(offer);
     }

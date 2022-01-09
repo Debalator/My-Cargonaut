@@ -13,6 +13,7 @@ import { VehiclesModule } from "../vehicles/vehicles.module";
         AddressesModule,
         forwardRef(() => RequestsModule),
         VehiclesModule,
+        AddressesModule,
     ],
     controllers: [OffersController],
     providers: [OffersService],

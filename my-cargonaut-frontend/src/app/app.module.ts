@@ -42,6 +42,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { AdditemComponent } from './additem/additem.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatChipsModule } from '@angular/material/chips';
+import { CarManagementComponent } from './car-management/car-management.component';
 
 @NgModule({
     declarations: [
@@ -59,6 +60,7 @@ import { MatChipsModule } from '@angular/material/chips';
         CookieNoticeComponent,
         CreaterequestComponent,
         AdditemComponent,
+        CarManagementComponent,
     ],
     imports: [
         BrowserModule,

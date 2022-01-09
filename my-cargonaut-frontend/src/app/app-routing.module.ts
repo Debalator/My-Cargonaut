@@ -8,6 +8,7 @@ import { SocialComponent } from './footer/social/social.component';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { RegisterPageComponent } from './register-page/register-page.component';
 import { CreaterequestComponent } from './createrequest/createrequest.component';
+import { CarManagementComponent } from './car-management/car-management.component'
 
 const routes: Routes = [
     {
@@ -37,7 +38,7 @@ const routes: Routes = [
     {
         path: '',
         pathMatch: 'full',
-        component: LoginPageComponent,
+        component: CarManagementComponent,
     },
     {
         path: 'register',

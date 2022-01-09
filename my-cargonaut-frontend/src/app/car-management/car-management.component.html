@@ -1,0 +1,45 @@
+<header class="container">
+  <h1>Fahrzeug Verwaltung</h1>
+</header>
+
+<div class="example-button-row">
+<button id="addCar" mat-raised-button>Add</button>
+</div>
+
+<mat-card>
+  <mat-grid-list cols="6" rowHeight="50px">
+    <mat-grid-tile colspan="1" rowspan="2">
+      <img mat-card-lg-image src="../../assets/car.png">
+    </mat-grid-tile>
+    <mat-grid-tile colspan="4" rowspan="1">
+      <mat-card-title>Vehicle Name</mat-card-title>
+    </mat-grid-tile>
+    <mat-grid-tile colspan="4" rowspan="2">
+      <mat-card-subtitle>
+        <div class="row">
+          Brand:
+        </div>
+        <div class="row">
+          Model:
+        </div>
+        <div class="row">
+          Seats:
+        </div>
+        <div class="row">
+          Loading Area:
+        </div>
+      </mat-card-subtitle>
+    </mat-grid-tile>
+    <mat-grid-tile colspan="1" rowspan="2">
+      <mat-card-actions id="editButtons">
+        <button mat-raised-button>Edit</button>
+        <button mat-raised-button>Delete</button>
+      </mat-card-actions>
+    </mat-grid-tile>
+  </mat-grid-list>
+<!--  <ng-container>-->
+<!--    -->
+<!--   -->
+<!--  </ng-container>-->
+
+</mat-card>

@@ -1,26 +1,62 @@
-<mat-card style="background-color:aliceblue; width: 80%; margin: 20px auto">
+<mat-card style="background-color: aliceblue; width: 80%; margin: 20px auto">
     <mat-grid-list cols="4">
         <mat-grid-tile>
-            <img src="{{item.image}}"/>
+            <img src="{{ item.image }}" />
         </mat-grid-tile>
-        <mat-grid-tile >
-            <div style="padding:3px 5px;">
-            <h2 >{{item.title}}</h2>
-                <p>{{item.description}}</p>
+        <mat-grid-tile>
+            <div style="padding: 3px 5px">
+                <h2>{{ item.title }}</h2>
+                <p>{{ item.description }}</p>
             </div>
         </mat-grid-tile>
         <mat-grid-tile>
             <div>
-                <mat-icon aria-hidden="false" aria-label="Example home icon" *ngIf="item.stars == 5">"star star star star star"</mat-icon>
-                <mat-icon aria-hidden="false" aria-label="Example home icon" *ngIf="item.stars == 4">"star star star star star_border"</mat-icon>
-                <mat-icon aria-hidden="false" aria-label="Example home icon" *ngIf="item.stars == 3">"star star star  star_border star_border"</mat-icon>
-                <mat-icon aria-hidden="false" aria-label="Example home icon" *ngIf="item.stars == 2">"star star  star_border star_border star_border"</mat-icon>
-                <mat-icon aria-hidden="false" aria-label="Example home icon" *ngIf="item.stars == 1">"star  star_border star_border star_border star_border"</mat-icon>
-                <mat-icon aria-hidden="false" aria-label="Example home icon" *ngIf="item.stars == 0">"star_border star_border star_border star_border star_border"</mat-icon>
-                
-                <p>{{item.numberOfReviews}} Bewertungen</p>
+                <mat-icon
+                    aria-hidden="false"
+                    aria-label="Example home icon"
+                    *ngIf="item.stars === 5"
+                    >"star star star star star"</mat-icon
+                >
+                <mat-icon
+                    aria-hidden="false"
+                    aria-label="Example home icon"
+                    *ngIf="item.stars === 4"
+                    >"star star star star star_border"</mat-icon
+                >
+                <mat-icon
+                    aria-hidden="false"
+                    aria-label="Example home icon"
+                    *ngIf="item.stars === 3"
+                    >"star star star star_border star_border"</mat-icon
+                >
+                <mat-icon
+                    aria-hidden="false"
+                    aria-label="Example home icon"
+                    *ngIf="item.stars === 2"
+                    >"star star star_border star_border star_border"</mat-icon
+                >
+                <mat-icon
+                    aria-hidden="false"
+                    aria-label="Example home icon"
+                    *ngIf="item.stars === 1"
+                    >"star star_border star_border star_border
+                    star_border"</mat-icon
+                >
+                <mat-icon
+                    aria-hidden="false"
+                    aria-label="Example home icon"
+                    *ngIf="item.stars === 0"
+                    >"star_border star_border star_border star_border
+                    star_border"</mat-icon
+                >
+
+                <p>{{ item.numberOfReviews }} Bewertungen</p>
             </div>
         </mat-grid-tile>
-        <mat-grid-tile><span style="font-size: 30px;font-weight: 800;">{{item.price}}€</span></mat-grid-tile>
+        <mat-grid-tile
+            ><span style="font-size: 30px; font-weight: 800"
+                >{{ item.price }}€</span
+            ></mat-grid-tile
+        >
     </mat-grid-list>
 </mat-card>

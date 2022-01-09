@@ -9,7 +9,6 @@ import { SocialComponent } from './footer/social/social.component';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { RegisterPageComponent } from './register-page/register-page.component';
 
-
 const routes: Routes = [
     {
         path: 'createoffer',
@@ -36,11 +35,14 @@ const routes: Routes = [
         component: PrivacyNotesComponent,
     },
     {
-      path: '', pathMatch:'full', component: LoginPageComponent
+        path: '',
+        pathMatch: 'full',
+        component: LoginPageComponent,
     },
     {
-      path: 'register', component: RegisterPageComponent
-    }
+        path: 'register',
+        component: RegisterPageComponent,
+    },
 ];
 
 @NgModule({

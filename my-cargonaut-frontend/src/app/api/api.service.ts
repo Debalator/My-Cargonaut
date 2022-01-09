@@ -9,10 +9,20 @@ export class ApiService {
     constructor(private http: HttpClient) {}
 
     public post(url: string, body: any | null, options?: any): Observable<any> {
-        return this.http.post(url, body, options);
+        return this.http.post(url, body, {
+            ...options,
+            headers: {
+                Authorization: `Bearer ${window.localStorage.getItem('jwt')}`,
+            },
+        });
     }
 
     public get(url: string, body: any | null, options?: any): Observable<any> {
-        return this.http.post(url, body, options);
+        return this.http.post(url, body, {
+            ...options,
+            headers: {
+                Authorization: `Bearer ${window.localStorage.getItem('jwt')}`,
+            },
+        });
     }
 }

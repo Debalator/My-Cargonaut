@@ -27,7 +27,6 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { HttpClientModule } from '@angular/common/http';
 import { MatCardModule } from '@angular/material/card';
 import { ListItemComponent } from './list-item/list-item.component';
-import { MatGridListModule } from '@angular/material/grid-list';
 import { ProfileViewComponent } from './profile-view/profile-view.component';
 import { HomepageComponent } from './homepage/homepage.component';
 import { FooterComponent } from './footer/footer.component';

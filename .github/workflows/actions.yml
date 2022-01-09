@@ -76,7 +76,7 @@ jobs:
     runs-on: ubuntu-18.04
     if: github.ref == 'refs/heads/master'
 
-     steps:
+    steps:
       - uses: actions/checkout@v2
       - name: docker login
         env:

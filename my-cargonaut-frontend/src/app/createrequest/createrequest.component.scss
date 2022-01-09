@@ -4,18 +4,18 @@
 //}
 
 header {
-  display: flex;
-  justify-content: center;
+    display: flex;
+    justify-content: center;
 }
 
 h1 {
-  display: flex;
-  justify-content: center;
+    display: flex;
+    justify-content: center;
 }
 
 mat-form-field {
-  //justify-content: center;
-  width: 300px;
+    //justify-content: center;
+    width: 300px;
 }
 
 //.mat-form-field--inline .mat-form-field {
@@ -29,15 +29,15 @@ mat-form-field {
 //}
 //
 .example-button-row {
-  display: flex;
-  justify-content: center;
-  margin-top: 10px;
-  margin-bottom: 15px;
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+    margin-bottom: 15px;
 }
 
 #addItem {
-  width: 5px;
-  margin-left: 5px;
+    width: 5px;
+    margin-left: 5px;
 }
 //
 ////TODO: wenn Fenster schmal wird --> seats und space gleichgroß (100%)!

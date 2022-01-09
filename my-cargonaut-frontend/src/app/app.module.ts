@@ -39,10 +39,10 @@ import { ImprintComponent } from './footer/imprint/imprint.component';
 import { PrivacyNotesComponent } from './footer/privacy-notes/privacy-notes.component';
 import { CookieNoticeComponent } from './footer/cookie-notice/cookie-notice.component';
 import { CreaterequestComponent } from './createrequest/createrequest.component';
-import { MatGridListModule } from "@angular/material/grid-list";
+import { MatGridListModule } from '@angular/material/grid-list';
 import { AdditemComponent } from './additem/additem.component';
-import { MatDialogModule } from "@angular/material/dialog";
-import { MatChipsModule } from "@angular/material/chips";
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatChipsModule } from '@angular/material/chips';
 
 @NgModule({
     declarations: [
@@ -59,7 +59,7 @@ import { MatChipsModule } from "@angular/material/chips";
         PrivacyNotesComponent,
         CookieNoticeComponent,
         CreaterequestComponent,
-        AdditemComponent
+        AdditemComponent,
     ],
     imports: [
         BrowserModule,
@@ -85,8 +85,8 @@ import { MatChipsModule } from "@angular/material/chips";
         MatGridListModule,
         MatToolbarModule,
         FlexLayoutModule,
-        ],
-  providers: [],
-  bootstrap: [AppComponent]
+    ],
+    providers: [],
+    bootstrap: [AppComponent],
 })
 export class AppModule {}

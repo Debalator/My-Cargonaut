@@ -7,42 +7,42 @@ import { PrivacyNotesComponent } from './footer/privacy-notes/privacy-notes.comp
 import { SocialComponent } from './footer/social/social.component';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { RegisterPageComponent } from './register-page/register-page.component';
-import { CreaterequestComponent } from "./createrequest/createrequest.component";
+import { CreaterequestComponent } from './createrequest/createrequest.component';
 
 const routes: Routes = [
-  {
-    path: 'createoffer',
-    component: CreateofferComponent,
-  },
-  {
-    path: 'createrequest',
-    component: CreaterequestComponent,
-  },
-  {
-    path: 'impressum',
-    component: ImprintComponent,
-  },
-  {
-    path: 'social',
-    component: SocialComponent,
-  },
-  {
-    path: 'cookies',
-    component: CookieNoticeComponent,
-  },
-  {
-    path: 'datenschutz',
-    component: PrivacyNotesComponent,
-  }
-  {
-    path: '',
-    pathMatch: 'full',
-    component: LoginPageComponent,
-  },
-  {
-    path: 'register',
-    component: RegisterPageComponent,
-  },
+    {
+        path: 'createoffer',
+        component: CreateofferComponent,
+    },
+    {
+        path: 'createrequest',
+        component: CreaterequestComponent,
+    },
+    {
+        path: 'impressum',
+        component: ImprintComponent,
+    },
+    {
+        path: 'social',
+        component: SocialComponent,
+    },
+    {
+        path: 'cookies',
+        component: CookieNoticeComponent,
+    },
+    {
+        path: 'datenschutz',
+        component: PrivacyNotesComponent,
+    },
+    {
+        path: '',
+        pathMatch: 'full',
+        component: LoginPageComponent,
+    },
+    {
+        path: 'register',
+        component: RegisterPageComponent,
+    },
 ];
 
 @NgModule({

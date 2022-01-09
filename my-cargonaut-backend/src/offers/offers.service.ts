@@ -1,4 +1,5 @@
 import {
+    BadRequestException,
     forwardRef,
     Inject,
     Injectable,
@@ -12,6 +13,7 @@ import { UpdateOfferDto } from "./dto/update-offer.dto";
 import { Offer } from "./entities/offer.entity";
 import { CreateOfferFromRequestDto } from "./dto/create-offer-from-request.dto";
 import { RequestsService } from "../requests/requests.service";
+import { VehiclesService } from "../vehicles/vehicles.service";
 
 @Injectable()
 export class OffersService {
@@ -19,7 +21,9 @@ export class OffersService {
         @InjectRepository(Offer) private offerRepository: Repository<Offer>,
 
         @Inject(forwardRef(() => RequestsService))
-        private requestService: RequestsService
+        private requestService: RequestsService,
+
+        private readonly vehicleService: VehiclesService
     ) {}
 
     private defaultRelations = ["creator", "vehicle"];
@@ -58,6 +62,27 @@ export class OffersService {
     ) {
         const request = await this.requestService.findOne(requestID);
         if (!request) throw new NotFoundException("Request not found");
+
+        const vehicle = await this.vehicleService.findOne(
+            createOfferFromRequestDto.vehicle.id
+        );
+        if (!vehicle) throw new NotFoundException("Vehicle not found");
+
+        if (vehicle.seats < request.persons)
+            throw new BadRequestException(
+                `Vehicle must have at least ${request.persons} seats`
+            );
+
+        const totalItemSize = request.items.reduce(
+            (prev, item) => prev + item.size,
+            0
+        );
+
+        if (vehicle.loadingArea < totalItemSize) {
+            throw new BadRequestException(
+                `Vehicle must have at least ${totalItemSize} m^2 loading area`
+            );
+        }
 
         const offer = Offer.fromRequest(request);
         offer.creator = createOfferFromRequestDto.creator;

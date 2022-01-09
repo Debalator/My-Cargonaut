@@ -5,13 +5,10 @@ import {
     OneToOne,
     JoinColumn,
     CreateDateColumn,
-    ManyToOne,
-    OneToMany,
 } from "typeorm";
 import { Request } from "../../requests/entities/request.entity";
 import { Offer } from "../../offers/entities/offer.entity";
 import { Location } from "./location.entity";
-import { User } from "../../users/entities/user.entity";
 import { Rating } from "./rating.entity";
 
 export enum OrderStatus {

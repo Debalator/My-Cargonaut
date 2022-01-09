@@ -1,0 +1,60 @@
+<mat-card style="background-color: aliceblue">
+    <mat-card-title>Register</mat-card-title>
+    <form [formGroup]="registerForm">
+        <div class="row">
+            <mat-form-field appearance="fill">
+                <input
+                    id="username"
+                    formControlName="username"
+                    matInput
+                    type="username"
+                    placeholder="Username"
+                />
+            </mat-form-field>
+        </div>
+        <div class="row">
+            <mat-form-field appearance="fill">
+                <input
+                    id="email"
+                    formControlName="email"
+                    matInput
+                    type="email"
+                    placeholder="Email"
+                />
+            </mat-form-field>
+        </div>
+        <div class="row">
+            <mat-form-field appearance="fill">
+                <input
+                    id="birthdate"
+                    formControlName="email"
+                    matInput
+                    type="date"
+                    placeholder="Birthdate"
+                />
+            </mat-form-field>
+        </div>
+
+        <div class="row">
+            <mat-form-field appearance="fill">
+                <input
+                    id="password"
+                    formControlName="password"
+                    matInput
+                    type="password"
+                    placeholder="Password"
+                />
+            </mat-form-field>
+        </div>
+
+        <mat-card-actions
+            align="end"
+            style="margin-bottom: 0; padding-bottom: 0"
+        >
+            <button mat-stroked-button color="primary" (click)="register()">
+                Register
+            </button>
+            <a mat-stroked-button routerLink="/..">Back to login</a>
+        </mat-card-actions>
+    </form>
+</mat-card>

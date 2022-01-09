@@ -7,11 +7,10 @@ export class Offer {
     @PrimaryGeneratedColumn()
     id: number;
 
-
-    @Column("varchar", {length: 255})
+    @Column("varchar", { length: 255 })
     startAddress: Address;
 
-    @Column("varchar", {length: 255})
+    @Column("varchar", { length: 255 })
     destAddress: Address;
 
     @Column("datetime")

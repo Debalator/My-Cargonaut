@@ -1,8 +1,9 @@
 import { User } from "src/users/entities/user.entity";
+import { Address } from "../../addresses/entities/address.entity";
 
 export class CreateOfferDto {
-    startPoint: string;
-    destPoint: string;
+    startAddress: Address;
+    destAddress: Address;
     startDate: Date;
     destDate: Date;
     price: number;

@@ -38,6 +38,11 @@ import { SocialComponent } from './footer/social/social.component';
 import { ImprintComponent } from './footer/imprint/imprint.component';
 import { PrivacyNotesComponent } from './footer/privacy-notes/privacy-notes.component';
 import { CookieNoticeComponent } from './footer/cookie-notice/cookie-notice.component';
+import { CreaterequestComponent } from './createrequest/createrequest.component';
+import { MatGridListModule } from "@angular/material/grid-list";
+import { AdditemComponent } from './additem/additem.component';
+import { MatDialogModule } from "@angular/material/dialog";
+import { MatChipsModule } from "@angular/material/chips";
 
 @NgModule({
     declarations: [
@@ -53,6 +58,8 @@ import { CookieNoticeComponent } from './footer/cookie-notice/cookie-notice.comp
         ImprintComponent,
         PrivacyNotesComponent,
         CookieNoticeComponent,
+        CreaterequestComponent,
+        AdditemComponent
     ],
     imports: [
         BrowserModule,
@@ -62,9 +69,13 @@ import { CookieNoticeComponent } from './footer/cookie-notice/cookie-notice.comp
         ReactiveFormsModule,
         NoopAnimationsModule,
         MatInputModule,
+        MatChipsModule,
         MatDatepickerModule,
+        MatDialogModule,
         MatFormFieldModule,
+        MatGridListModule,
         MatSelectModule,
+        MatSidenavModule,
         MatSnackBarModule,
         MatNativeDateModule,
         ReactiveFormsModule,
@@ -74,9 +85,8 @@ import { CookieNoticeComponent } from './footer/cookie-notice/cookie-notice.comp
         MatGridListModule,
         MatToolbarModule,
         FlexLayoutModule,
-        MatSidenavModule,
-    ],
-    providers: [],
-    bootstrap: [AppComponent],
+        ],
+  providers: [],
+  bootstrap: [AppComponent]
 })
 export class AppModule {}

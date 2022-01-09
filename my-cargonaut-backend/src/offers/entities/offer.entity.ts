@@ -1,16 +1,18 @@
 import { User } from "src/users/entities/user.entity";
 import { Column, Entity, PrimaryGeneratedColumn, ManyToOne } from "typeorm";
+import { Address } from "../../addresses/entities/address.entity";
 
 @Entity()
 export class Offer {
     @PrimaryGeneratedColumn()
     id: number;
 
-    @Column("varchar", { length: 255 })
-    startPoint: string;
 
-    @Column("varchar", { length: 255 })
-    destPoint: string;
+    @Column("varchar", {length: 255})
+    startAddress: Address;
+
+    @Column("varchar", {length: 255})
+    destAddress: Address;
 
     @Column("datetime")
     startDate: Date;

@@ -14,7 +14,5 @@ describe("AddressesController", () => {
         controller = module.get<AddressesController>(AddressesController);
     });
 
-    it("should be defined", () => {
-        expect(controller).toBeDefined();
-    });
+    it.todo("implement tests");
 });

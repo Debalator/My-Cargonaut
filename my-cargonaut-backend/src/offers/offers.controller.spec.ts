@@ -14,7 +14,5 @@ describe("OffersController", () => {
         controller = module.get<OffersController>(OffersController);
     });
 
-    it("should be defined", () => {
-        expect(controller).toBeDefined();
-    });
+    it.todo('implement tests');
 });

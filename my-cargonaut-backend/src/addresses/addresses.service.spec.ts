@@ -12,7 +12,5 @@ describe("AddressesService", () => {
         service = module.get<AddressesService>(AddressesService);
     });
 
-    it("should be defined", () => {
-        expect(service).toBeDefined();
-    });
+    it.todo('implement tests');
 });

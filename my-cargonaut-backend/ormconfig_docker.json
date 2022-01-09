@@ -3,8 +3,8 @@
   "host": "db",
   "port": 3306,
   "username": "root",
-  "password": "",
+  "password": "root",
   "database": "mycargonaut",
-  "entities": ["dist/**/*.entity{.ts,.js}"],
+  "entities": ["**/*.entity{.ts,.js}"],
   "synchronize": true
 }

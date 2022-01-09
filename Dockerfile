@@ -18,5 +18,5 @@ COPY ./my-cargonaut-backend/package*.json .
 COPY ./my-cargonaut-backend/ormconfig_docker.json ormconfig.json
 RUN npm i -f
 COPY --from=backend /app/dist .
-COPY --from=frontend /app/dist ./angular
+COPY --from=frontend /app/dist/my-cargonaut-frontend ./angular
 CMD ["node", "main.js"]

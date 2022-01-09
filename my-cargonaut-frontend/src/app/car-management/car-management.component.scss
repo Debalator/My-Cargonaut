@@ -1,0 +1,33 @@
+
+header {
+  display: flex;
+  justify-content: center;
+}
+
+.example-button-row {
+  display: flex;
+  justify-content: end;
+  margin-top: 10px;
+  margin-bottom: 15px;
+  margin-right: 60px;
+}
+
+#editButtons {
+  //margin-top: 80px;
+  //margin-left: 70px;
+}
+
+.mat-card-lg-image {
+  margin-top: 45px;
+}
+
+.mat-card-title {
+  position: absolute;
+  left: 100px;
+}
+
+.mat-card-subtitle {
+  position: absolute;
+  left: 100px;
+}
+

@@ -50,6 +50,7 @@ import { VehiclesComponent } from './vehicles/vehicles.component';
 import { RequestItemsComponent } from './request-items/request-items.component';
 import { RequestsComponent } from './requests/requests.component';
 import { OrderRequestComponent } from './order-request/order-request.component';
+import { CarManagementComponent } from './car-management/car-management.component';
 
 @NgModule({
     declarations: [
@@ -67,6 +68,7 @@ import { OrderRequestComponent } from './order-request/order-request.component';
         CookieNoticeComponent,
         CreaterequestComponent,
         AdditemComponent,
+        CarManagementComponent,
         OffersComponent,
         OrderOfferComponent,
         VehiclesComponent,
@@ -98,7 +100,6 @@ import { OrderRequestComponent } from './order-request/order-request.component';
         MatGridListModule,
         MatToolbarModule,
         FlexLayoutModule,
-        MatListModule,
     ],
     providers: [],
     bootstrap: [AppComponent],

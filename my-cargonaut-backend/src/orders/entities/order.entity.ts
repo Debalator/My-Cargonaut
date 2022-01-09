@@ -54,6 +54,9 @@ export class Order {
     @JoinColumn()
     location: Location;
 
-    @OneToMany(() => Rating, (rating) => rating.order)
-    public ratings: Rating[];
+    @OneToOne(() => Rating, {
+        onDelete: "SET NULL",
+    })
+    @JoinColumn()
+    rating: Rating;
 }

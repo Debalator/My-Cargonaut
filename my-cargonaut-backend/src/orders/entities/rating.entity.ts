@@ -24,9 +24,4 @@ export class Rating {
 
     @CreateDateColumn()
     created: Date;
-
-    @ManyToOne(() => Order, (order) => order.ratings, {
-        onDelete: "CASCADE",
-    })
-    public order: Order;
 }

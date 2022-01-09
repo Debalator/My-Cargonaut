@@ -25,6 +25,7 @@ export class OrdersService {
     private detailedRelations = [
         ...this.defaultRelations,
         "location",
+        "rating",
         "request.creator",
         "request.startAddress",
         "request.destAddress",
@@ -41,10 +42,10 @@ export class OrdersService {
         const order = await this.orderRepository.findOne(orderID);
         if (!order) throw new NotFoundException("Order not found");
 
-        return this.ratingRepository.save({
-            ...createRatingDto,
-            order,
-        });
+        order.rating = await this.ratingRepository.save(createRatingDto);
+        await this.orderRepository.save(order);
+
+        return order.rating;
     }
 
     async updateRating(
@@ -118,19 +119,12 @@ export class OrdersService {
                     creator: id,
                 },
             },
-            relations: ["offer", "offer.creator", "ratings"],
+            relations: ["offer", "offer.creator", "rating"],
         });
 
-        const ratings = [];
-
-        // Fix author if we allow ratings from different users for one order
-        for (const order of orders)
-            for (const rating of order.ratings)
-                ratings.push({
-                    ...rating,
-                    author: order.offer.creator,
-                });
-
-        return ratings;
+        return orders.map((order) => ({
+            ...order.rating,
+            author: order.offer.creator,
+        }));
     }
 }

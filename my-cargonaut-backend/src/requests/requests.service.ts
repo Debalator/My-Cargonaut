@@ -1,5 +1,7 @@
 import {
     BadRequestException,
+    forwardRef,
+    Inject,
     Injectable,
     NotFoundException,
 } from "@nestjs/common";
@@ -19,7 +21,8 @@ export class RequestsService {
         private requestRepository: Repository<Request>,
         @InjectRepository(Item)
         private itemRepository: Repository<Item>,
-        private readonly offersService: OffersService
+        @Inject(forwardRef(() => OffersService))
+        private offersService: OffersService
     ) {}
 
     private defaultRelations = [

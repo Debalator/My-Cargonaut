@@ -10,9 +10,20 @@ import {
 } from "typeorm";
 import { Address } from "../../addresses/entities/address.entity";
 import { Vehicle } from "../../vehicles/entities/vehicle.entity";
+import { Request } from "../../requests/entities/request.entity";
 
 @Entity()
 export class Offer {
+    public static fromRequest(request: Request) {
+        const offer = new Offer();
+        offer.startDate = request.startDate;
+        offer.destDate = request.destDate;
+        offer.startAddress = request.startAddress;
+        offer.destAddress = request.destAddress;
+        offer.price = request.price;
+        return offer;
+    }
+
     @PrimaryGeneratedColumn()
     id: number;
 

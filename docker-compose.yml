@@ -1,0 +1,31 @@
+version: '3.7'
+
+services:
+  db:
+    image: mariadb:latest
+    container_name: mariadb
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: mycargonaut
+    volumes:
+      - my_cargonaut_db:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]
+      timeout: 5s
+      retries: 10
+
+  server:
+    image: lucafeilbach/my-cargonaut
+    container_name: my-cargonaut
+    restart: always
+    depends_on:
+      db:
+        condition: service_healthy
+    ports:
+      - 3075:3000
+    labels:
+      - com.centurylinklabs.watchtower.enable=true
+
+volumes:
+  my_cargonaut_db:

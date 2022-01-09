@@ -12,7 +12,5 @@ describe("AuthService", () => {
         service = module.get<AuthService>(AuthService);
     });
 
-    it("should be defined", () => {
-        expect(service).toBeDefined();
-    });
+    it.todo("implement tests");
 });

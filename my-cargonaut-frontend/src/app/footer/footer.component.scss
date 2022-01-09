@@ -1,0 +1,26 @@
+mat-toolbar {
+    height: 64px;
+}
+
+.spacer {
+    flex: 1 1 auto;
+}
+
+.legal-notes {
+    display: flex;
+    flex-direction: column;
+
+    a {
+        line-height: 20px;
+        font-size: 0.6em;
+        text-align: left;
+    }
+}
+
+.social {
+    font-size: 0.8em;
+    margin-left: 4%;
+    img {
+        max-height: 52px;
+    }
+}

@@ -24,9 +24,31 @@ import {MatGridListModule} from '@angular/material/grid-list';
 import { ProfileViewComponent } from './profile-view/profile-view.component';
 import { HomepageComponent } from './homepage/homepage.component';
 import { FooterComponent } from './footer/footer.component';
+import { AuthComponent } from './auth/auth.component';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { SocialComponent } from './footer/social/social.component';
+import { ImprintComponent } from './footer/imprint/imprint.component';
+import { PrivacyNotesComponent } from './footer/privacy-notes/privacy-notes.component';
+import { CookieNoticeComponent } from './footer/cookie-notice/cookie-notice.component';
 
 @NgModule({
-  declarations: [AppComponent, LoginPageComponent, RegisterPageComponent, CreateofferComponent, ListItemComponent, ProfileViewComponent, HomepageComponent, FooterComponent],
+  declarations: [
+    AppComponent, 
+    LoginPageComponent,
+    RegisterPageComponent,
+    CreateofferComponent,
+    ListItemComponent,
+    ProfileViewComponent,
+    HomepageComponent,
+    FooterComponent,
+    AuthComponent,
+    SocialComponent,
+    ImprintComponent,
+    PrivacyNotesComponent,
+    CookieNoticeComponent,
+],
   imports: [
     BrowserModule,
     HttpClientModule,
@@ -45,6 +67,9 @@ import { FooterComponent } from './footer/footer.component';
     MatIconModule,
     MatCardModule,
     MatGridListModule,
+    MatToolbarModule,
+    FlexLayoutModule,
+    MatSidenavModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

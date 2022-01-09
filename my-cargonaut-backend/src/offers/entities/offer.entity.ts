@@ -6,6 +6,12 @@ export class Offer {
     @PrimaryGeneratedColumn()
     id: number;
 
+    @Column("varchar", { length: 255 })
+    startPoint: string;
+
+    @Column("varchar", { length: 255 })
+    destPoint: string;
+
     @Column("datetime")
     startDate: Date;
 
@@ -14,6 +20,12 @@ export class Offer {
 
     @Column("decimal", { precision: 6, scale: 2 })
     price: number;
+
+    @Column("decimal", { precision: 6, scale: 2 })
+    seats: number;
+
+    @Column("decimal", { precision: 6, scale: 2 })
+    space: number;
 
     /*
     @Column("boolean")

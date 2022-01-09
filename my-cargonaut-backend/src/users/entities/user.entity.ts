@@ -1,4 +1,6 @@
 import { Offer } from "src/offers/entities/offer.entity";
+import { Request } from "src/requests/entities/request.entity";
+import { Vehicle } from "src/vehicles/entities/vehicle.entity";
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()
@@ -23,4 +25,10 @@ export class User {
 
     @OneToMany(() => Offer, (offer) => offer.creator)
     offers: Offer[];
+
+    @OneToMany(() => Request, (req) => req.creator)
+    requests: Request[];
+
+    @OneToMany(() => Vehicle, (vehicle) => vehicle.owner)
+    vehicles: Offer[];
 }

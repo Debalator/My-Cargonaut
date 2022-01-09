@@ -14,5 +14,5 @@ describe("VehiclesController", () => {
         controller = module.get<VehiclesController>(VehiclesController);
     });
 
-    it.todo('implement tests');
+    it.todo("implement tests");
 });

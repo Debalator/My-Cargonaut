@@ -14,5 +14,5 @@ describe("OffersController", () => {
         controller = module.get<OffersController>(OffersController);
     });
 
-    it.todo('implement tests');
+    it.todo("implement tests");
 });

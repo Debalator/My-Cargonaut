@@ -17,17 +17,13 @@ describe("AppController", () => {
                     signOptions: { expiresIn: "30d" },
                 }),
             ],
-            providers: [
-                AppService,
-                UsersService,
-                JwtService
-            ],
+            providers: [AppService, UsersService, JwtService],
         }).compile();
 
         appController = app.get<AppController>(AppController);
     });
 
     describe("root", () => {
-        it.todo('implement tests');
+        it.todo("implement tests");
     });
 });

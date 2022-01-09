@@ -12,5 +12,5 @@ describe("AuthService", () => {
         service = module.get<AuthService>(AuthService);
     });
 
-    it.todo('implement tests');
+    it.todo("implement tests");
 });

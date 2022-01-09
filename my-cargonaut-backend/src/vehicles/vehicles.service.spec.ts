@@ -12,5 +12,5 @@ describe("VehiclesService", () => {
         service = module.get<VehiclesService>(VehiclesService);
     });
 
-    it.todo('implement tests');
+    it.todo("implement tests");
 });

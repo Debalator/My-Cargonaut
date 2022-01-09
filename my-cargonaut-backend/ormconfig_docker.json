@@ -1,0 +1,10 @@
+{
+  "type": "mariadb",
+  "host": "db",
+  "port": 3306,
+  "username": "root",
+  "password": "",
+  "database": "mycargonaut",
+  "entities": ["dist/**/*.entity{.ts,.js}"],
+  "synchronize": true
+}

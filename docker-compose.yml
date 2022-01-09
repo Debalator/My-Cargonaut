@@ -9,20 +9,23 @@ services:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: mycargonaut
     volumes:
-      - db:/var/lib/mysql
+      - my_cargonaut_db:/var/lib/mysql
     healthcheck:
       test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]
       timeout: 5s
       retries: 10
 
   server:
-    image: my-cargonaut
+    image: lucafeilbach/my-cargonaut
+    container_name: my-cargonaut
     restart: always
     depends_on:
       db:
         condition: service_healthy
     ports:
-      - 3000:3000
+      - 3075:3000
+    labels:
+      - com.centurylinklabs.watchtower.enable=true
 
 volumes:
-  db:
+  my_cargonaut_db:

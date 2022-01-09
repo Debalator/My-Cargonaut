@@ -8,7 +8,6 @@ import {
     Delete,
     UseGuards,
     Request,
-    Query,
 } from "@nestjs/common";
 import { VehiclesService } from "./vehicles.service";
 import { CreateVehicleDto } from "./dto/create-vehicle.dto";
@@ -24,14 +23,14 @@ export class VehiclesController {
     create(@Request() req, @Body() createVehicleDto: CreateVehicleDto) {
         return this.vehiclesService.create({
             ...createVehicleDto,
-            owner: req.user.sub,
+            owner: req.user.id,
         });
     }
 
     @UseGuards(JwtAuthGuard)
     @Get()
     findAll(@Request() req) {
-        return this.vehiclesService.findAllByOwner(req.user.sub);
+        return this.vehiclesService.findAllByOwner(req.user.id);
     }
 
     @Get(":id")

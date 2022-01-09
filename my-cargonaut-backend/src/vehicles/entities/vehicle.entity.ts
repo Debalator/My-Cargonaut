@@ -1,5 +1,12 @@
 import { User } from "src/users/entities/user.entity";
-import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
+import {
+    Column,
+    Entity,
+    ManyToOne,
+    OneToMany,
+    PrimaryGeneratedColumn,
+} from "typeorm";
+import { Offer } from "../../offers/entities/offer.entity";
 
 @Entity()
 export class Vehicle {
@@ -12,7 +19,7 @@ export class Vehicle {
     @Column("varchar")
     model: string;
 
-    @Column("smallint")
+    @Column("tinyint")
     seats: number;
 
     @Column("smallint")
@@ -20,4 +27,7 @@ export class Vehicle {
 
     @ManyToOne(() => User, (user) => user.vehicles)
     public owner: User;
+
+    @OneToMany(() => Offer, (offer) => offer.vehicle)
+    public offers: Offer[];
 }

@@ -1,17 +1,31 @@
 import { User } from "src/users/entities/user.entity";
-import { Column, Entity, PrimaryGeneratedColumn, ManyToOne } from "typeorm";
+import {
+    Column,
+    Entity,
+    PrimaryGeneratedColumn,
+    ManyToOne,
+    OneToOne,
+    JoinColumn,
+    CreateDateColumn,
+} from "typeorm";
 import { Address } from "../../addresses/entities/address.entity";
+import { Vehicle } from "../../vehicles/entities/vehicle.entity";
+import { Request } from "../../requests/entities/request.entity";
 
 @Entity()
 export class Offer {
+    public static fromRequest(request: Request) {
+        const offer = new Offer();
+        offer.startDate = request.startDate;
+        offer.destDate = request.destDate;
+        offer.startAddress = request.startAddress;
+        offer.destAddress = request.destAddress;
+        offer.price = request.price;
+        return offer;
+    }
+
     @PrimaryGeneratedColumn()
     id: number;
-
-    @Column("varchar", { length: 255 })
-    startAddress: Address;
-
-    @Column("varchar", { length: 255 })
-    destAddress: Address;
 
     @Column("datetime")
     startDate: Date;
@@ -22,16 +36,27 @@ export class Offer {
     @Column("decimal", { precision: 6, scale: 2 })
     price: number;
 
-    @Column("decimal", { precision: 6, scale: 2 })
-    seats: number;
+    @Column("boolean", { default: true })
+    active: boolean;
 
-    @Column("decimal", { precision: 6, scale: 2 })
-    space: number;
+    @CreateDateColumn()
+    created: Date;
 
-    /*
-    @Column("boolean")
-    active = true;
-    */
     @ManyToOne(() => User, (user) => user.offers)
     public creator: User;
+
+    @ManyToOne(() => Vehicle, (vehicle) => vehicle.offers)
+    public vehicle: Vehicle;
+
+    @OneToOne(() => Address, {
+        onDelete: "RESTRICT",
+    })
+    @JoinColumn()
+    public startAddress: Address;
+
+    @OneToOne(() => Address, {
+        onDelete: "RESTRICT",
+    })
+    @JoinColumn()
+    public destAddress: Address;
 }

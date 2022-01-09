@@ -12,6 +12,8 @@ import { OrdersService } from "./orders.service";
 import { CreateOrderDto } from "./dto/create-order.dto";
 import { UpdateOrderDto } from "./dto/update-order.dto";
 import { UpdateLocationDto } from "./dto/update-location.dto";
+import { CreateRatingDto } from "./dto/create-rating.dto";
+import { UpdateRatingDto } from "./dto/update-rating.dto";
 
 @Controller("orders")
 export class OrdersController {
@@ -30,6 +32,27 @@ export class OrdersController {
     @Get(":id")
     findOne(@Param("id") id: string) {
         return this.ordersService.findOne(+id);
+    }
+
+    @Post(":id/rating")
+    createRating(
+        @Param("id") id: string,
+        @Body() createRatingDto: CreateRatingDto
+    ) {
+        return this.ordersService.createRating(+id, createRatingDto);
+    }
+
+    @Patch(":orderID/rating/:ratingID")
+    updateRating(
+        @Param("orderID") orderID: string,
+        @Param("ratingID") ratingID: string,
+        @Body() updateRatingDto: UpdateRatingDto
+    ) {
+        return this.ordersService.updateRating(
+            +orderID,
+            +ratingID,
+            updateRatingDto
+        );
     }
 
     @Get(":id/location")

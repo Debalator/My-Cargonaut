@@ -9,6 +9,7 @@ import {
 import { Request } from "../../requests/entities/request.entity";
 import { Offer } from "../../offers/entities/offer.entity";
 import { Location } from "./location.entity";
+import { Rating } from "./rating.entity";
 
 export enum OrderStatus {
     RECEIVED = "received",
@@ -45,8 +46,14 @@ export class Order {
     offer: Offer;
 
     @OneToOne(() => Location, {
-        onDelete: "SET NULL",
+        onDelete: "CASCADE",
     })
     @JoinColumn()
     location: Location;
+
+    @OneToOne(() => Rating, {
+        onDelete: "SET NULL",
+    })
+    @JoinColumn()
+    rating: Rating;
 }

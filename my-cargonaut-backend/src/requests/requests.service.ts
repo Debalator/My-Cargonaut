@@ -1,4 +1,10 @@
-import { Injectable, NotFoundException } from "@nestjs/common";
+import {
+    BadRequestException,
+    forwardRef,
+    Inject,
+    Injectable,
+    NotFoundException,
+} from "@nestjs/common";
 import { CreateRequestDto } from "./dto/create-request.dto";
 import { UpdateRequestDto } from "./dto/update-request.dto";
 import { InjectRepository } from "@nestjs/typeorm";
@@ -7,15 +13,21 @@ import { Request } from "./entities/request.entity";
 import { Item } from "./entities/item.entity";
 import { CreateRequestFromOfferDto } from "./dto/create-request-from-offer.dto";
 import { OffersService } from "../offers/offers.service";
+import { AddressesService } from "../addresses/addresses.service";
 
 @Injectable()
 export class RequestsService {
     constructor(
         @InjectRepository(Request)
         private requestRepository: Repository<Request>,
+
         @InjectRepository(Item)
         private itemRepository: Repository<Item>,
-        private readonly offersService: OffersService
+
+        @Inject(forwardRef(() => OffersService))
+        private offersService: OffersService,
+
+        private readonly addressService: AddressesService
     ) {}
 
     private defaultRelations = [
@@ -37,9 +49,29 @@ export class RequestsService {
         const offer = await this.offersService.findOne(offerID);
         if (!offer) throw new NotFoundException("Offer not found");
 
+        if (offer.vehicle.seats < createRequestFromOfferDto.persons)
+            throw new BadRequestException(
+                `Maximum number of persons (${offer.vehicle.seats}) exceeded`
+            );
+
+        if (
+            offer.vehicle.loadingArea <
+            createRequestFromOfferDto.items.reduce(
+                (prev, item) => prev + item.size,
+                0
+            )
+        )
+            throw new BadRequestException(
+                `Maximum loading area (${offer.vehicle.loadingArea}) exceeded`
+            );
+
         const request = Request.fromOffer(offer);
         request.creator = createRequestFromOfferDto.creator;
         request.items = createRequestFromOfferDto.items;
+        request.persons = createRequestFromOfferDto.persons;
+
+        await this.addressService.create(request.startAddress);
+        await this.addressService.create(request.destAddress);
 
         return this.create(request);
     }

@@ -36,7 +36,7 @@ export class RequestsController {
 
         return this.requestsService.create({
             ...createRequestDto,
-            creator: req.user.sub,
+            creator: req.user.id,
             startAddress,
             destAddress,
         });
@@ -76,7 +76,7 @@ export class RequestsController {
         return this.requestsService.createFromOffer(
             {
                 ...createRequestFromOfferDto,
-                creator: req.user.sub,
+                creator: req.user.id,
             },
             +id
         );

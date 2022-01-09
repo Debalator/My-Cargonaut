@@ -10,7 +10,7 @@ import { VehiclesModule } from "./vehicles/vehicles.module";
 import { RequestsModule } from "./requests/requests.module";
 import { AddressesModule } from "./addresses/addresses.module";
 import { OrdersModule } from "./orders/orders.module";
-import { join } from "path/posix";
+import { join } from "path";
 import { ServeStaticModule } from "@nestjs/serve-static";
 
 @Module({

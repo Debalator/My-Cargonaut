@@ -43,6 +43,7 @@ import { AdditemComponent } from './additem/additem.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatChipsModule } from '@angular/material/chips';
 import { CarManagementComponent } from './car-management/car-management.component';
+import { AddVehicleComponent } from './add-vehicle/add-vehicle.component';
 
 @NgModule({
     declarations: [
@@ -61,6 +62,7 @@ import { CarManagementComponent } from './car-management/car-management.componen
         CreaterequestComponent,
         AdditemComponent,
         CarManagementComponent,
+        AddVehicleComponent,
     ],
     imports: [
         BrowserModule,

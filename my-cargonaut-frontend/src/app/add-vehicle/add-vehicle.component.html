@@ -1,0 +1,39 @@
+<h1 mat-dialog-title>Fahrzeug hinzufügen</h1>
+<div mat-dialog-content>
+  <!--  <p>Beschreibung</p>-->
+  <mat-form-field appearance="fill">
+    <input
+      matInput
+      [(ngModel)]="dataVehicle.brand"
+      placeholder="Marke"
+      required
+    />
+  </mat-form-field>
+</div>
+<div mat-dialog-content>
+  <!--  <p>Größe</p>-->
+  <mat-form-field appearance="fill">
+    <input matInput [(ngModel)]="dataVehicle.model" placeholder="Modell" required />
+  </mat-form-field>
+</div>
+<div mat-dialog-content>
+  <!--  <p>Gewicht</p>-->
+  <mat-form-field appearance="fill">
+    <input
+      matInput
+      [(ngModel)]="dataVehicle.seats"
+      placeholder="Sitzplätze"
+      required
+    />
+  </mat-form-field>
+</div>
+<div mat-dialog-content>
+  <!--  <p>Größe</p>-->
+  <mat-form-field appearance="fill">
+    <input matInput [(ngModel)]="dataVehicle.loadingArea" placeholder="Ladefläche" required />
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-raised-button (click)="onNoClick()">Zurück</button>
+  <button mat-raised-button [mat-dialog-close]="dataVehicle">Hinzufügen</button>
+</div>

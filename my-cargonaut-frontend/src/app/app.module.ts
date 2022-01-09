@@ -51,6 +51,7 @@ import { RequestItemsComponent } from './request-items/request-items.component';
 import { RequestsComponent } from './requests/requests.component';
 import { OrderRequestComponent } from './order-request/order-request.component';
 import { CarManagementComponent } from './car-management/car-management.component';
+import { AddVehicleComponent } from './add-vehicle/add-vehicle.component';
 
 @NgModule({
     declarations: [
@@ -69,6 +70,7 @@ import { CarManagementComponent } from './car-management/car-management.componen
         CreaterequestComponent,
         AdditemComponent,
         CarManagementComponent,
+        AddVehicleComponent,
         OffersComponent,
         OrderOfferComponent,
         VehiclesComponent,

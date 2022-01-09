@@ -6,23 +6,25 @@ import { Observable } from 'rxjs';
     providedIn: 'root',
 })
 export class ApiService {
-    constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+  }
 
-    public post(url: string, body: any | null, options?: any): Observable<any> {
-        return this.http.post(url, body, {
-            ...options,
-            headers: {
-                Authorization: `Bearer ${window.localStorage.getItem('jwt')}`,
-            },
-        });
-    }
+  public post(url: string, body: any | null, options?: any): Observable<any> {
+    return this.http.post(url, body, {
+      ...options,
+      headers: {
+        Authorization: `Bearer ${window.localStorage.getItem('jwt')}`,
+      },
+    });
+  }
 
-    public get(url: string, options?: any): Observable<any> {
-        return this.http.get(url, {
-            ...options,
-            headers: {
-                Authorization: `Bearer ${window.localStorage.getItem('jwt')}`,
-            },
-        });
-    }
+  public get(url: string, options?: any): Observable<any> {
+    return this.http.get(url, {
+      ...options,
+      headers: {
+        Authorization: `Bearer ${window.localStorage.getItem('jwt')}`,
+      },
+    });
+  }
 }
+

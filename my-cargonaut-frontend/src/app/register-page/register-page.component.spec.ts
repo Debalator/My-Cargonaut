@@ -10,7 +10,7 @@ describe('RegisterPageComponent', () => {
     beforeEach(async () => {
         await TestBed.configureTestingModule({
             declarations: [RegisterPageComponent],
-            imports:[HttpClientTestingModule]
+            imports: [HttpClientTestingModule],
         }).compileComponents();
     });
 

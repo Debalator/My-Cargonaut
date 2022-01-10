@@ -19,7 +19,7 @@ export class OrderOfferComponent {
     ) {}
 
     applyItems(items: any[]) {
-        this.items = { ...items };
+        this.items = [...items];
     }
 
     cancel() {

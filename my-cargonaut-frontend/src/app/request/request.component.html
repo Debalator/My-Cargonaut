@@ -23,8 +23,8 @@
       </mat-list-item>
       <mat-list *ngFor="let item of request.items" role="list">
         <mat-list-item role="listitem">
-          {{ item.description }}; size: {{ item.size }};
-          weight: {{ item.weight }}
+          {{ item.description }} (size: {{ item.size }} /
+          weight: {{ item.weight }})
         </mat-list-item>
       </mat-list>
     </mat-list>

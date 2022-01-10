@@ -1,28 +1,71 @@
 <mat-card class="offer">
-  <mat-card-title>
-    {{ offer.startAddress.zip }}
-    {{ offer.startAddress.city }}
-    ({{ offer.startAddress.country }}) -
-    {{ offer.destAddress.zip }} {{ offer.destAddress.city }} ({{
-    offer.destAddress.country
-    }})
-  </mat-card-title>
-  <mat-card-subtitle>{{ offer.creator.username }}</mat-card-subtitle>
-  <mat-card-content>
-    <mat-list role="list">
-      <mat-list-item role="listitem">
-        {{ offer.price }} EUR
-      </mat-list-item>
-      <mat-list-item role="listitem">
-        {{ offer.startDate }} - {{ offer.destDate }}
-      </mat-list-item>
-      <mat-list-item role="listitem">
-        {{ offer.vehicle.brand }} {{ offer.vehicle.model }} ({{
-        offer.vehicle.seats
-        }}
-        seats / {{ offer.vehicle.loadingArea }} m^2)
-      </mat-list-item>
-    </mat-list>
-  </mat-card-content>
-  <ng-content></ng-content>
+    <mat-card-title>
+        {{ offer.startAddress.zip }}
+        {{ offer.startAddress.city }}
+        ({{ offer.startAddress.country }}) - {{ offer.destAddress.zip }}
+        {{ offer.destAddress.city }} ({{ offer.destAddress.country }})
+    </mat-card-title>
+    <mat-card-subtitle>{{ offer.creator.username }}</mat-card-subtitle>
+    <mat-card-content>
+        <div>
+            <mat-form-field
+                class="example-full-width"
+                appearance="fill"
+                style="margin-right: 8px"
+            >
+                <mat-label>Preis €</mat-label>
+                <input matInput disabled [value]="offer.price" />
+            </mat-form-field>
+
+            <mat-form-field
+                class="example-full-width"
+                appearance="fill"
+                style="margin-right: 8px"
+            >
+                <mat-label>Abfahrt</mat-label>
+                <input matInput disabled [value]="offer.startDate" />
+            </mat-form-field>
+
+            <mat-form-field
+                class="example-full-width"
+                appearance="fill"
+                style="margin-right: 8px"
+            >
+                <mat-label>Ankunft</mat-label>
+                <input matInput disabled [value]="offer.destDate" />
+            </mat-form-field>
+        </div>
+
+        <div>
+            <mat-form-field
+                class="example-full-width"
+                appearance="fill"
+                style="margin-right: 8px"
+            >
+                <mat-label>Fahrzeug</mat-label>
+                <input
+                    matInput
+                    disabled
+                    [value]="offer.vehicle.brand + ' ' + offer.vehicle.model"
+                />
+            </mat-form-field>
+            <mat-form-field
+                class="example-full-width"
+                appearance="fill"
+                style="margin-right: 8px"
+            >
+                <mat-label>Ladefläche</mat-label>
+                <input matInput disabled [value]="offer.vehicle.loadingArea" />
+            </mat-form-field>
+            <mat-form-field
+                class="example-full-width"
+                appearance="fill"
+                style="margin-right: 8px"
+            >
+                <mat-label>Sitze</mat-label>
+                <input matInput disabled [value]="offer.vehicle.seats" />
+            </mat-form-field>
+        </div>
+    </mat-card-content>
+    <ng-content></ng-content>
 </mat-card>

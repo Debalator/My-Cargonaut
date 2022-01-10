@@ -11,6 +11,7 @@ import { OrderRequestComponent } from '../order-request/order-request.component'
 })
 export class RequestsComponent implements OnInit {
     requests: any[] = [];
+    isLoading = true;
 
     constructor(
         private api: ApiService,
@@ -22,6 +23,7 @@ export class RequestsComponent implements OnInit {
         this.api.get('/api/requests').subscribe((res) => {
             console.log(res);
             this.requests = res;
+            this.isLoading = false;
         });
     }
 

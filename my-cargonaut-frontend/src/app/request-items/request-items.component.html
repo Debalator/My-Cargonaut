@@ -15,11 +15,21 @@
         </mat-form-field>
         <mat-form-field class="input" appearance="fill">
             <mat-label>Size</mat-label>
-            <input matInput [(ngModel)]="item.size" [value]="item.size" />
+            <input
+                matInput
+                type="number"
+                [(ngModel)]="item.size"
+                [value]="item.size"
+            />
         </mat-form-field>
         <mat-form-field class="input" appearance="fill">
             <mat-label>Weight</mat-label>
-            <input matInput [(ngModel)]="item.weight" [value]="item.weight" />
+            <input
+                matInput
+                type="number"
+                [(ngModel)]="item.weight"
+                [value]="item.weight"
+            />
         </mat-form-field>
         <button
             mat-button

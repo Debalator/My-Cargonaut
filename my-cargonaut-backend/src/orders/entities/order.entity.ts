@@ -5,11 +5,13 @@ import {
     OneToOne,
     JoinColumn,
     CreateDateColumn,
+    ManyToOne,
 } from "typeorm";
 import { Request } from "../../requests/entities/request.entity";
 import { Offer } from "../../offers/entities/offer.entity";
 import { Location } from "./location.entity";
 import { Rating } from "./rating.entity";
+import { User } from "../../users/entities/user.entity";
 
 export enum OrderStatus {
     RECEIVED = "received",
@@ -32,6 +34,11 @@ export class Order {
         default: OrderStatus.RECEIVED,
     })
     status: OrderStatus;
+
+    @ManyToOne(() => User, (user) => user.orders, {
+        onDelete: "RESTRICT",
+    })
+    public creator: User;
 
     @OneToOne(() => Request, {
         onDelete: "RESTRICT",

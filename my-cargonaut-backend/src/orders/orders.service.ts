@@ -31,11 +31,15 @@ export class OrdersService {
         ...this.defaultRelations,
         "location",
         "rating",
+        "creator",
         "request.creator",
         "request.startAddress",
         "request.destAddress",
         "request.items",
         "offer.creator",
+        "offer.startAddress",
+        "offer.destAddress",
+        "offer.vehicle",
     ];
 
     async create(createOrderDto: CreateOrderDto) {
@@ -56,6 +60,7 @@ export class OrdersService {
         const order = new Order();
         order.request = request;
         order.offer = offer;
+        order.creator = createOrderDto.creator;
         order.location = await this.createLocation();
 
         return this.orderRepository.save(order);
@@ -133,6 +138,43 @@ export class OrdersService {
 
     async remove(id: number) {
         await this.orderRepository.delete(id);
+    }
+
+    async findOrdersByUser(id: number) {
+        const orderOffers = await this.orderRepository.find({
+            where: {
+                offer: {
+                    creator: id,
+                },
+            },
+            relations: [
+                "offer",
+                "offer.creator",
+                "offer.startAddress",
+                "offer.destAddress",
+                "offer.vehicle",
+            ],
+        });
+
+        const orderRequests = await this.orderRepository.find({
+            where: {
+                request: {
+                    creator: id,
+                },
+            },
+            relations: [
+                "request",
+                "request.creator",
+                "request.startAddress",
+                "request.destAddress",
+                "request.items",
+            ],
+        });
+
+        return {
+            offers: orderOffers,
+            requests: orderRequests,
+        };
     }
 
     async findRatingsByUser(id: number) {

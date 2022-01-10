@@ -111,6 +111,7 @@ export class OrdersController {
         return this.ordersService.create({
             request,
             offer,
+            creator: req.user.id,
         });
     }
 
@@ -135,6 +136,7 @@ export class OrdersController {
         return this.ordersService.create({
             request,
             offer,
+            creator: req.user.id,
         });
     }
 }

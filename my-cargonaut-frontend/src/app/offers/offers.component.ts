@@ -27,6 +27,7 @@ export class OffersComponent implements OnInit {
 
     openDialog(offerID: number) {
         const dialogRef = this.dialog.open(OrderOfferComponent, {
+            width: '800px',
             data: {
                 offer: this.offers.find((offer) => offer.id === offerID),
             },

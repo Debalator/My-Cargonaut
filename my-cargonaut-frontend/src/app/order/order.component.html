@@ -1,0 +1,17 @@
+<div class="page">
+  <mat-progress-spinner mode="indeterminate" class="spinner" *ngIf="isLoading">
+  </mat-progress-spinner>
+  <div *ngIf="!isLoading">
+    <h2>Bestellung vom {{order.created}}]</h2>
+    <ul>
+      <li>Status: {{order.status}}</li>
+      <li>Käufer: {{order.creator.username}}</li>
+    </ul>
+    <h3>Angebot</h3>
+    <app-offer [offer]="order.offer"></app-offer>
+
+    <h3>Anfrage</h3>
+    <app-request [request]="order.request"></app-request>
+  </div>
+</div>
+

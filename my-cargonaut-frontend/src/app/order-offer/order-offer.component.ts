@@ -8,7 +8,7 @@ import { ApiService } from '../api/api.service';
     templateUrl: './order-offer.component.html',
     styleUrls: ['./order-offer.component.scss'],
 })
-export class OrderOfferComponent implements OnInit {
+export class OrderOfferComponent {
     items: any[] = [];
     persons = 0;
 
@@ -17,8 +17,6 @@ export class OrderOfferComponent implements OnInit {
         public dialogRef: MatDialogRef<OrderOfferComponent>,
         @Inject(MAT_DIALOG_DATA) public data: { offer: any }
     ) {}
-
-    ngOnInit(): void {}
 
     applyItems(items: any[]) {
         this.items = { ...items };

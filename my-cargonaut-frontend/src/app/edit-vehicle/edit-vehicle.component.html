@@ -1,0 +1,45 @@
+<h1 mat-dialog-title>Fahrzeug bearbeiten</h1>
+<div mat-dialog-content>
+    <mat-form-field appearance="fill">
+        <input
+            matInput
+            [(ngModel)]="dataVehicle.brand"
+            placeholder="Marke"
+            required
+        />
+    </mat-form-field>
+</div>
+<div mat-dialog-content>
+    <mat-form-field appearance="fill">
+        <input
+            matInput
+            [(ngModel)]="dataVehicle.model"
+            placeholder="Modell"
+            required
+        />
+    </mat-form-field>
+</div>
+<div mat-dialog-content>
+    <mat-form-field appearance="fill">
+        <input
+            matInput
+            [(ngModel)]="dataVehicle.seats"
+            placeholder="Sitzplätze"
+            required
+        />
+    </mat-form-field>
+</div>
+<div mat-dialog-content>
+    <mat-form-field appearance="fill">
+        <input
+            matInput
+            [(ngModel)]="dataVehicle.loadingArea"
+            placeholder="Ladefläche"
+            required
+        />
+    </mat-form-field>
+</div>
+<div mat-dialog-actions>
+    <button mat-raised-button (click)="onNoClick()">Zurück</button>
+    <button mat-raised-button [mat-dialog-close]="dataVehicle">Ändern</button>
+</div>

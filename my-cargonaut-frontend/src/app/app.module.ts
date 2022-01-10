@@ -50,6 +50,9 @@ import { VehiclesComponent } from './vehicles/vehicles.component';
 import { RequestItemsComponent } from './request-items/request-items.component';
 import { RequestsComponent } from './requests/requests.component';
 import { OrderRequestComponent } from './order-request/order-request.component';
+import { CarManagementComponent } from './car-management/car-management.component';
+import { AddVehicleComponent } from './add-vehicle/add-vehicle.component';
+import { EditVehicleComponent } from './edit-vehicle/edit-vehicle.component';
 
 @NgModule({
     declarations: [
@@ -67,12 +70,15 @@ import { OrderRequestComponent } from './order-request/order-request.component';
         CookieNoticeComponent,
         CreaterequestComponent,
         AdditemComponent,
+        CarManagementComponent,
+        AddVehicleComponent,
         OffersComponent,
         OrderOfferComponent,
         VehiclesComponent,
         RequestItemsComponent,
         RequestsComponent,
         OrderRequestComponent,
+        EditVehicleComponent,
     ],
     imports: [
         BrowserModule,

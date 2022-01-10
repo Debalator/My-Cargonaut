@@ -14,7 +14,7 @@ export class AdditemComponent {
     constructor(
         public dialogRef: MatDialogRef<AdditemComponent>,
         @Inject(MAT_DIALOG_DATA)
-        public data: DialogData /*, public request: CreaterequestComponent */
+        public data: DialogData
     ) {}
 
     onNoClick(): void {

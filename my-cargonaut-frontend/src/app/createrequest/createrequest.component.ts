@@ -1,10 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ApiService } from '../api/api.service';
-import { MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 import { AdditemComponent } from '../additem/additem.component';
-import { MatChipInputEvent } from '@angular/material/chips';
 
 export interface DialogData {
     description: string;
@@ -69,14 +68,12 @@ export class CreaterequestComponent {
             });
         } else {
             this.sendInput();
-            // window.location.reload();
             this.requestForm.reset();
             this.snackbar.open(message, '', { duration: 2000 });
         }
     }
 
     public sendInput() {
-        // numberOfItems: this.itemsInput.length;
         this.api
             .post('/api/requests', {
                 startDate: this.requestForm.value.startDate,

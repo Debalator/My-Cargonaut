@@ -25,4 +25,26 @@ export class ApiService {
             },
         });
     }
+
+    public patch(
+        url: string,
+        body: any | null,
+        options?: any
+    ): Observable<any> {
+        return this.http.patch(url, body, {
+            ...options,
+            headers: {
+                Authorization: `Bearer ${window.localStorage.getItem('jwt')}`,
+            },
+        });
+    }
+
+    public delete(url: string, options?: any): Observable<any> {
+        return this.http.delete(url, {
+            ...options,
+            headers: {
+                Authorization: `Bearer ${window.localStorage.getItem('jwt')}`,
+            },
+        });
+    }
 }

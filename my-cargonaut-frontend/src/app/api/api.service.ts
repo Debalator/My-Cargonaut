@@ -17,8 +17,8 @@ export class ApiService {
         });
     }
 
-    public get(url: string, body: any | null, options?: any): Observable<any> {
-        return this.http.post(url, body, {
+    public get(url: string, options?: any): Observable<any> {
+        return this.http.get(url, {
             ...options,
             headers: {
                 Authorization: `Bearer ${window.localStorage.getItem('jwt')}`,

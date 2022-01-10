@@ -1,0 +1,41 @@
+<div class="page">
+    <h1>Angebote</h1>
+    <div class="offers">
+        <mat-card *ngFor="let offer of offers" class="offer">
+            <mat-card-title>
+                {{ offer.startAddress.zip }}
+                {{ offer.startAddress.city }}
+                ({{ offer.startAddress.country }}) -
+                {{ offer.destAddress.zip }} {{ offer.destAddress.city }} ({{
+                    offer.destAddress.country
+                }})
+            </mat-card-title>
+            <mat-card-subtitle>{{ offer.creator.username }}</mat-card-subtitle>
+            <mat-card-content>
+                <mat-list role="list">
+                    <mat-list-item role="listitem">
+                        {{ offer.price }} EUR
+                    </mat-list-item>
+                    <mat-list-item role="listitem">
+                        {{ offer.startDate }} - {{ offer.destDate }}
+                    </mat-list-item>
+                    <mat-list-item role="listitem">
+                        {{ offer.vehicle.brand }} {{ offer.vehicle.model }} ({{
+                            offer.vehicle.seats
+                        }}
+                        seats / {{ offer.vehicle.loadingArea }} m^2)
+                    </mat-list-item>
+                </mat-list>
+            </mat-card-content>
+            <mat-card-actions>
+                <button
+                    mat-button
+                    color="primary"
+                    (click)="openDialog(offer.id)"
+                >
+                    Book
+                </button>
+            </mat-card-actions>
+        </mat-card>
+    </div>
+</div>

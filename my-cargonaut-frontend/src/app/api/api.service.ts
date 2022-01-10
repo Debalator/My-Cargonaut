@@ -17,7 +17,6 @@ export class ApiService {
         });
     }
 
-<<<<<<< HEAD
     public get(url: string, options?: any): Observable<any> {
         return this.http.get(url, {
             ...options,
@@ -48,9 +47,4 @@ export class ApiService {
             },
         });
     }
-=======
-  public get(url: string, options?: any): Observable<any> {
-    return this.http.get(url, options);
-  }
->>>>>>> 81f6c490483fc084b2ce08b2f0a7acf1712c86b9
 }

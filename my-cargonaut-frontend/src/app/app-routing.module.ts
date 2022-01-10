@@ -8,13 +8,9 @@ import { SocialComponent } from './footer/social/social.component';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { RegisterPageComponent } from './register-page/register-page.component';
 import { CreaterequestComponent } from './createrequest/createrequest.component';
-<<<<<<< HEAD
 import { CarManagementComponent } from './car-management/car-management.component';
 import { OffersComponent } from './offers/offers.component';
 import { RequestsComponent } from './requests/requests.component';
-=======
-import { CarManagementComponent } from './car-management/car-management.component'
->>>>>>> 81f6c490483fc084b2ce08b2f0a7acf1712c86b9
 
 const routes: Routes = [
     {

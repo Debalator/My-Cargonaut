@@ -42,6 +42,14 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { AdditemComponent } from './additem/additem.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatChipsModule } from '@angular/material/chips';
+import { MatListModule } from '@angular/material/list';
+
+import { OffersComponent } from './offers/offers.component';
+import { OrderOfferComponent } from './order-offer/order-offer.component';
+import { VehiclesComponent } from './vehicles/vehicles.component';
+import { RequestItemsComponent } from './request-items/request-items.component';
+import { RequestsComponent } from './requests/requests.component';
+import { OrderRequestComponent } from './order-request/order-request.component';
 
 @NgModule({
     declarations: [
@@ -59,6 +67,12 @@ import { MatChipsModule } from '@angular/material/chips';
         CookieNoticeComponent,
         CreaterequestComponent,
         AdditemComponent,
+        OffersComponent,
+        OrderOfferComponent,
+        VehiclesComponent,
+        RequestItemsComponent,
+        RequestsComponent,
+        OrderRequestComponent,
     ],
     imports: [
         BrowserModule,
@@ -84,6 +98,7 @@ import { MatChipsModule } from '@angular/material/chips';
         MatGridListModule,
         MatToolbarModule,
         FlexLayoutModule,
+        MatListModule,
     ],
     providers: [],
     bootstrap: [AppComponent],

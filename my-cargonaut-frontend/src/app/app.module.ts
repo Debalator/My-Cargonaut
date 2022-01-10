@@ -42,6 +42,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { AdditemComponent } from './additem/additem.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatChipsModule } from '@angular/material/chips';
+<<<<<<< HEAD
 import { MatListModule } from '@angular/material/list';
 
 import { OffersComponent } from './offers/offers.component';
@@ -53,6 +54,10 @@ import { OrderRequestComponent } from './order-request/order-request.component';
 import { CarManagementComponent } from './car-management/car-management.component';
 import { AddVehicleComponent } from './add-vehicle/add-vehicle.component';
 import { EditVehicleComponent } from './edit-vehicle/edit-vehicle.component';
+=======
+import { CarManagementComponent } from './car-management/car-management.component';
+import { AddVehicleComponent } from './add-vehicle/add-vehicle.component';
+>>>>>>> 81f6c490483fc084b2ce08b2f0a7acf1712c86b9
 
 @NgModule({
     declarations: [
@@ -72,6 +77,7 @@ import { EditVehicleComponent } from './edit-vehicle/edit-vehicle.component';
         AdditemComponent,
         CarManagementComponent,
         AddVehicleComponent,
+<<<<<<< HEAD
         OffersComponent,
         OrderOfferComponent,
         VehiclesComponent,
@@ -79,6 +85,8 @@ import { EditVehicleComponent } from './edit-vehicle/edit-vehicle.component';
         RequestsComponent,
         OrderRequestComponent,
         EditVehicleComponent,
+=======
+>>>>>>> 81f6c490483fc084b2ce08b2f0a7acf1712c86b9
     ],
     imports: [
         BrowserModule,

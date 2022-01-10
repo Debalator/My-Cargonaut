@@ -45,7 +45,7 @@ export class RequestsController {
     @Get()
     findAll(@Query("creator") creator: number) {
         if (creator) return this.requestsService.findAllByCreator(creator);
-        return this.requestsService.findAll();
+        return this.requestsService.findAll({ active: true });
     }
 
     @Get(":id")
@@ -64,21 +64,5 @@ export class RequestsController {
     @Delete(":id")
     remove(@Param("id") id: string) {
         return this.requestsService.remove(+id);
-    }
-
-    @UseGuards(JwtAuthGuard)
-    @Post("/offers/:id")
-    createFromOffer(
-        @Request() req,
-        @Param("id") id: string,
-        @Body() createRequestFromOfferDto: CreateRequestFromOfferDto
-    ) {
-        return this.requestsService.createFromOffer(
-            {
-                ...createRequestFromOfferDto,
-                creator: req.user.id,
-            },
-            +id
-        );
     }
 }

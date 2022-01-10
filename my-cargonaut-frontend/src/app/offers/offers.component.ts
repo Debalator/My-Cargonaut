@@ -33,6 +33,7 @@ export class OffersComponent implements OnInit {
         });
 
         dialogRef.afterClosed().subscribe((order) => {
+            console.log(order);
             if (order) this.router.navigate(['/orders', order.id]);
         });
     }

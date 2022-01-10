@@ -11,8 +11,13 @@ import { CreaterequestComponent } from './createrequest/createrequest.component'
 import { CarManagementComponent } from './car-management/car-management.component';
 import { OffersComponent } from './offers/offers.component';
 import { RequestsComponent } from './requests/requests.component';
+import { OrdersComponent } from './orders/orders.component';
 
 const routes: Routes = [
+    {
+        path: 'orders/:id',
+        component: OrdersComponent,
+    },
     {
         path: 'offers',
         component: OffersComponent,

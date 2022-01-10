@@ -53,6 +53,7 @@ import { OrderRequestComponent } from './order-request/order-request.component';
 import { CarManagementComponent } from './car-management/car-management.component';
 import { AddVehicleComponent } from './add-vehicle/add-vehicle.component';
 import { EditVehicleComponent } from './edit-vehicle/edit-vehicle.component';
+import { OrdersComponent } from './orders/orders.component';
 
 @NgModule({
     declarations: [
@@ -79,6 +80,7 @@ import { EditVehicleComponent } from './edit-vehicle/edit-vehicle.component';
         RequestsComponent,
         OrderRequestComponent,
         EditVehicleComponent,
+        OrdersComponent,
     ],
     imports: [
         BrowserModule,

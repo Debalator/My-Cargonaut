@@ -13,7 +13,7 @@ export class RatingComponent implements OnInit {
     rating = {
         title: '',
         description: '',
-        stars: 5,
+        stars: 0,
     };
 
     constructor(private api: ApiService, private snackbar: MatSnackBar) {}

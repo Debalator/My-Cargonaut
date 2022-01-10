@@ -42,7 +42,9 @@ export class Offer {
     @CreateDateColumn()
     created: Date;
 
-    @ManyToOne(() => User, (user) => user.offers)
+    @ManyToOne(() => User, (user) => user.offers, {
+        onDelete: "CASCADE",
+    })
     public creator: User;
 
     @ManyToOne(() => Vehicle, (vehicle) => vehicle.offers)

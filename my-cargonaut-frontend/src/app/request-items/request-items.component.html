@@ -1,0 +1,51 @@
+<mat-list role="list">
+    <div mat-subheader>Items</div>
+    <mat-list-item
+        role="listitem"
+        class="item"
+        *ngFor="let item of items; let i = index"
+    >
+        <mat-form-field class="input" appearance="fill">
+            <mat-label>Description</mat-label>
+            <input
+                matInput
+                [(ngModel)]="item.description"
+                [value]="item.description"
+            />
+        </mat-form-field>
+        <mat-form-field class="input" appearance="fill">
+            <mat-label>Size</mat-label>
+            <input matInput [(ngModel)]="item.size" [value]="item.size" />
+        </mat-form-field>
+        <mat-form-field class="input" appearance="fill">
+            <mat-label>Weight</mat-label>
+            <input matInput [(ngModel)]="item.weight" [value]="item.weight" />
+        </mat-form-field>
+        <button
+            mat-button
+            color="warn"
+            aria-label="Example icon button with a bookmark icon"
+            (click)="removeItem(i)"
+        >
+            Remove
+        </button>
+    </mat-list-item>
+    <mat-list-item>
+        <button
+            mat-button
+            color="primary"
+            aria-label="Example icon button with a bookmark icon"
+            (click)="addItem()"
+        >
+            Add
+        </button>
+        <button
+            mat-button
+            color="primary"
+            aria-label="Example icon button with a bookmark icon"
+            (click)="save()"
+        >
+            Save
+        </button>
+    </mat-list-item>
+</mat-list>

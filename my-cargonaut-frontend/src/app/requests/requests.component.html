@@ -1,0 +1,46 @@
+<div class="page">
+    <h1>Anfragen</h1>
+    <div class="requests">
+        <mat-card *ngFor="let request of requests" class="request">
+            <mat-card-title>
+                {{ request.startAddress.zip }}
+                {{ request.startAddress.city }}
+                ({{ request.startAddress.country }}) -
+                {{ request.destAddress.zip }} {{ request.destAddress.city }} ({{
+                    request.destAddress.country
+                }})
+            </mat-card-title>
+            <mat-card-subtitle>{{
+                request.creator.username
+            }}</mat-card-subtitle>
+            <mat-card-content>
+                <mat-list role="list">
+                    <mat-list-item role="listitem">
+                        {{ request.price }} EUR
+                    </mat-list-item>
+                    <mat-list-item role="listitem">
+                        {{ request.startDate }} - {{ request.destDate }}
+                    </mat-list-item>
+                    <mat-list-item role="listitem">
+                        {{ request.persons }} person(s)
+                    </mat-list-item>
+                    <mat-list *ngFor="let item of request.items" role="list">
+                        <mat-list-item role="listitem">
+                            {{ item.description }}; size: {{ item.size }};
+                            weight: {{ item.weight }}
+                        </mat-list-item>
+                    </mat-list>
+                </mat-list>
+            </mat-card-content>
+            <mat-card-actions>
+                <button
+                    mat-button
+                    color="primary"
+                    (click)="openDialog(request.id)"
+                >
+                    Book
+                </button>
+            </mat-card-actions>
+        </mat-card>
+    </div>
+</div>

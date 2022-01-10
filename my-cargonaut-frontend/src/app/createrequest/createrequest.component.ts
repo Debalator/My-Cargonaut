@@ -75,55 +75,25 @@ export class CreaterequestComponent {
         }
     }
 
-    //TODO: get Address
     public sendInput() {
-        this.api
-            .post('/api/addresses', {
-                zip: this.requestForm.value.startZip,
-                city: this.requestForm.value.startCity,
-                country: this.requestForm.value.startCountry,
-            })
-            .subscribe({
-                next: (res: any) => {
-                    console.log(res);
-                },
-                error: (e: any) => console.error('startAddress' + e),
-                complete: () => console.log('startAddress sent'),
-            });
-        this.api
-            .post('/api/addresses', {
-                zip: this.requestForm.value.destZip,
-                city: this.requestForm.value.destCity,
-                country: this.requestForm.value.destCountry,
-            })
-            .subscribe({
-                next: (res: any) => {
-                    console.log(res);
-                },
-                error: (e: any) => console.error('destAddress' + e),
-                complete: () => console.log('destAddress sent'),
-            });
-
-        // this.api.post("/api/items", {
-        //
-        // }).subscribe({
-        //   next: (res: any) => {
-        //     console.log(res);
-        //   },
-        //   error: (e: any) => console.error("items" + e),
-        //   complete: () => console.log("items sent"),
-        // });
-
+        // numberOfItems: this.itemsInput.length;
         this.api
             .post('/api/requests', {
-                // startAddress: this.requestForm.value.startZip + ' ' + this.requestForm.value.startCity + ' ' + this.requestForm.value.startCountry,
-                // destAddress: this.requestForm.value.destZip + ' ' + this.requestForm.value.destCity + ' ' + this.requestForm.value.destCountry,
                 startDate: this.requestForm.value.startDate,
                 destDate: this.requestForm.value.stopDate,
                 price: this.requestForm.value.priceInput,
-                items: this.itemsInput,
                 persons: this.requestForm.value.persons,
-                //moreInfo: this.checkoutForm.value.moreInfo
+                startAddress: {
+                    zip: this.requestForm.value.startZip,
+                    city: this.requestForm.value.startCity,
+                    country: this.requestForm.value.startCountry,
+                },
+                destAddress: {
+                    zip: this.requestForm.value.destZip,
+                    city: this.requestForm.value.destCity,
+                    country: this.requestForm.value.destCountry,
+                },
+                items: this.itemsInput.values(),
             })
             .subscribe({
                 next: (res: any) => {

@@ -8,8 +8,18 @@ import { SocialComponent } from './footer/social/social.component';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { RegisterPageComponent } from './register-page/register-page.component';
 import { CreaterequestComponent } from './createrequest/createrequest.component';
+import { OffersComponent } from './offers/offers.component';
+import { RequestsComponent } from './requests/requests.component';
 
 const routes: Routes = [
+    {
+        path: 'offers',
+        component: OffersComponent,
+    },
+    {
+        path: 'requests',
+        component: RequestsComponent,
+    },
     {
         path: 'createoffer',
         component: CreateofferComponent,

@@ -39,6 +39,7 @@ export class LoginPageComponent implements OnInit {
             .subscribe({
                 next: (res: any) => {
                     console.log(res);
+                    window.localStorage.setItem('jwt', res.access_token);
                 },
                 error: (e: any) => console.error(e),
                 complete: () => console.info('complete'),

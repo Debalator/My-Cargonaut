@@ -1,0 +1,17 @@
+<h2 mat-dialog-title>Anfrage buchen</h2>
+<mat-dialog-content class="mat-typography">
+    <app-vehicles (changeVehicleEvent)="applyVehicle($event)"></app-vehicles>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+    <button mat-button (click)="cancel()">Abbrechen</button>
+    <button
+        mat-button
+        color="primary"
+        [mat-dialog-close]="true"
+        (click)="book()"
+        cdkFocusInitial
+    >
+        Buchen
+    </button>
+</mat-dialog-actions>

@@ -8,7 +8,7 @@ import { SocialComponent } from './footer/social/social.component';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { RegisterPageComponent } from './register-page/register-page.component';
 import { CreaterequestComponent } from './createrequest/createrequest.component';
-import { CarManagementComponent } from './car-management/car-management.component'
+import { CarManagementComponent } from './car-management/car-management.component';
 import { OffersComponent } from './offers/offers.component';
 import { RequestsComponent } from './requests/requests.component';
 
@@ -48,12 +48,17 @@ const routes: Routes = [
     {
         path: '',
         pathMatch: 'full',
-        component: CarManagementComponent,
+        component: LoginPageComponent,
+    },
+    {
+        path: 'login',
+        component: LoginPageComponent,
     },
     {
         path: 'register',
         component: RegisterPageComponent,
     },
+    { path: 'cars', component: CarManagementComponent },
 ];
 
 @NgModule({

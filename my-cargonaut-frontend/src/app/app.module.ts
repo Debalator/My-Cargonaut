@@ -52,6 +52,7 @@ import { RequestsComponent } from './requests/requests.component';
 import { OrderRequestComponent } from './order-request/order-request.component';
 import { CarManagementComponent } from './car-management/car-management.component';
 import { AddVehicleComponent } from './add-vehicle/add-vehicle.component';
+import { EditVehicleComponent } from './edit-vehicle/edit-vehicle.component';
 
 @NgModule({
     declarations: [
@@ -77,6 +78,7 @@ import { AddVehicleComponent } from './add-vehicle/add-vehicle.component';
         RequestItemsComponent,
         RequestsComponent,
         OrderRequestComponent,
+        EditVehicleComponent,
     ],
     imports: [
         BrowserModule,
@@ -102,6 +104,7 @@ import { AddVehicleComponent } from './add-vehicle/add-vehicle.component';
         MatGridListModule,
         MatToolbarModule,
         FlexLayoutModule,
+        MatListModule,
     ],
     providers: [],
     bootstrap: [AppComponent],

@@ -7,7 +7,7 @@ import { ApiService } from '../api/api.service';
     templateUrl: './order-request.component.html',
     styleUrls: ['./order-request.component.scss'],
 })
-export class OrderRequestComponent implements OnInit {
+export class OrderRequestComponent {
     vehicle = null;
 
     constructor(
@@ -15,8 +15,6 @@ export class OrderRequestComponent implements OnInit {
         public dialogRef: MatDialogRef<OrderRequestComponent>,
         @Inject(MAT_DIALOG_DATA) public data: { request: any }
     ) {}
-
-    ngOnInit(): void {}
 
     applyVehicle(vehicle: any) {
         this.vehicle = vehicle;

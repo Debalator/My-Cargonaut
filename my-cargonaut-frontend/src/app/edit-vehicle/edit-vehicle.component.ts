@@ -1,15 +1,15 @@
-import { Component, Inject } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Car } from '../car-management/car-management.component';
 
 @Component({
-    selector: 'app-add-vehicle',
-    templateUrl: './add-vehicle.component.html',
-    styleUrls: ['./add-vehicle.component.scss'],
+    selector: 'app-edit-vehicle',
+    templateUrl: './edit-vehicle.component.html',
+    styleUrls: ['./edit-vehicle.component.scss'],
 })
-export class AddVehicleComponent {
+export class EditVehicleComponent {
     constructor(
-        public dialogRef: MatDialogRef<AddVehicleComponent>,
+        public dialogRef: MatDialogRef<EditVehicleComponent>,
         @Inject(MAT_DIALOG_DATA) public dataVehicle: Car
     ) {}
 

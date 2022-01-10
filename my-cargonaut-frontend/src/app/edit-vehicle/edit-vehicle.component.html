@@ -1,4 +1,4 @@
-<h1 mat-dialog-title>Fahrzeug hinzufügen</h1>
+<h1 mat-dialog-title>Fahrzeug bearbeiten</h1>
 <div mat-dialog-content>
     <!--  <p>Beschreibung</p>-->
     <mat-form-field appearance="fill">
@@ -45,7 +45,5 @@
 </div>
 <div mat-dialog-actions>
     <button mat-raised-button (click)="onNoClick()">Zurück</button>
-    <button mat-raised-button [mat-dialog-close]="dataVehicle">
-        Hinzufügen
-    </button>
+    <button mat-raised-button [mat-dialog-close]="dataVehicle">Ändern</button>
 </div>

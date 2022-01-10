@@ -1,37 +1,35 @@
-
 header {
-  display: flex;
-  justify-content: center;
+    display: flex;
+    justify-content: center;
 }
 
 .example-button-row {
-  display: flex;
-  justify-content: flex-end;
-  //margin-top: 10px;
-  margin-bottom: 15px;
-  margin-right: 60px;
+    display: flex;
+    justify-content: flex-end;
+    //margin-top: 10px;
+    margin-bottom: 15px;
+    margin-right: 60px;
 }
 
 #editButtons {
-  margin-top: 70px;
-  margin-right: 20px;
+    margin-top: 70px;
+    margin-right: 20px;
 }
 
 .mat-card-lg-image {
-  margin-top: 45px;
+    margin-top: 45px;
 }
 
 .mat-card-title {
-  position: absolute;
-  left: 120px;
+    position: absolute;
+    left: 120px;
 }
 
 .mat-card-subtitle {
-  position: absolute;
-  left: 120px;
+    position: absolute;
+    left: 120px;
 }
 
 .mat-card {
-  margin-bottom: 15px;
+    margin-bottom: 15px;
 }
-

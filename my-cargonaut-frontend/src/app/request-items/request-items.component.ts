@@ -5,14 +5,12 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
     templateUrl: './request-items.component.html',
     styleUrls: ['./request-items.component.scss'],
 })
-export class RequestItemsComponent implements OnInit {
+export class RequestItemsComponent {
     @Output() saveItemsEvent = new EventEmitter<any[]>();
 
     items: any[] = [];
 
     constructor() {}
-
-    ngOnInit(): void {}
 
     addItem() {
         this.items.push({

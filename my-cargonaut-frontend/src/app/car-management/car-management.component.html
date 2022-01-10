@@ -1,56 +1,35 @@
 <header class="container">
-  <h1>Meine Fahrzeuge</h1>
+    <h1>Meine Fahrzeuge</h1>
 </header>
 
 <div class="example-button-row">
-  <button id="addCar" mat-raised-button (click)="addVehicle()">Add</button>
+    <button id="addCar" mat-raised-button (click)="addVehicle()">Add</button>
 </div>
-
-<!--<mat-card>-->
-<!--  <mat-grid-list cols="6" rowHeight="50px">-->
-<!--    <mat-grid-tile colspan="1" rowspan="2">-->
-<!--      <img mat-card-lg-image src="../../assets/car.png">-->
-<!--    </mat-grid-tile>-->
-<!--    <mat-grid-tile colspan="4" rowspan="1">-->
-<!--      <mat-card-title>{{cars[0].brand + ' ' + cars[0].model}}</mat-card-title>-->
-<!--    </mat-grid-tile>-->
-<!--    <mat-grid-tile colspan="4" rowspan="1">-->
-<!--      <mat-card-subtitle>-->
-<!--          Brand: {{cars[0].brand + ';   '}}-->
-<!--          Model: {{cars[0].model + ';   '}}-->
-<!--          Seats: {{cars[0].seats + ';   '}}-->
-<!--          Loading Area: {{cars[0].loadingArea}}-->
-<!--      </mat-card-subtitle>-->
-<!--    </mat-grid-tile>-->
-<!--    <mat-grid-tile colspan="1" rowspan="2">-->
-<!--      <mat-card-actions id="editButtons">-->
-<!--        <button mat-raised-button>Edit</button>-->
-<!--        <button mat-raised-button>Delete</button>-->
-<!--      </mat-card-actions>-->
-<!--    </mat-grid-tile>-->
-<!--  </mat-grid-list>-->
-<!--</mat-card>-->
-
 <div fxLayout="row wrap">
-  <mat-card *ngFor="let obj of cars" fxFlex="100%">
-    <mat-grid-list cols="6" rowHeight="50px">
-      <mat-grid-tile colspan="1" rowspan="2">
-        <img mat-card-lg-image src="../../assets/car.png">
-      </mat-grid-tile>
-      <mat-grid-tile colspan="4" rowspan="1">
-        <mat-card-title>{{obj.brand + ' ' + obj.model}}</mat-card-title>
-      </mat-grid-tile>
-      <mat-grid-tile colspan="4" rowspan="1">
-        <mat-card-subtitle>Brand: {{obj.brand + ';   '}}Model: {{obj.model + ';   '}}
-          Seats: {{obj.seats + ';   '}}Loading Area: {{obj.loadingArea}}
-        </mat-card-subtitle>
-      </mat-grid-tile>
-      <mat-grid-tile colspan="1" rowspan="2">
-        <mat-card-actions id="editButtons">
-          <button mat-raised-button (click)="editVehicle()">Edit</button>
-          <button mat-raised-button (click)="deleteVehicle()">Delete</button>
-        </mat-card-actions>
-      </mat-grid-tile>
-    </mat-grid-list>
-  </mat-card>
+    <mat-card *ngFor="let obj of cars" fxFlex="100%">
+        <mat-grid-list cols="6" rowHeight="50px">
+            <mat-grid-tile colspan="1" rowspan="2">
+                <img mat-card-lg-image src="../../assets/car.png" />
+            </mat-grid-tile>
+            <mat-grid-tile colspan="4" rowspan="1">
+                <mat-card-title>{{ obj.brand }} {{ obj.model }}</mat-card-title>
+            </mat-grid-tile>
+            <mat-grid-tile colspan="4" rowspan="1">
+                <mat-card-subtitle
+                    >Brand: {{ obj.brand }}; Model: {{ obj.model }}; Seats:
+                    {{ obj.seats }}; Loading Area: {{ obj.loadingArea }}㎡
+                </mat-card-subtitle>
+            </mat-grid-tile>
+            <mat-grid-tile colspan="1" rowspan="2">
+                <mat-card-actions id="editButtons">
+                    <button mat-raised-button (click)="editVehicle()">
+                        Edit
+                    </button>
+                    <button mat-raised-button (click)="deleteVehicle()">
+                        Delete
+                    </button>
+                </mat-card-actions>
+            </mat-grid-tile>
+        </mat-grid-list>
+    </mat-card>
 </div>

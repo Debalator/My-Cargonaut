@@ -9,6 +9,8 @@ import { Location } from "./entities/location.entity";
 import { Rating } from "./entities/rating.entity";
 import { CreateRatingDto } from "./dto/create-rating.dto";
 import { UpdateRatingDto } from "./dto/update-rating.dto";
+import { OffersService } from "../offers/offers.service";
+import { RequestsService } from "../requests/requests.service";
 
 @Injectable()
 export class OrdersService {
@@ -17,7 +19,10 @@ export class OrdersService {
         private orderRepository: Repository<Order>,
         @InjectRepository(Location)
         private locationRepository: Repository<Location>,
-        @InjectRepository(Rating) private ratingRepository: Repository<Rating>
+        @InjectRepository(Rating) private ratingRepository: Repository<Rating>,
+
+        private offerService: OffersService,
+        private requestService: RequestsService
     ) {}
 
     private defaultRelations = ["request", "offer"];
@@ -26,16 +31,39 @@ export class OrdersService {
         ...this.defaultRelations,
         "location",
         "rating",
+        "creator",
         "request.creator",
         "request.startAddress",
         "request.destAddress",
         "request.items",
         "offer.creator",
+        "offer.startAddress",
+        "offer.destAddress",
+        "offer.vehicle",
     ];
 
     async create(createOrderDto: CreateOrderDto) {
-        createOrderDto.location = await this.createLocation();
-        return this.orderRepository.save(createOrderDto);
+        const offer = await this.offerService.findOne(createOrderDto.offer.id);
+        if (!offer) throw new NotFoundException("Offer not found");
+
+        const request = await this.requestService.findOne(
+            createOrderDto.request.id
+        );
+        if (!request) throw new NotFoundException("Request not found");
+
+        offer.active = false;
+        await this.offerService.create(offer);
+
+        request.active = false;
+        await this.requestService.create(request);
+
+        const order = new Order();
+        order.request = request;
+        order.offer = offer;
+        order.creator = createOrderDto.creator;
+        order.location = await this.createLocation();
+
+        return this.orderRepository.save(order);
     }
 
     async createRating(orderID: number, createRatingDto: CreateRatingDto) {
@@ -110,6 +138,43 @@ export class OrdersService {
 
     async remove(id: number) {
         await this.orderRepository.delete(id);
+    }
+
+    async findOrdersByUser(id: number) {
+        const orderOffers = await this.orderRepository.find({
+            where: {
+                offer: {
+                    creator: id,
+                },
+            },
+            relations: [
+                "offer",
+                "offer.creator",
+                "offer.startAddress",
+                "offer.destAddress",
+                "offer.vehicle",
+            ],
+        });
+
+        const orderRequests = await this.orderRepository.find({
+            where: {
+                request: {
+                    creator: id,
+                },
+            },
+            relations: [
+                "request",
+                "request.creator",
+                "request.startAddress",
+                "request.destAddress",
+                "request.items",
+            ],
+        });
+
+        return {
+            offers: orderOffers,
+            requests: orderRequests,
+        };
     }
 
     async findRatingsByUser(id: number) {

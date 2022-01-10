@@ -7,7 +7,10 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { RegisterPageComponent } from './register-page/register-page.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import {
+    BrowserAnimationsModule,
+    NoopAnimationsModule,
+} from '@angular/platform-browser/animations';
 import { CreateofferComponent } from './createoffer/createoffer.component';
 import {
     MAT_FORM_FIELD_DEFAULT_OPTIONS,
@@ -53,6 +56,14 @@ import { OrderRequestComponent } from './order-request/order-request.component';
 import { CarManagementComponent } from './car-management/car-management.component';
 import { AddVehicleComponent } from './add-vehicle/add-vehicle.component';
 import { EditVehicleComponent } from './edit-vehicle/edit-vehicle.component';
+import { OrdersComponent } from './orders/orders.component';
+import { OrderComponent } from './order/order.component';
+import { OfferComponent } from './offer/offer.component';
+import { RequestComponent } from './request/request.component';
+import {
+    MatProgressSpinnerModule,
+    MatSpinner,
+} from '@angular/material/progress-spinner';
 
 @NgModule({
     declarations: [
@@ -79,6 +90,10 @@ import { EditVehicleComponent } from './edit-vehicle/edit-vehicle.component';
         RequestsComponent,
         OrderRequestComponent,
         EditVehicleComponent,
+        OrdersComponent,
+        OrderComponent,
+        OfferComponent,
+        RequestComponent,
     ],
     imports: [
         BrowserModule,
@@ -105,6 +120,8 @@ import { EditVehicleComponent } from './edit-vehicle/edit-vehicle.component';
         MatToolbarModule,
         FlexLayoutModule,
         MatListModule,
+        MatProgressSpinnerModule,
+        BrowserAnimationsModule,
     ],
     providers: [],
     bootstrap: [AppComponent],

@@ -27,12 +27,14 @@ export class OffersComponent implements OnInit {
 
     openDialog(offerID: number) {
         const dialogRef = this.dialog.open(OrderOfferComponent, {
+            width: '800px',
             data: {
                 offer: this.offers.find((offer) => offer.id === offerID),
             },
         });
 
         dialogRef.afterClosed().subscribe((order) => {
+            console.log(order);
             if (order) this.router.navigate(['/orders', order.id]);
         });
     }

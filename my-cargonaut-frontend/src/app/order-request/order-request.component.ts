@@ -28,19 +28,11 @@ export class OrderRequestComponent {
         console.log('ORDERED');
 
         this.api
-            .post(`/api/offers/requests/${this.data.request.id}`, {
+            .post(`/api/orders/requests/${this.data.request.id}`, {
                 vehicle: this.vehicle,
             })
-            .subscribe((offer) => {
-                this.api
-                    .post('/api/orders', {
-                        request: this.data.request,
-                        offer,
-                    })
-                    .subscribe((order) => {
-                        console.log(order);
-                        this.dialogRef.close(order);
-                    });
+            .subscribe((order) => {
+                this.dialogRef.close(order);
             });
     }
 }

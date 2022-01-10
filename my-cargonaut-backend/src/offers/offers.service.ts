@@ -6,7 +6,7 @@ import {
     NotFoundException,
 } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
-import { Repository } from "typeorm";
+import { FindCondition, Repository } from "typeorm";
 
 import { CreateOfferDto } from "./dto/create-offer.dto";
 import { UpdateOfferDto } from "./dto/update-offer.dto";
@@ -15,6 +15,7 @@ import { CreateOfferFromRequestDto } from "./dto/create-offer-from-request.dto";
 import { RequestsService } from "../requests/requests.service";
 import { VehiclesService } from "../vehicles/vehicles.service";
 import { AddressesService } from "../addresses/addresses.service";
+import { Request } from "../requests/entities/request.entity";
 
 @Injectable()
 export class OffersService {
@@ -39,9 +40,10 @@ export class OffersService {
         return this.offerRepository.save(createOfferDto);
     }
 
-    findAll() {
+    findAll(where: FindCondition<Offer>) {
         return this.offerRepository.find({
             relations: this.defaultRelations,
+            where,
         });
     }
 
@@ -65,11 +67,8 @@ export class OffersService {
 
     async createFromRequest(
         createOfferFromRequestDto: CreateOfferFromRequestDto,
-        requestID: number
+        request: Request
     ) {
-        const request = await this.requestService.findOne(requestID);
-        if (!request) throw new NotFoundException("Request not found");
-
         const vehicle = await this.vehicleService.findOne(
             createOfferFromRequestDto.vehicle.id
         );

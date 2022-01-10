@@ -27,10 +27,10 @@ export class Offer {
     @PrimaryGeneratedColumn()
     id: number;
 
-    @Column("datetime")
+    @Column("date")
     startDate: Date;
 
-    @Column("datetime")
+    @Column("date")
     destDate: Date;
 
     @Column("decimal", { precision: 6, scale: 2 })

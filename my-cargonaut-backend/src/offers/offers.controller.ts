@@ -8,17 +8,13 @@ import {
     Delete,
     UseGuards,
     Request,
-    Inject,
-    forwardRef,
 } from "@nestjs/common";
 import { OffersService } from "./offers.service";
 import { CreateOfferDto } from "./dto/create-offer.dto";
 import { UpdateOfferDto } from "./dto/update-offer.dto";
 import { AddressesService } from "../addresses/addresses.service";
 import { JwtAuthGuard } from "../auth/jwt-auth.guard";
-import { CreateRequestFromOfferDto } from "../requests/dto/create-request-from-offer.dto";
 import { CreateOfferFromRequestDto } from "./dto/create-offer-from-request.dto";
-import { Offer } from "./entities/offer.entity";
 
 @Controller("offers")
 export class OffersController {
@@ -47,7 +43,9 @@ export class OffersController {
 
     @Get()
     findAll() {
-        return this.offersService.findAll();
+        return this.offersService.findAll({
+            active: true,
+        });
     }
 
     @Get(":id")
@@ -63,21 +61,5 @@ export class OffersController {
     @Delete(":id")
     remove(@Param("id") id: string) {
         return this.offersService.remove(+id);
-    }
-
-    @UseGuards(JwtAuthGuard)
-    @Post("/requests/:id")
-    createFromOffer(
-        @Request() req,
-        @Param("id") id: string,
-        @Body() createOfferFromRequestDto: CreateOfferFromRequestDto
-    ) {
-        return this.offersService.createFromRequest(
-            {
-                ...createOfferFromRequestDto,
-                creator: req.user.id,
-            },
-            +id
-        );
     }
 }

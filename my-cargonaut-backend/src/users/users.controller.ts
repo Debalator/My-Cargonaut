@@ -32,6 +32,12 @@ export class UsersController {
         return this.usersService.findAll();
     }
 
+    @UseGuards(JwtAuthGuard)
+    @Get("orders")
+    getOrders(@Request() req) {
+        return this.orderService.findOrdersByUser(req.user.id);
+    }
+
     @Get(":id")
     findOne(@Param("id") id: number) {
         return this.usersService.findOne(id);

@@ -8,12 +8,13 @@ import {
 import { CreateRequestDto } from "./dto/create-request.dto";
 import { UpdateRequestDto } from "./dto/update-request.dto";
 import { InjectRepository } from "@nestjs/typeorm";
-import { Repository } from "typeorm";
+import { FindCondition, Repository } from "typeorm";
 import { Request } from "./entities/request.entity";
 import { Item } from "./entities/item.entity";
 import { CreateRequestFromOfferDto } from "./dto/create-request-from-offer.dto";
 import { OffersService } from "../offers/offers.service";
 import { AddressesService } from "../addresses/addresses.service";
+import { Offer } from "../offers/entities/offer.entity";
 
 @Injectable()
 export class RequestsService {
@@ -44,11 +45,8 @@ export class RequestsService {
 
     async createFromOffer(
         createRequestFromOfferDto: CreateRequestFromOfferDto,
-        offerID: number
+        offer: Offer
     ) {
-        const offer = await this.offersService.findOne(offerID);
-        if (!offer) throw new NotFoundException("Offer not found");
-
         if (offer.vehicle.seats < createRequestFromOfferDto.persons)
             throw new BadRequestException(
                 `Maximum number of persons (${offer.vehicle.seats}) exceeded`
@@ -76,9 +74,10 @@ export class RequestsService {
         return this.create(request);
     }
 
-    findAll() {
+    findAll(where: FindCondition<Request> = {}) {
         return this.requestRepository.find({
             relations: this.defaultRelations,
+            where,
         });
     }
 

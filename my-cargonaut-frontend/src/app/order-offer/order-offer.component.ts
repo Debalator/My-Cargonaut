@@ -30,20 +30,12 @@ export class OrderOfferComponent {
         console.log('ORDERED');
 
         this.api
-            .post(`/api/requests/offers/${this.data.offer.id}`, {
+            .post(`/api/orders/offers/${this.data.offer.id}`, {
                 items: this.items,
                 persons: this.persons,
             })
-            .subscribe((request) => {
-                this.api
-                    .post('/api/orders', {
-                        offer: this.data.offer,
-                        request,
-                    })
-                    .subscribe((order) => {
-                        console.log(order);
-                        this.dialogRef.close(order);
-                    });
+            .subscribe((order) => {
+                this.dialogRef.close(order);
             });
     }
 }

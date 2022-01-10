@@ -1,4 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
     selector: 'app-request-items',
@@ -10,7 +11,7 @@ export class RequestItemsComponent {
 
     items: any[] = [];
 
-    constructor() {}
+    constructor(public snackbar: MatSnackBar) {}
 
     addItem() {
         this.items.push({
@@ -27,6 +28,14 @@ export class RequestItemsComponent {
     }
 
     save() {
-        this.saveItemsEvent.emit(this.items);
+        for (const item of this.items) {
+            if (!item.description || !item.size || !item.weight) {
+                this.snackbar.open('Bitte alle Daten ausfüllen', '', {
+                    duration: 2000,
+                });
+                return;
+            }
+        }
+        // this.saveItemsEvent.emit(this.items);
     }
 }

@@ -1,5 +1,6 @@
 <div class="page">
   <h1>Angebote</h1>
+  <h3 *ngIf="!offers.length" style="text-align: center">Keine Angebote gefunden!</h3>
   <div class="offers">
     <div *ngFor="let offer of offers">
       <app-offer [offer]="offer">

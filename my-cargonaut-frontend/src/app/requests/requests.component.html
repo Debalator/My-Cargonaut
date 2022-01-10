@@ -1,5 +1,6 @@
 <div class="page">
   <h1>Anfragen</h1>
+  <h3 *ngIf="!requests.length" style="text-align: center">Keine Anfragen gefunden!</h3>
   <div class="requests">
     <div *ngFor="let request of requests">
       <app-request [request]="request">

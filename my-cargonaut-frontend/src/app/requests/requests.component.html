@@ -1,17 +1,24 @@
 <div class="page">
-  <h1>Anfragen</h1>
-  <h3 *ngIf="!requests.length" style="text-align: center">Keine Anfragen gefunden!</h3>
-  <div class="requests">
-    <div *ngFor="let request of requests">
-      <app-request [request]="request">
-        <button
-          mat-button
-          color="primary"
-          (click)="openDialog(request.id)"
-        >
-          Buchen
-        </button>
-      </app-request>
+    <h1>Anfragen</h1>
+    <mat-progress-spinner
+        mode="indeterminate"
+        class="spinner"
+        *ngIf="isLoading"
+    ></mat-progress-spinner>
+    <h3 *ngIf="!requests.length && !isLoading" style="text-align: center">
+        Keine Angebote gefunden!
+    </h3>
+    <div class="requests">
+        <div *ngFor="let request of requests">
+            <app-request [request]="request">
+                <button
+                    mat-button
+                    color="primary"
+                    (click)="openDialog(request.id)"
+                >
+                    Buchen
+                </button>
+            </app-request>
+        </div>
     </div>
-  </div>
 </div>

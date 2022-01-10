@@ -11,6 +11,7 @@ import { OrderOfferComponent } from '../order-offer/order-offer.component';
 })
 export class OffersComponent implements OnInit {
     offers: any[] = [];
+    isLoading = true;
 
     constructor(
         private api: ApiService,
@@ -22,6 +23,7 @@ export class OffersComponent implements OnInit {
         this.api.get('/api/offers').subscribe((res) => {
             console.log(res);
             this.offers = res;
+            this.isLoading = false;
         });
     }
 

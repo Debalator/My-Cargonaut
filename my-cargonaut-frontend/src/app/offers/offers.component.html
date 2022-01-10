@@ -1,19 +1,26 @@
 <div class="page">
-  <h1>Angebote</h1>
-  <h3 *ngIf="!offers.length" style="text-align: center">Keine Angebote gefunden!</h3>
-  <div class="offers">
-    <div *ngFor="let offer of offers">
-      <app-offer [offer]="offer">
-        <mat-card-actions>
-          <button
-            mat-button
-            color="primary"
-            (click)="openDialog(offer.id)"
-          >
-            Buchen
-          </button>
-        </mat-card-actions>
-      </app-offer>
+    <h1>Angebote</h1>
+    <mat-progress-spinner
+        mode="indeterminate"
+        class="spinner"
+        *ngIf="isLoading"
+    ></mat-progress-spinner>
+    <h3 *ngIf="!offers.length && !isLoading" style="text-align: center">
+        Keine Angebote gefunden!
+    </h3>
+    <div class="offers">
+        <div *ngFor="let offer of offers">
+            <app-offer [offer]="offer">
+                <mat-card-actions>
+                    <button
+                        mat-button
+                        color="primary"
+                        (click)="openDialog(offer.id)"
+                    >
+                        Buchen
+                    </button>
+                </mat-card-actions>
+            </app-offer>
+        </div>
     </div>
-  </div>
 </div>

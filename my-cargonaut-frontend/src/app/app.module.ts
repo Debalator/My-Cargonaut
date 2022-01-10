@@ -64,6 +64,7 @@ import {
     MatProgressSpinnerModule,
     MatSpinner,
 } from '@angular/material/progress-spinner';
+import { RatingComponent } from './rating/rating.component';
 
 @NgModule({
     declarations: [
@@ -94,6 +95,7 @@ import {
         OrderComponent,
         OfferComponent,
         RequestComponent,
+        RatingComponent,
     ],
     imports: [
         BrowserModule,

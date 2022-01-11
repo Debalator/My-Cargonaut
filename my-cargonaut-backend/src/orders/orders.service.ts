@@ -187,9 +187,15 @@ export class OrdersService {
             relations: ["offer", "offer.creator", "rating"],
         });
 
-        return orders.map((order) => ({
-            ...order.rating,
-            author: order.offer.creator,
-        }));
+        const ratings = [];
+
+        for (const order of orders)
+            if (order.rating)
+                ratings.push({
+                    ...order.rating,
+                    author: order.offer.creator,
+                });
+
+        return ratings;
     }
 }

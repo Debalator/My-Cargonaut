@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ApiService } from '../api/api.service';
 import { ProfilePictureUploadDialogComponent } from './profile-picture-upload-dialog/profile-picture-upload-dialog.component';
+import { LoginServiceService } from '../login-page/login-service.service';
 
 @Component({
     selector: 'app-profile-view',
@@ -20,21 +21,24 @@ export class ProfileViewComponent implements OnInit {
         profileImage: '',
     };
     */
-    @Input() ratings = [
-        {
-            title: '',
-            description: '',
-            starsRating: 0,
-            price: '',
-        },
-    ];
+    ratings: any[] = [];
 
     user!: any;
 
-    constructor(private api: ApiService, private dialog: MatDialog) {}
+    constructor(
+        private api: ApiService,
+        private dialog: MatDialog,
+        private loginService: LoginServiceService
+    ) {}
 
     ngOnInit(): void {
         this.api.get('/api/profile').subscribe((user) => (this.user = user));
+        this.api
+            .get(`/api/users/${this.loginService.id}/ratings`)
+            .subscribe((res) => {
+                this.ratings = res;
+                console.log(res);
+            });
     }
 
     openUploadImage() {

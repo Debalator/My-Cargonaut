@@ -83,11 +83,14 @@ export class UsersController {
         @Request() req,
         @UploadedFile() file: Express.Multer.File
     ) {
-        return this.usersService.addProfilePicture(req.user.id, `/api/users/image${file.filename}`);
+        return this.usersService.addProfilePicture(
+            req.user.id,
+            `/api/users/image/${file.filename}`
+        );
     }
 
     @Get("image/:name")
-    getProfilePicture(@Param('name') image, @Res() res) {
-        return res.sendFile(image, { root: './uploads'});
+    getProfilePicture(@Param("name") image, @Res() res) {
+        return res.sendFile(image, { root: "./uploads" });
     }
 }

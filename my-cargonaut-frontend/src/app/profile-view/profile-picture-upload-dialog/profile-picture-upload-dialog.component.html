@@ -1,12 +1,21 @@
 <mat-form-field class="columns">
-    <mat-label *ngIf="selectedFile; else newFile">{{selectedFile.name}}</mat-label>
+    <mat-label *ngIf="selectedFile; else newFile">{{
+        selectedFile.name
+    }}</mat-label>
     <ng-template #newFile>
-      <mat-label>Bild auswählen</mat-label>
+        <mat-label>Bild auswählen</mat-label>
     </ng-template>
-    <input matInput disabled>
+    <input matInput disabled />
     <button mat-icon-button matSuffix (click)="fileInput.click()">
-      <mat-icon>attach_file</mat-icon>
+        <mat-icon>attach_file</mat-icon>
     </button>
-    <input hidden (change)="uploadFile($event)" #fileInput type="file" id="map" name="map" accept=".png">
+    <input
+        hidden
+        (change)="uploadFile($event)"
+        #fileInput
+        type="file"
+        id="map"
+        name="map"
+        accept=".png"
+    />
 </mat-form-field>
-  

@@ -22,7 +22,7 @@ export class User {
     password: string;
 
     @Column("varchar", { length: 255 })
-    profilePicturePath = "default.png";
+    profilePicturePath = "/assets/default.jpg";
 
     @OneToMany(() => Offer, (offer) => offer.creator)
     offers: Offer[];

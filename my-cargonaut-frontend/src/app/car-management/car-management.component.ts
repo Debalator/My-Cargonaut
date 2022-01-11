@@ -5,7 +5,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { ApiService } from '../api/api.service';
 import { interval, Subscription, switchMap } from 'rxjs';
 import { EditVehicleComponent } from '../edit-vehicle/edit-vehicle.component';
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
     selector: 'app-car-management',
@@ -21,7 +21,7 @@ export class CarManagementComponent implements OnInit {
     loadingArea!: number;
 
     constructor(
-      private route: ActivatedRoute,
+        private route: ActivatedRoute,
         private dialog: MatDialog,
         private snackbar: MatSnackBar,
         private api: ApiService
@@ -43,7 +43,7 @@ export class CarManagementComponent implements OnInit {
         });
 
         dialogRef.afterClosed().subscribe((result) => {
-          console.log(result);
+            console.log(result);
             if (
                 result.brand == null ||
                 result.model == null ||
@@ -63,7 +63,6 @@ export class CarManagementComponent implements OnInit {
                     seats: result.seats,
                     loadingArea: result.loadingArea,
                 });
-
 
                 this.renderList();
                 // window.location.reload();
@@ -102,12 +101,11 @@ export class CarManagementComponent implements OnInit {
     }
 
     deleteVehicle() {
-      this.route.params.subscribe( (params) => {
-        const carID = +params['id'];
-        this.api.delete(`/api/vehicles/${carID}`, {});
-        this.renderList();
-      })
-
+        this.route.params.subscribe((params) => {
+            const carID = +params['id'];
+            this.api.delete(`/api/vehicles/${carID}`, {});
+            this.renderList();
+        });
     }
 
     renderList() {

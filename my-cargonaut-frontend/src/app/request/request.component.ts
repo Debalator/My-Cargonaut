@@ -5,10 +5,8 @@ import { Component, Input, OnInit } from '@angular/core';
     templateUrl: './request.component.html',
     styleUrls: ['./request.component.scss'],
 })
-export class RequestComponent implements OnInit {
+export class RequestComponent {
     @Input() request: any;
 
     constructor() {}
-
-    ngOnInit(): void {}
 }

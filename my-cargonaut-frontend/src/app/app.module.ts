@@ -65,7 +65,7 @@ import {
     MatSpinner,
 } from '@angular/material/progress-spinner';
 import { GoogleMapsModule } from '@angular/google-maps';
-import { OrderTrackingComponent } from './order-tracking/order-tracking.component'
+import { OrderTrackingComponent } from './order-tracking/order-tracking.component';
 import { RatingComponent } from './rating/rating.component';
 
 @NgModule({

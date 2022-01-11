@@ -1,32 +1,17 @@
 <h1 mat-dialog-title>Fahrzeug bearbeiten</h1>
 <div mat-dialog-content>
     <mat-form-field appearance="fill">
-        <input
-            matInput
-            [(ngModel)]="brand"
-            placeholder="Marke"
-            required
-        />
+        <input matInput [(ngModel)]="brand" placeholder="Marke" required />
     </mat-form-field>
 </div>
 <div mat-dialog-content>
     <mat-form-field appearance="fill">
-        <input
-            matInput
-            [(ngModel)]="model"
-            placeholder="Modell"
-            required
-        />
+        <input matInput [(ngModel)]="model" placeholder="Modell" required />
     </mat-form-field>
 </div>
 <div mat-dialog-content>
     <mat-form-field appearance="fill">
-        <input
-            matInput
-            [(ngModel)]="seats"
-            placeholder="Sitzplätze"
-            required
-        />
+        <input matInput [(ngModel)]="seats" placeholder="Sitzplätze" required />
     </mat-form-field>
 </div>
 <div mat-dialog-content>
@@ -41,5 +26,7 @@
 </div>
 <div mat-dialog-actions>
     <button mat-raised-button (click)="onNoClick()">Zurück</button>
-    <button mat-raised-button (click)="saveCar()" cdkFocusInitial>Ändern</button>
+    <button mat-raised-button (click)="saveCar()" cdkFocusInitial>
+        Ändern
+    </button>
 </div>

@@ -74,7 +74,6 @@ export class CreateofferComponent implements OnInit {
     }
   }
 
-  //TODO: missing vehicle
 
   public sendInput() {
     this.api

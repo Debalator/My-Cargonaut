@@ -118,7 +118,8 @@
                     placeholder="Fahrzeug *"
                     required
                 >
-                    <mat-option *ngFor="let vehicle of vehicles">{{vehicle.brand}} {{vehicle.model}}</mat-option>
+                    <mat-option *ngFor="let vehicle of vehicles" [value]="vehicle">{{vehicle.brand}} {{vehicle.model}}</mat-option>
+<!--                  <mat-option>{{vehicle.brand}} {{vehicle.model}}</mat-option>-->
                 </mat-select>
             </mat-form-field>
         </mat-grid-tile>

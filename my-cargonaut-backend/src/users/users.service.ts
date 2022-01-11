@@ -26,7 +26,7 @@ export class UsersService {
 
     async findOne(id: number): Promise<User> {
         return await getRepository(User).findOne(id, {
-            select: ["id", "username", "profilePicturePath"],
+            select: ["id", "username", "profilePicturePath", "mail"],
         });
     }
 

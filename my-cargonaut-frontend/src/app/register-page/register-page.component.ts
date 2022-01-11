@@ -16,11 +16,11 @@ import { LoginServiceService } from '../login-page/login-service.service';
 })
 export class RegisterPageComponent implements OnInit {
     constructor(
-        private api: ApiService, 
+        private api: ApiService,
         private formBuilder: FormBuilder,
         private loginService: LoginServiceService,
-        private router : Router
-        ) {}
+        private router: Router
+    ) {}
 
     registerForm = new FormGroup({
         username: new FormControl(''),
@@ -54,14 +54,13 @@ export class RegisterPageComponent implements OnInit {
                 },
                 error: (e: any) => console.error(e),
                 complete: () => {
-                    this.login()
-                    console.info('complete')
+                    this.login();
+                    console.info('complete');
                 },
             });
     }
 
     login() {
-        
         var username = this.registerForm.value.username;
         var password = this.registerForm.value.password;
 
@@ -71,7 +70,7 @@ export class RegisterPageComponent implements OnInit {
                 next: (res: any) => {
                     //console.log(res);
                     this.loginService.jwt = res.access_token;
-                    console.log("hello");
+                    console.log('hello');
                     this.router.navigateByUrl('/');
                     //window.localStorage.setItem('jwt', res.access_token);
                 },

@@ -70,15 +70,14 @@ export class CarManagementComponent implements OnInit {
         });
     }
 
-    editVehicle() {
+    editVehicle(id: number) {
+        const car = this.cars.find((car) => car.id === id);
+
+        console.log(car);
+
         const dialogRef = this.dialog.open(EditVehicleComponent, {
             width: '350px',
-            data: {
-                brand: this.brand,
-                model: this.model,
-                seats: this.seats,
-                loadingArea: this.loadingArea,
-            },
+            data: car,
         });
 
         dialogRef.afterClosed().subscribe((result) => {

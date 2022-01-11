@@ -10,6 +10,7 @@ import {
 } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatInput } from '@angular/material/input';
+import { LoginServiceService } from './login-service.service';
 
 @Component({
     selector: 'app-login-page',
@@ -19,7 +20,12 @@ import { MatInput } from '@angular/material/input';
 export class LoginPageComponent implements OnInit {
     username: string = '';
 
-    constructor(private api: ApiService, private formBuilder: FormBuilder) {}
+    constructor(
+        private api: ApiService,
+        private formBuilder: FormBuilder,
+        private loginService: LoginServiceService,
+        private router : Router
+    ) {}
 
     loginForm = new FormGroup({
         username: new FormControl(''),
@@ -38,8 +44,11 @@ export class LoginPageComponent implements OnInit {
             .post('/api/auth/login', { username: username, password: password })
             .subscribe({
                 next: (res: any) => {
-                    console.log(res);
-                    window.localStorage.setItem('jwt', res.access_token);
+                    const { id, access_token } = res;
+                    this.loginService.jwt = access_token;
+                    this.loginService.id = id;
+                    this.loginService.username = username;
+                  this.router.navigateByUrl('/');
                 },
                 error: (e: any) => console.error(e),
                 complete: () => console.info('complete'),

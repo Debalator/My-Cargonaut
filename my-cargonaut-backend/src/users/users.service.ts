@@ -2,7 +2,7 @@ import { BadRequestException, Injectable } from "@nestjs/common";
 import { CreateUserDto } from "./dto/create-user.dto";
 import { UpdateUserDto } from "./dto/update-user.dto";
 import * as bcrypt from "bcrypt";
-import { getRepository } from "typeorm";
+import { getConnection, getRepository } from "typeorm";
 import { User } from "./entities/user.entity";
 
 @Injectable()
@@ -50,5 +50,14 @@ export class UsersService {
 
     async remove(id: number) {
         return await getRepository(User).delete(id);
+    }
+
+    async addProfilePicture(id: number, path: string) {
+        return await getConnection()
+            .createQueryBuilder()
+            .update(User)
+            .set({ profilePicturePath: path })
+            .where("id = :id", { id })
+            .execute();
     }
 }

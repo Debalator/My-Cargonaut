@@ -19,14 +19,13 @@
             <a mat-button routerLink="createrequest">Anfrage anlegen</a>
             <a mat-button routerLink="createoffer">Angebot anlegen</a>
             <a mat-button routerLink="orders">Transaktionen</a>
-            <a mat-raised-button routerLink="login" color="primary">Login</a>
         </div>
 
         <!--burger menu when on mobile-->
         <div fxShow="true" fxHide.gt-sm="true">
-            <a mat-button href="#" (click)="sidenav.toggle()" class="menu"
-                ><mat-icon>menu</mat-icon></a
-            >
+            <a mat-button href="#" (click)="sidenav.toggle()" class="menu">
+                <mat-icon>menu</mat-icon>
+            </a>
         </div>
     </mat-toolbar>
 
@@ -43,9 +42,21 @@
                 <!--Links when on mobile-->
                 <a mat-button routerLink="create_offer">Angebot suchen</a>
                 <a mat-button routerLink="suche">Angebot anlegen</a>
-                <a mat-raised-button routerLink="login" color="primary"
-                    >Login</a
-                >
+                <ng-container *ngIf="(isLoggedIn() | async) === false">
+                    <a mat-raised-button routerLink="login" color="primary"
+                        >Login</a
+                    >
+                </ng-container>
+                <ng-container *ngIf="isLoggedIn() | async">
+                    <a mat-button routerLink="profil" color="primary">
+                        <img class="profile" [src]="profilePicturePath" />
+                    </a>
+                </ng-container>
+                <ng-container *ngIf="(isLoggedIn() | async) === true">
+                    <a mat-raised-button routerLink="login" color="primary"
+                        >Logout</a
+                    >
+                </ng-container>
             </div>
         </mat-sidenav>
         <mat-sidenav-content>

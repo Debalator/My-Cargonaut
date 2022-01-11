@@ -7,31 +7,13 @@
     <mat-grid-tile colspan="1" rowspan="3">
         <div>
             <img
-                src="https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50?s=400"
-                style="border-radius: 1000px; max-width: 100%"
+                [src]="user.profilePicturePath"
+                style="border-radius: 50%; max-width: 100%"
             />
 
-            <p style="text-align: center">
-                <mat-icon aria-hidden="false" aria-label="Example home icon"
-                    >star</mat-icon
-                >
-
-                <mat-icon aria-hidden="false" aria-label="Example home icon"
-                    >star</mat-icon
-                >
-
-                <mat-icon aria-hidden="false" aria-label="Example home icon"
-                    >star</mat-icon
-                >
-
-                <mat-icon aria-hidden="false" aria-label="Example home icon"
-                    >star</mat-icon
-                >
-
-                <mat-icon aria-hidden="false" aria-label="Example home icon"
-                    >star_border</mat-icon
-                >
-            </p>
+            <button mat-raised-button (click)="openUploadImage()">
+                Profilbild Hochladen
+            </button>
 
             <p style="text-align: center">
                 Benutzername:<br />
@@ -39,20 +21,7 @@
             </p>
             <p style="text-align: center">
                 E-Mail:<br />
-                {{ user.email }}
-            </p>
-            <p style="text-align: center">
-                Geburtsdatum:<br />
-                {{ user.birthdate }}
-            </p>
-            <p style="text-align: center">
-                {{ user.numberOfRatings }} Bewertungen
-            </p>
-
-            <p style="text-align: center">
-                <button mat-flat-button color="primary" style="margin: auto">
-                    Meine Fahrzeuge
-                </button>
+                {{ user.mail }}
             </p>
         </div>
     </mat-grid-tile>
@@ -67,7 +36,7 @@
                     margin: 20px auto;
                     margin-right: 5px;
                 "
-                *ngFor="let rating of ratings"
+                *ngFor="let rating of this.ratings"
             >
                 <mat-grid-list cols="4">
                     <mat-grid-tile>
@@ -78,191 +47,61 @@
                     </mat-grid-tile>
                     <mat-grid-tile>
                         <div style="padding: 3px 5px">
-                            <h4>{{ rating.title }}</h4>
-                            <p>{{ rating.description }}</p>
+                            <mat-form-field
+                                class="example-full-width"
+                                appearance="fill"
+                                style="margin-right: 8px"
+                            >
+                                <mat-label>Benutzer</mat-label>
+                                <input
+                                    matInput
+                                    disabled
+                                    [value]="rating.author.username"
+                                />
+                            </mat-form-field>
+                            <mat-form-field
+                                class="example-full-width"
+                                appearance="fill"
+                                style="margin-right: 8px"
+                            >
+                                <mat-label>Titel</mat-label>
+                                <input
+                                    matInput
+                                    disabled
+                                    [value]="rating.title"
+                                />
+                            </mat-form-field>
+
+                            <mat-form-field appearance="fill">
+                                <mat-label>Textarea</mat-label>
+                                <textarea
+                                    matInput
+                                    disabled
+                                    [value]="rating.description"
+                                ></textarea>
+                            </mat-form-field>
                         </div>
                     </mat-grid-tile>
                     <mat-grid-tile>
-                        <p *ngIf="rating.starsRating === 0">
+                        <p>
                             <mat-icon
                                 aria-hidden="false"
                                 aria-label="Example home icon"
-                                >star_border</mat-icon
-                            >
+                                *ngFor="
+                                    let star of [].constructor(rating.stars)
+                                "
+                                >star
+                            </mat-icon>
                             <mat-icon
                                 aria-hidden="false"
                                 aria-label="Example home icon"
-                                >star_border</mat-icon
-                            >
-                            <mat-icon
-                                aria-hidden="false"
-                                aria-label="Example home icon"
-                                >star_border</mat-icon
-                            >
-                            <mat-icon
-                                aria-hidden="false"
-                                aria-label="Example home icon"
-                                >star_border</mat-icon
-                            >
-                            <mat-icon
-                                aria-hidden="false"
-                                aria-label="Example home icon"
-                                >star_border</mat-icon
-                            >
+                                *ngFor="
+                                    let star of [].constructor(5 - rating.stars)
+                                "
+                                >star_border
+                            </mat-icon>
                         </p>
-                        <p *ngIf="rating.starsRating === 1">
-                            <mat-icon
-                                aria-hidden="false"
-                                aria-label="Example home icon"
-                                >star</mat-icon
-                            >
-                            <mat-icon
-                                aria-hidden="false"
-                                aria-label="Example home icon"
-                                >star_border</mat-icon
-                            >
-                            <mat-icon
-                                aria-hidden="false"
-                                aria-label="Example home icon"
-                                >star_border</mat-icon
-                            >
-                            <mat-icon
-                                aria-hidden="false"
-                                aria-label="Example home icon"
-                                >star_border</mat-icon
-                            >
-                            <mat-icon
-                                aria-hidden="false"
-                                aria-label="Example home icon"
-                                >star_border</mat-icon
-                            >
-                        </p>
-                        <p *ngIf="rating.starsRating === 2">
-                            <mat-icon
-                                aria-hidden="false"
-                                aria-label="Example home icon"
-                                >star</mat-icon
-                            >
-                            <mat-icon
-                                aria-hidden="false"
-                                aria-label="Example home icon"
-                                >star</mat-icon
-                            >
-                            <mat-icon
-                                aria-hidden="false"
-                                aria-label="Example home icon"
-                                >star_border</mat-icon
-                            >
-                            <mat-icon
-                                aria-hidden="false"
-                                aria-label="Example home icon"
-                                >star_border</mat-icon
-                            >
-                            <mat-icon
-                                aria-hidden="false"
-                                aria-label="Example home icon"
-                                >star_border</mat-icon
-                            >
-                        </p>
-                        <p *ngIf="rating.starsRating === 3">
-                            <mat-icon
-                                aria-hidden="false"
-                                aria-label="Example home icon"
-                                >star</mat-icon
-                            >
-                            <mat-icon
-                                aria-hidden="false"
-                                aria-label="Example home icon"
-                                >star</mat-icon
-                            >
-                            <mat-icon
-                                aria-hidden="false"
-                                aria-label="Example home icon"
-                                >star</mat-icon
-                            >
-                            <mat-icon
-                                aria-hidden="false"
-                                aria-label="Example home icon"
-                                >star_border</mat-icon
-                            >
-                            <mat-icon
-                                aria-hidden="false"
-                                aria-label="Example home icon"
-                                >star_border</mat-icon
-                            >
-                        </p>
-                        <p *ngIf="rating.starsRating === 4">
-                            <mat-icon
-                                aria-hidden="false"
-                                aria-label="Example home icon"
-                                >star</mat-icon
-                            >
-                            <mat-icon
-                                aria-hidden="false"
-                                aria-label="Example home icon"
-                                >star</mat-icon
-                            >
-                            <mat-icon
-                                aria-hidden="false"
-                                aria-label="Example home icon"
-                                >star</mat-icon
-                            >
-                            <mat-icon
-                                aria-hidden="false"
-                                aria-label="Example home icon"
-                                >star</mat-icon
-                            >
-                            <mat-icon
-                                aria-hidden="false"
-                                aria-label="Example home icon"
-                                >star_border</mat-icon
-                            >
-                        </p>
-                        <p *ngIf="rating.starsRating === 5">
-                            <mat-icon
-                                aria-hidden="false"
-                                aria-label="Example home icon"
-                                >star</mat-icon
-                            >
-                            <mat-icon
-                                aria-hidden="false"
-                                aria-label="Example home icon"
-                                >star</mat-icon
-                            >
-                            <mat-icon
-                                aria-hidden="false"
-                                aria-label="Example home icon"
-                                >star</mat-icon
-                            >
-                            <mat-icon
-                                aria-hidden="false"
-                                aria-label="Example home icon"
-                                >star</mat-icon
-                            >
-                            <mat-icon
-                                aria-hidden="false"
-                                aria-label="Example home icon"
-                                >star</mat-icon
-                            >
-                        </p>
-                        <!--       <div>
-                            
-
-                                        <mat-icon aria-hidden="false" aria-label="Example home icon" *ngIf="item.stars == 5">"star star star star star"</mat-icon>
-                        <mat-icon aria-hidden="false" aria-label="Example home icon" *ngIf="item.stars == 4">"star star star star star_border"</mat-icon>
-                        <mat-icon aria-hidden="false" aria-label="Example home icon" *ngIf="item.stars == 3">"star star star  star_border star_border"</mat-icon>
-                        <mat-icon aria-hidden="false" aria-label="Example home icon" *ngIf="item.stars == 2">"star star  star_border star_border star_border"</mat-icon>
-                        <mat-icon aria-hidden="false" aria-label="Example home icon" *ngIf="item.stars == 1">"star  star_border star_border star_border star_border"</mat-icon>
-                        <mat-icon aria-hidden="false" aria-label="Example home icon" *ngIf="item.stars == 0">"star_border star_border star_border star_border star_border"</mat-icon>
-                        
-                            
-                        </div> -->
                     </mat-grid-tile>
-                    <mat-grid-tile
-                        ><span style="font-size: 30px; font-weight: 800"
-                            >{{ rating.price }} €</span
-                        ></mat-grid-tile
-                    >
                 </mat-grid-list>
             </mat-card>
         </div>

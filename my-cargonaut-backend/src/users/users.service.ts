@@ -53,10 +53,11 @@ export class UsersService {
     }
 
     async addProfilePicture(id: number, path: string) {
-        return await getConnection().createQueryBuilder()
+        return await getConnection()
+            .createQueryBuilder()
             .update(User)
-            .set({ profilePicturePath: path})
-            .where("id = :id", {id})
+            .set({ profilePicturePath: path })
+            .where("id = :id", { id })
             .execute();
     }
 }

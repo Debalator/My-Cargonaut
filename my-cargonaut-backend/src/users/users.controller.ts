@@ -17,6 +17,8 @@ import { UpdateUserDto } from "./dto/update-user.dto";
 import { JwtAuthGuard } from "src/auth/jwt-auth.guard";
 import { OrdersService } from "../orders/orders.service";
 import { FileInterceptor } from "@nestjs/platform-express";
+import { diskStorage } from "multer";
+import { editFileName, imageFileFilter } from "./file-upload.utils";
 
 @Controller("users")
 export class UsersController {
@@ -65,8 +67,21 @@ export class UsersController {
 
     @UseGuards(JwtAuthGuard)
     @Post("upload")
-    @UseInterceptors(FileInterceptor('file', { dest: 'uploads/', limits: { fileSize: 10000000}})) //fileSize 10000000 Bytes = 10 MB
-    uploadProfilePicture(@Request() req, @UploadedFile() file: Express.Multer.File) {
-        return this.usersService.addProfilePicture(req.user.id, file.path)
+    @UseInterceptors(
+        FileInterceptor("file", {
+            dest: "uploads/",
+            storage: diskStorage({
+                destination: "uploads/",
+                filename: editFileName,
+            }),
+            fileFilter: imageFileFilter,
+            limits: { fileSize: 10000000 }, //fileSize 10000000 Bytes = 10 MB
+        })
+    )
+    uploadProfilePicture(
+        @Request() req,
+        @UploadedFile() file: Express.Multer.File
+    ) {
+        return this.usersService.addProfilePicture(req.user.id, file.path);
     }
 }

@@ -1,24 +1,24 @@
 <h1 mat-dialog-title>Fahrzeug bearbeiten</h1>
 <div mat-dialog-content>
     <mat-form-field appearance="fill">
-        <input matInput [(ngModel)]="brand" placeholder="Marke" required />
+        <input matInput [(ngModel)]="this.brand" placeholder="Marke" required />
     </mat-form-field>
 </div>
 <div mat-dialog-content>
     <mat-form-field appearance="fill">
-        <input matInput [(ngModel)]="model" placeholder="Modell" required />
+        <input matInput [(ngModel)]="this.model" placeholder="Modell" required />
     </mat-form-field>
 </div>
 <div mat-dialog-content>
     <mat-form-field appearance="fill">
-        <input matInput [(ngModel)]="seats" placeholder="Sitzplätze" required />
+        <input matInput [(ngModel)]="this.seats" placeholder="Sitzplätze" required />
     </mat-form-field>
 </div>
 <div mat-dialog-content>
     <mat-form-field appearance="fill">
         <input
             matInput
-            [(ngModel)]="loadingArea"
+            [(ngModel)]="this.loadingArea"
             placeholder="Ladefläche"
             required
         />

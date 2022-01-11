@@ -59,7 +59,7 @@ const routes: Routes = [
     {
         path: '',
         pathMatch: 'full',
-        component: CarManagementComponent,
+        component: LoginPageComponent,
     },
     {
         path: 'login',

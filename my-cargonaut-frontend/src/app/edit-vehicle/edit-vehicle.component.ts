@@ -1,50 +1,55 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { ApiService } from '../api/api.service';
+import { MatSnackBar } from "@angular/material/snack-bar";
 
 @Component({
-    selector: 'app-edit-vehicle',
-    templateUrl: './edit-vehicle.component.html',
-    styleUrls: ['./edit-vehicle.component.scss'],
+  selector: "app-edit-vehicle",
+  templateUrl: "./edit-vehicle.component.html",
+  styleUrls: ["./edit-vehicle.component.scss"],
 })
-export class EditVehicleComponent implements OnInit {
-    brand = '';
-    model = '';
-    seats = 0;
-    loadingArea = 0;
+export class EditVehicleComponent {
+  brand = null;
+  model = null;
+  seats = null;
+  loadingArea = null;
 
-    constructor(
-        public api: ApiService,
-        public dialogRef: MatDialogRef<EditVehicleComponent>,
-        @Inject(MAT_DIALOG_DATA) public data: { car: any }
-    ) {}
+  constructor(
+    private snackbar: MatSnackBar,
+    public api: ApiService,
+    public dialogRef: MatDialogRef<EditVehicleComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: { carid: any }
+  ) {
+  }
 
-    onNoClick(): void {
-        this.dialogRef.close();
-    }
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
 
-    saveCar() {
-        console.log('Car saved');
+  saveCar() {
+    console.log('Car saved');
+    console.log(this.data.carid);
 
-        this.api
-            .patch(`api/vehicles/${this.data.car.id}`, {
-                brand: this.brand,
-                model: this.model,
-                seats: this.seats,
-                loadingArea: this.loadingArea,
-            })
-            .subscribe((order) => {
-                this.dialogRef.close(order);
-            });
-    }
+    //   this.api.get(`api/vehicles/${this.data.carid}`).subscribe({
+    //   next: (res: any) => {
+    //     if (this.brand == null) this.brand = res.brand;
+    //     if (this.model == null) this.model = res.model;
+    //     if (this.seats == null) this.seats = res.seats;
+    //     if (this.loadingArea == null) this.loadingArea = res.loadingArea;
+    //   },
+    //   error: (e: any) => console.error('get vehicles' + e),
+    //   complete: () => console.info('complete'),
+    // });
 
-    //TODO!!!
-    ngOnInit(): void {
-        this.api.get(`/api/vehicles/${this.data.car.id}`, (thiscar: any) => {
-            this.brand = thiscar.brand;
-            this.model = thiscar.model;
-            this.seats = thiscar.seats;
-            this.loadingArea = thiscar.loadingArea;
-        });
-    }
+    this.api
+      .patch(`api/vehicles/${this.data.carid}`, {
+        brand: this.brand,
+        model: this.model,
+        seats: this.seats,
+        loadingArea: this.loadingArea,
+      })
+      .subscribe((order) => {
+        this.dialogRef.close(order);
+      });
+  }
 }

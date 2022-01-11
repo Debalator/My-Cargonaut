@@ -44,11 +44,11 @@ export class LoginPageComponent implements OnInit {
             .post('/api/auth/login', { username: username, password: password })
             .subscribe({
                 next: (res: any) => {
-                    //console.log(res);
-                    this.loginService.jwt = res.access_token;
-                    console.log("hello");
-                    this.router.navigateByUrl('/');
-                    //window.localStorage.setItem('jwt', res.access_token);
+                    const { id, access_token } = res;
+                    this.loginService.jwt = access_token;
+                    this.loginService.id = id;
+                    this.loginService.username = username;
+                  this.router.navigateByUrl('/');
                 },
                 error: (e: any) => console.error(e),
                 complete: () => console.info('complete'),

@@ -5,13 +5,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { ApiService } from '../api/api.service';
 import { interval, Subscription, switchMap } from 'rxjs';
 import { EditVehicleComponent } from '../edit-vehicle/edit-vehicle.component';
-
-export interface Car {
-    brand: string;
-    model: string;
-    seats: number;
-    loadingArea: number;
-}
+import { ActivatedRoute } from "@angular/router";
 
 @Component({
     selector: 'app-car-management',
@@ -19,10 +13,7 @@ export interface Car {
     styleUrls: ['./car-management.component.scss'],
 })
 export class CarManagementComponent implements OnInit {
-    cars: Car[] = [
-        { brand: 'Audi', model: 'Q7', seats: 3, loadingArea: 20 },
-        { brand: 'Seat', model: 'Ibiza', seats: 2, loadingArea: 5 },
-    ];
+    cars: any[] = [];
 
     brand!: string;
     model!: string;
@@ -30,6 +21,7 @@ export class CarManagementComponent implements OnInit {
     loadingArea!: number;
 
     constructor(
+      private route: ActivatedRoute,
         private dialog: MatDialog,
         private snackbar: MatSnackBar,
         private api: ApiService
@@ -51,6 +43,7 @@ export class CarManagementComponent implements OnInit {
         });
 
         dialogRef.afterClosed().subscribe((result) => {
+          console.log(result);
             if (
                 result.brand == null ||
                 result.model == null ||
@@ -71,7 +64,9 @@ export class CarManagementComponent implements OnInit {
                     loadingArea: result.loadingArea,
                 });
 
+
                 this.renderList();
+                // window.location.reload();
             }
         });
     }
@@ -102,12 +97,17 @@ export class CarManagementComponent implements OnInit {
             });
 
             this.renderList();
+            window.location.reload();
         });
     }
 
     deleteVehicle() {
-        this.api.delete('/api/vehicles/:id', {});
+      this.route.params.subscribe( (params) => {
+        const carID = +params['id'];
+        this.api.delete(`/api/vehicles/${carID}`, {});
         this.renderList();
+      })
+
     }
 
     renderList() {

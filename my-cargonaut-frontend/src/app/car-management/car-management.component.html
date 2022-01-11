@@ -6,6 +6,9 @@
     <button id="addCar" mat-raised-button (click)="addVehicle()">Add</button>
 </div>
 <div fxLayout="row wrap">
+<!--  <h3 *ngIf="!cars.length" style="text-align: center">-->
+<!--    Keine Fahrzeuge vorhanden!-->
+<!--  </h3>-->
     <mat-card *ngFor="let obj of cars" fxFlex="100%">
         <mat-grid-list cols="6" rowHeight="50px">
             <mat-grid-tile colspan="1" rowspan="2">

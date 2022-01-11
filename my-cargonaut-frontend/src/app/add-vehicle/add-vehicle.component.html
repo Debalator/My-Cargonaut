@@ -3,7 +3,7 @@
     <mat-form-field appearance="fill">
         <input
             matInput
-            [(ngModel)]="dataVehicle.brand"
+            [(ngModel)]="brand"
             placeholder="Marke"
             required
         />
@@ -14,7 +14,7 @@
     <mat-form-field appearance="fill">
         <input
             matInput
-            [(ngModel)]="dataVehicle.model"
+            [(ngModel)]="model"
             placeholder="Modell"
             required
         />
@@ -25,7 +25,7 @@
     <mat-form-field appearance="fill">
         <input
             matInput
-            [(ngModel)]="dataVehicle.seats"
+            [(ngModel)]="seats"
             placeholder="Sitzplätze"
             required
         />
@@ -36,7 +36,7 @@
     <mat-form-field appearance="fill">
         <input
             matInput
-            [(ngModel)]="dataVehicle.loadingArea"
+            [(ngModel)]="loadingArea"
             placeholder="Ladefläche"
             required
         />
@@ -44,7 +44,7 @@
 </div>
 <div mat-dialog-actions>
     <button mat-raised-button (click)="onNoClick()">Zurück</button>
-    <button mat-raised-button [mat-dialog-close]="dataVehicle">
+    <button mat-raised-button (click)="saveCar()" cdkFocusInitial>
         Hinzufügen
     </button>
 </div>

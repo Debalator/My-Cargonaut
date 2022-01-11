@@ -35,7 +35,7 @@ export class RegisterPageComponent implements OnInit {
         console.log(username, password, birthdate, email);
 
         this.api
-            .post('/users', {
+            .post('/api/users', {
                 username: username,
                 birthDate: birthdate,
                 mail: email,

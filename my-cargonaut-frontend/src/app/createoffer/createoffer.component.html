@@ -118,9 +118,7 @@
                     placeholder="Fahrzeug *"
                     required
                 >
-                    <mat-option value="primary">Audi Q7</mat-option>
-                    <mat-option value="accent">BMW X1</mat-option>
-                    <mat-option value="warn">Seat Ibiza</mat-option>
+                    <mat-option *ngFor="let vehicle of vehicles">{{vehicle.brand}} {{vehicle.model}}</mat-option>
                 </mat-select>
             </mat-form-field>
         </mat-grid-tile>

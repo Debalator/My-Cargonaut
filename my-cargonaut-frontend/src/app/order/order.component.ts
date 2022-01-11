@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute } from '@angular/router';
 import { ApiService } from '../api/api.service';
+import { LoginServiceService } from '../login-page/login-service.service';
 
 @Component({
     selector: 'app-order',
@@ -17,7 +18,8 @@ export class OrderComponent implements OnInit {
     constructor(
         private route: ActivatedRoute,
         private api: ApiService,
-        private snackbar: MatSnackBar
+        private snackbar: MatSnackBar,
+        public loginService: LoginServiceService
     ) {}
 
     ngOnInit(): void {

@@ -65,6 +65,7 @@ import {
     MatSpinner,
 } from '@angular/material/progress-spinner';
 import { RatingComponent } from './rating/rating.component';
+import { ProfilePictureUploadDialogComponent } from './profile-view/profile-picture-upload-dialog/profile-picture-upload-dialog.component';
 
 @NgModule({
     declarations: [
@@ -96,6 +97,7 @@ import { RatingComponent } from './rating/rating.component';
         OfferComponent,
         RequestComponent,
         RatingComponent,
+        ProfilePictureUploadDialogComponent,
     ],
     imports: [
         BrowserModule,

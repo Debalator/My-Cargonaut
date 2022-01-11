@@ -1,4 +1,13 @@
-<google-map [center]="position">
-    <map-marker [position]="position">
+<google-map
+    [center]="{ lat: +this.location.latitude, lng: +this.location.longitude }"
+    [height]="300"
+    [width]="600"
+>
+    <map-marker
+        [position]="{
+            lat: +this.location.latitude,
+            lng: +this.location.longitude
+        }"
+    >
     </map-marker>
 </google-map>

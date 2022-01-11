@@ -45,6 +45,22 @@
             </mat-form-field>
         </div>
 
+        <div *ngIf="order.status === 'shipped'">
+            <h3>Tracking</h3>
+            <p>Aktualisiert: {{ order.location.updated | date: "medium" }}</p>
+            <app-order-tracking
+                [location]="order.location"
+            ></app-order-tracking>
+            <button
+                mat-raised-button
+                color="primary"
+                (click)="updateLocation()"
+                style="margin-top: 8px"
+            >
+                Update
+            </button>
+        </div>
+
         <h3>Angebot</h3>
         <app-offer [offer]="order.offer"></app-offer>
 

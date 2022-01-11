@@ -10,6 +10,7 @@ import {
     Request,
     UseInterceptors,
     UploadedFile,
+    Res,
 } from "@nestjs/common";
 import { UsersService } from "./users.service";
 import { CreateUserDto } from "./dto/create-user.dto";
@@ -82,6 +83,11 @@ export class UsersController {
         @Request() req,
         @UploadedFile() file: Express.Multer.File
     ) {
-        return this.usersService.addProfilePicture(req.user.id, file.path);
+        return this.usersService.addProfilePicture(req.user.id, `/api/users/image${file.filename}`);
+    }
+
+    @Get("image/:name")
+    getProfilePicture(@Param('name') image, @Res() res) {
+        return res.sendFile(image, { root: './uploads'});
     }
 }

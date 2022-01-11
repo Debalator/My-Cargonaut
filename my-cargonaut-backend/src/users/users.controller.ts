@@ -8,12 +8,15 @@ import {
     Delete,
     UseGuards,
     Request,
+    UseInterceptors,
+    UploadedFile,
 } from "@nestjs/common";
 import { UsersService } from "./users.service";
 import { CreateUserDto } from "./dto/create-user.dto";
 import { UpdateUserDto } from "./dto/update-user.dto";
 import { JwtAuthGuard } from "src/auth/jwt-auth.guard";
 import { OrdersService } from "../orders/orders.service";
+import { FileInterceptor } from "@nestjs/platform-express";
 
 @Controller("users")
 export class UsersController {
@@ -58,5 +61,12 @@ export class UsersController {
     @Get(":id/ratings")
     getRatings(@Param("id") id: number) {
         return this.orderService.findRatingsByUser(id);
+    }
+
+    @UseGuards(JwtAuthGuard)
+    @Post("upload")
+    @UseInterceptors(FileInterceptor('file', { dest: 'uploads/', limits: { fileSize: 10000000}})) //fileSize 10000000 Bytes = 10 MB
+    uploadProfilePicture(@Request() req, @UploadedFile() file: Express.Multer.File) {
+        return this.usersService.addProfilePicture(req.user.id, file.path)
     }
 }

@@ -4,54 +4,70 @@
 <!-- <app-profile-view [user]="exampleUser1" [ratings]="exampleRatings"></app-profile-view> -->
 
 <div class="mat-app-background" style="min-height: 100vh">
-    <!--Navbar-->
-    <mat-toolbar>
-        <!--Logo-->
-        <a mat-button routerLink=""
-            ><img src="/assets/logo.png" class="logo"
-        /></a>
-        <span class="spacer"></span>
+  <!--Navbar-->
+  <mat-toolbar>
+    <!--Logo-->
+    <a mat-button routerLink=""
+    ><img src="/assets/logo.png" class="logo"
+    /></a>
+    <span class="spacer"></span>
 
-        <!--Links when not on mobile-->
-        <div fxShow="true" fxHide.lt-md="true">
-            <a mat-button routerLink="offers">Angebote</a>
-            <a mat-button routerLink="requests">Anfragen</a>
-            <a mat-button routerLink="createrequest">Anfrage anlegen</a>
-            <a mat-button routerLink="createoffer">Angebot anlegen</a>
-            <a mat-button routerLink="orders">Transaktionen</a>
-            <a mat-raised-button routerLink="login" color="primary">Login</a>
-        </div>
-
-        <!--burger menu when on mobile-->
-        <div fxShow="true" fxHide.gt-sm="true">
-            <a mat-button href="#" (click)="sidenav.toggle()" class="menu"
-                ><mat-icon>menu</mat-icon></a
-            >
-        </div>
-    </mat-toolbar>
-
-    <mat-sidenav-container (backdropClick)="sidenav.close()">
-        <!--Sidenav when on mobile-->
-        <mat-sidenav
-            #sidenav
-            fxLayout="column"
-            mode="side"
-            position="end"
-            opened="false"
+    <!--Links when not on mobile-->
+    <div fxShow="true" fxHide.lt-md="true">
+      <a mat-button routerLink="offers">Angebote</a>
+      <a mat-button routerLink="requests">Anfragen</a>
+      <a mat-button routerLink="createrequest">Anfrage anlegen</a>
+      <a mat-button routerLink="createoffer">Angebot anlegen</a>
+      <a mat-button routerLink="orders">Transaktionen</a>
+      <ng-container *ngIf="(isLoggedIn() | async) === false">
+        <a mat-raised-button routerLink="login" color="primary"
+        >Login</a
         >
-            <div fxLayout="column">
-                <!--Links when on mobile-->
-                <a mat-button routerLink="create_offer">Angebot suchen</a>
-                <a mat-button routerLink="suche">Angebot anlegen</a>
-                <a mat-raised-button routerLink="login" color="primary"
-                    >Login</a
-                >
-            </div>
-        </mat-sidenav>
-        <mat-sidenav-content>
-            <!--Main Content-->
-            <router-outlet></router-outlet>
-        </mat-sidenav-content>
-    </mat-sidenav-container>
-    <app-footer></app-footer>
+      </ng-container>
+      <ng-container *ngIf="isLoggedIn() | async">
+        <a mat-button routerLink="profil" color="primary">
+          <img class="profile" [src]="profilePicturePath" />
+        </a>
+      </ng-container>
+    </div>
+
+    <!--burger menu when on mobile-->
+    <div fxShow="true" fxHide.gt-sm="true">
+      <a mat-button href="#" (click)="sidenav.toggle()" class="menu"
+      ><mat-icon>menu</mat-icon></a
+      >
+    </div>
+  </mat-toolbar>
+
+  <mat-sidenav-container (backdropClick)="sidenav.close()">
+    <!--Sidenav when on mobile-->
+    <mat-sidenav
+      #sidenav
+      fxLayout="column"
+      mode="side"
+      position="end"
+      opened="false"
+    >
+      <div fxLayout="column">
+        <!--Links when on mobile-->
+        <a mat-button routerLink="create_offer">Angebot suchen</a>
+        <a mat-button routerLink="suche">Angebot anlegen</a>
+        <ng-container *ngIf="(isLoggedIn() | async) === false">
+          <a mat-raised-button routerLink="login" color="primary"
+          >Login</a
+          >
+        </ng-container>
+        <ng-container *ngIf="isLoggedIn() | async">
+          <a mat-button routerLink="profil" color="primary">
+            <img class="profile" [src]="profilePicturePath" />
+          </a>
+        </ng-container>
+      </div>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <!--Main Content-->
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+  <app-footer></app-footer>
 </div>

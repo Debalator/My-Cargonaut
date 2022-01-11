@@ -23,7 +23,8 @@ export class LoginPageComponent implements OnInit {
     constructor(
         private api: ApiService,
         private formBuilder: FormBuilder,
-        private loginService: LoginServiceService
+        private loginService: LoginServiceService,
+        private router : Router
     ) {}
 
     loginForm = new FormGroup({
@@ -45,6 +46,8 @@ export class LoginPageComponent implements OnInit {
                 next: (res: any) => {
                     //console.log(res);
                     this.loginService.jwt = res.access_token;
+                    console.log("hello");
+                    this.router.navigateByUrl('/');
                     //window.localStorage.setItem('jwt', res.access_token);
                 },
                 error: (e: any) => console.error(e),

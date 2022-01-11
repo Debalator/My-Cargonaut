@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Observable, map } from 'rxjs';
 import { ApiService } from './api/api.service';
 import { LoginServiceService } from './login-page/login-service.service';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-root',
@@ -72,7 +73,8 @@ export class AppComponent implements OnInit {
 
     constructor(
         private loginService: LoginServiceService,
-        private api: ApiService
+        private api: ApiService,
+        private router: Router
     ) {}
 
     ngOnInit(): void {
@@ -91,5 +93,10 @@ export class AppComponent implements OnInit {
                 return value != '';
             })
         );
+    }
+
+    logout() {
+        this.loginService.clear();
+        this.router.navigate(['/']);
     }
 }

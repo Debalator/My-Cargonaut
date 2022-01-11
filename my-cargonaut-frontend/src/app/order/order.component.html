@@ -45,7 +45,7 @@
             </mat-form-field>
         </div>
 
-        <div *ngIf="order.status == 'shipped'">
+        <div *ngIf="order.status === 'shipped'">
             <h3>Tracking</h3>
             <p>Aktualisiert: {{ order.location.updated | date: "medium" }}</p>
             <app-order-tracking

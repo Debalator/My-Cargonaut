@@ -64,6 +64,8 @@ import {
     MatProgressSpinnerModule,
     MatSpinner,
 } from '@angular/material/progress-spinner';
+import { GoogleMapsModule } from '@angular/google-maps';
+import { OrderTrackingComponent } from './order-tracking/order-tracking.component'
 
 @NgModule({
     declarations: [
@@ -94,6 +96,7 @@ import {
         OrderComponent,
         OfferComponent,
         RequestComponent,
+        OrderTrackingComponent,
     ],
     imports: [
         BrowserModule,
@@ -122,6 +125,7 @@ import {
         MatListModule,
         MatProgressSpinnerModule,
         BrowserAnimationsModule,
+        GoogleMapsModule,
     ],
     providers: [],
     bootstrap: [AppComponent],

@@ -53,7 +53,7 @@ export class Order {
     offer: Offer;
 
     @OneToOne(() => Location, {
-        onDelete: "CASCADE",
+        onDelete: "SET NULL",
     })
     @JoinColumn()
     location: Location;

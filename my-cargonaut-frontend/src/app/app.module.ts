@@ -66,6 +66,7 @@ import {
 } from '@angular/material/progress-spinner';
 import { GoogleMapsModule } from '@angular/google-maps';
 import { OrderTrackingComponent } from './order-tracking/order-tracking.component'
+import { RatingComponent } from './rating/rating.component';
 
 @NgModule({
     declarations: [
@@ -97,6 +98,7 @@ import { OrderTrackingComponent } from './order-tracking/order-tracking.componen
         OfferComponent,
         RequestComponent,
         OrderTrackingComponent,
+        RatingComponent,
     ],
     imports: [
         BrowserModule,

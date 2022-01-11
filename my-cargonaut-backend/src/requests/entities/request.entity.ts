@@ -47,7 +47,7 @@ export class Request {
     created: Date;
 
     @ManyToOne(() => User, (user) => user.requests, {
-        onDelete: "RESTRICT",
+        onDelete: "CASCADE",
     })
     public creator: User;
 

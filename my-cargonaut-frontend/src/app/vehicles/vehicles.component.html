@@ -1,5 +1,5 @@
 <mat-form-field appearance="fill">
-    <mat-label>Select</mat-label>
+    <mat-label>Fahrzeug</mat-label>
     <mat-select (selectionChange)="onChange($event.value)">
         <mat-option *ngFor="let vehicle of vehicles" [value]="vehicle.id">
             {{ vehicle.brand }} {{ vehicle.model }} ({{ vehicle.seats }} seats /

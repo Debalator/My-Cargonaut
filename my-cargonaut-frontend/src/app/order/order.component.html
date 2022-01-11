@@ -1,17 +1,55 @@
 <div class="page">
-  <mat-progress-spinner mode="indeterminate" class="spinner" *ngIf="isLoading">
-  </mat-progress-spinner>
-  <div *ngIf="!isLoading">
-    <h2>Bestellung vom {{order.created}}]</h2>
-    <ul>
-      <li>Status: {{order.status}}</li>
-      <li>Käufer: {{order.creator.username}}</li>
-    </ul>
-    <h3>Angebot</h3>
-    <app-offer [offer]="order.offer"></app-offer>
+    <mat-progress-spinner
+        mode="indeterminate"
+        class="spinner"
+        *ngIf="isLoading"
+    >
+    </mat-progress-spinner>
+    <div *ngIf="!isLoading">
+        <h1>Bestellung #{{ order.id }}</h1>
 
-    <h3>Anfrage</h3>
-    <app-request [request]="order.request"></app-request>
-  </div>
+        <div style="display: flex">
+            <mat-form-field
+                class="example-full-width"
+                appearance="fill"
+                style="margin-right: 8px"
+            >
+                <mat-label>Käufer</mat-label>
+                <input matInput disabled [value]="order.creator.username" />
+            </mat-form-field>
+            <mat-form-field
+                style="margin-right: 8px"
+                class="example-full-width"
+                appearance="fill"
+            >
+                <mat-label>Datum</mat-label>
+                <input
+                    matInput
+                    disabled
+                    [value]="order.created | date: 'short'"
+                />
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+                <mat-label>Status</mat-label>
+                <mat-select
+                    (selectionChange)="onStatusChange($event.value)"
+                    [value]="order.status"
+                >
+                    <mat-option
+                        *ngFor="let status of statusList"
+                        [value]="status"
+                    >
+                        {{ status | uppercase }}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+
+        <h3>Angebot</h3>
+        <app-offer [offer]="order.offer"></app-offer>
+
+        <h3>Anfrage</h3>
+        <app-request [request]="order.request"></app-request>
+        <app-rating [order]="order"></app-rating>
+    </div>
 </div>
-

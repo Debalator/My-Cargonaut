@@ -24,7 +24,11 @@ export class CreaterequestComponent {
         private dialog: MatDialog
     ) {}
 
-    itemsInput: DialogData[] = [{ description: 'Koffer', size: 5, weight: 3 }];
+    itemsInput: DialogData[] = [
+        { description: 'Koffer', size: 5, weight: 3 },
+        { description: 'Rucksack', size: 5, weight: 3 },
+    ];
+    items!: any[];
 
     description!: string;
     size!: number;
@@ -59,14 +63,20 @@ export class CreaterequestComponent {
             this.requestForm.value.destCountry == null ||
             this.requestForm.value.startDate == null ||
             this.requestForm.value.stopDate == null ||
-            this.requestForm.value.priceInput ==
-                null /*|| this.requestForm.value.items == null */ ||
+            this.requestForm.value.priceInput == null ||
             this.requestForm.value.persons == null
         ) {
             this.snackbar.open('Alle benötigten Felder ausfüllen!', '', {
                 duration: 2000,
             });
         } else {
+            // for (let i = 0; i < this.itemsInput.length; i++) {
+            //     this.items.append("{" +
+            //     "'description': this.requestForm.value.itemsInput[i].description, " +
+            //     "'size': this.requestForm.value.itemsInput[i].size, " +
+            //     "'weight': this.requestForm.value.itemsInput[i].weight" +
+            //     "},")
+            // }
             this.sendInput();
             this.requestForm.reset();
             this.snackbar.open(message, '', { duration: 2000 });
@@ -90,7 +100,7 @@ export class CreaterequestComponent {
                     city: this.requestForm.value.destCity,
                     country: this.requestForm.value.destCountry,
                 },
-                items: this.itemsInput.values(),
+                items: this.itemsInput,
             })
             .subscribe({
                 next: (res: any) => {

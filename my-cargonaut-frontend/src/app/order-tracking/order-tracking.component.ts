@@ -5,6 +5,7 @@ import { Component, Input, OnInit } from '@angular/core';
     templateUrl: './order-tracking.component.html',
     styleUrls: ['./order-tracking.component.scss'],
 })
+
 export class OrderTrackingComponent implements OnInit {
     constructor() {}
 
@@ -17,4 +18,5 @@ export class OrderTrackingComponent implements OnInit {
     };
 
     ngOnInit(): void {}
+
 }

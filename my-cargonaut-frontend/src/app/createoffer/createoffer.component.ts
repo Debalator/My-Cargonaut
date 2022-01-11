@@ -24,6 +24,10 @@ export class CreateofferComponent implements OnInit {
 
     dataSend = false;
 
+    vehicles: any[] = [];
+    // brand?: string;
+    // model?: string;
+
     checkoutForm = new FormGroup({
         startZip: new FormControl(),
         startCity: new FormControl(),
@@ -54,9 +58,7 @@ export class CreateofferComponent implements OnInit {
             this.checkoutForm.value.startDate == null ||
             this.checkoutForm.value.stopDate == null ||
             this.checkoutForm.value.priceInput == null ||
-            this.checkoutForm.value.spaceInput == null ||
-            this.checkoutForm.value.seatsInput ==
-                null /* && this.checkoutForm.value.vehicleInput != null */
+            this.checkoutForm.value.vehicleInput == null
         ) {
             this.snackbar.open('Alle benötigten Felder ausfüllen!', '', {
                 duration: 2000,
@@ -68,8 +70,6 @@ export class CreateofferComponent implements OnInit {
             this.snackbar.open(message, '', { duration: 2000 });
         }
     }
-
-    //TODO: missing vehicle
 
     public sendInput() {
         this.api
@@ -104,5 +104,17 @@ export class CreateofferComponent implements OnInit {
 
     ngOnInit() {
         this.checkoutForm;
+        this.getVehicles();
+    }
+
+    getVehicles() {
+        this.api.get('/api/vehicles').subscribe({
+            next: (res: any) => {
+                console.log(res);
+                this.vehicles = res;
+            },
+            error: (e: any) => console.error('get vehicles' + e),
+            complete: () => console.info('complete'),
+        });
     }
 }

@@ -7,9 +7,13 @@
     <mat-grid-tile colspan="1" rowspan="3">
         <div>
             <img
-                src="https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50?s=400"
-                style="border-radius: 1000px; max-width: 100%"
+                [src]="user.profilePicturePath"
+                style="border-radius: 50%; max-width: 100%"
             />
+
+            <button mat-raised-button (click)="openUploadImage()">
+                Profilbild Hochladen
+            </button>
 
             <p style="text-align: center">
                 <mat-icon aria-hidden="false" aria-label="Example home icon"
@@ -39,11 +43,11 @@
             </p>
             <p style="text-align: center">
                 E-Mail:<br />
-                {{ user.email }}
+                {{ user.mail }}
             </p>
             <p style="text-align: center">
                 Geburtsdatum:<br />
-                {{ user.birthdate }}
+                {{ user.birthDate }}
             </p>
             <p style="text-align: center">
                 {{ user.numberOfRatings }} Bewertungen

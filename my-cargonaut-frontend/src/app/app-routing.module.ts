@@ -13,6 +13,7 @@ import { OffersComponent } from './offers/offers.component';
 import { RequestsComponent } from './requests/requests.component';
 import { OrdersComponent } from './orders/orders.component';
 import { OrderComponent } from './order/order.component';
+import { ProfileViewComponent } from './profile-view/profile-view.component';
 
 const routes: Routes = [
     {
@@ -69,6 +70,7 @@ const routes: Routes = [
         component: RegisterPageComponent,
     },
     { path: 'cars', component: CarManagementComponent },
+    { path: 'profil', component: ProfileViewComponent },
 ];
 
 @NgModule({

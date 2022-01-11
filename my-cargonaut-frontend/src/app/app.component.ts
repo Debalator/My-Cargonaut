@@ -1,11 +1,14 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Observable, map } from 'rxjs';
+import { ApiService } from './api/api.service';
+import { LoginServiceService } from './login-page/login-service.service';
 
 @Component({
     selector: 'app-root',
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.scss'],
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
     title = 'MyCargonaut';
 
     //Delete these example items later
@@ -64,4 +67,29 @@ export class AppComponent {
             price: '3',
         },
     ];
+
+    profilePicturePath!: string;
+
+    constructor(
+        private loginService: LoginServiceService,
+        private api: ApiService
+    ) {}
+
+    ngOnInit(): void {
+        this.api
+            .get('/api/profile')
+            .subscribe(
+                (user) =>
+                    (this.profilePicturePath =
+                        user.profilePicturePath || '/assets/default.jpg')
+            );
+    }
+
+    isLoggedIn(): Observable<boolean> {
+        return this.loginService.jwtValue.pipe(
+            map((value: string) => {
+                return value != '';
+            })
+        );
+    }
 }

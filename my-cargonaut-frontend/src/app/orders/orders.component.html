@@ -1,39 +1,35 @@
 <div class="page">
-  <h2>
-    Meine Angebote
-  </h2>
-  <div class="offers">
-    <div *ngFor="let order of offers">
-      <app-offer [offer]="order.offer">
-        <mat-card-actions>
-          <button
-            mat-button
-            color="primary"
-            (click)="openOrder(order.id)"
-          >
-            Details
-          </button>
-        </mat-card-actions>
-      </app-offer>
+    <h2>Meine Angebote</h2>
+    <div class="offers">
+        <div *ngFor="let order of offers">
+            <app-offer [offer]="order.offer">
+                <mat-card-actions>
+                    <button
+                        mat-button
+                        color="primary"
+                        (click)="openOrder(order.id)"
+                    >
+                        Details
+                    </button>
+                </mat-card-actions>
+            </app-offer>
+        </div>
     </div>
-  </div>
 
-  <h2>
-    Meine Anfragen
-  </h2>
-  <div class="requests">
-    <div *ngFor="let order of requests">
-      <app-request [request]="order.request">
-        <mat-card-actions>
-          <button
-            mat-button
-            color="primary"
-            (click)="openOrder(order.id)"
-          >
-            Details
-          </button>
-        </mat-card-actions>
-      </app-request>
+    <h2>Meine Anfragen</h2>
+    <div class="requests">
+        <div *ngFor="let order of requests">
+            <app-request [request]="order.request">
+                <mat-card-actions>
+                    <button
+                        mat-button
+                        color="primary"
+                        (click)="openOrder(order.id)"
+                    >
+                        Details
+                    </button>
+                </mat-card-actions>
+            </app-request>
+        </div>
     </div>
-  </div>
 </div>

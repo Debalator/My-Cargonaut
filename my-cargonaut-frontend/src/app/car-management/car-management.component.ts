@@ -77,7 +77,12 @@ export class CarManagementComponent implements OnInit {
 
         const dialogRef = this.dialog.open(EditVehicleComponent, {
             width: '350px',
-            data: car,
+            data: { carid : id,
+            carbrand: car.brand,
+            carmodel: car.model,
+            carseats: car.seats,
+            carArea: car.loadingArea
+            },
         });
 
         dialogRef.afterClosed().subscribe((result) => {
@@ -99,12 +104,9 @@ export class CarManagementComponent implements OnInit {
         });
     }
 
-    deleteVehicle() {
-        this.route.params.subscribe((params) => {
-            const carID = +params['id'];
-            this.api.delete(`/api/vehicles/${carID}`, {});
+    deleteVehicle(id: number) {
+            this.api.delete(`/api/vehicles/${id}`);
             this.renderList();
-        });
     }
 
     renderList() {

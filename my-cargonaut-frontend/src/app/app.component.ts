@@ -77,11 +77,11 @@ export class AppComponent implements OnInit {
 
     ngOnInit(): void {
         this.api
-            .get('/api/users')
+            .get('/api/profile')
             .subscribe(
                 (user) =>
                     (this.profilePicturePath =
-                        user[0].profilePicturePath || '/assets/default.jpg')
+                        user.profilePicturePath || '/assets/default.jpg')
             );
     }
 

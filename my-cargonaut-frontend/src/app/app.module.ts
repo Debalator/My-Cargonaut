@@ -64,6 +64,8 @@ import {
     MatProgressSpinnerModule,
     MatSpinner,
 } from '@angular/material/progress-spinner';
+import { GoogleMapsModule } from '@angular/google-maps';
+import { OrderTrackingComponent } from './order-tracking/order-tracking.component'
 import { RatingComponent } from './rating/rating.component';
 
 @NgModule({
@@ -95,6 +97,7 @@ import { RatingComponent } from './rating/rating.component';
         OrderComponent,
         OfferComponent,
         RequestComponent,
+        OrderTrackingComponent,
         RatingComponent,
     ],
     imports: [
@@ -124,6 +127,7 @@ import { RatingComponent } from './rating/rating.component';
         MatListModule,
         MatProgressSpinnerModule,
         BrowserAnimationsModule,
+        GoogleMapsModule,
     ],
     providers: [],
     bootstrap: [AppComponent],

@@ -30,12 +30,30 @@ export class OrderComponent implements OnInit {
         });
     }
 
+    updateLocation() {
+        navigator.geolocation.getCurrentPosition((location) => {
+            const { latitude, longitude } = location.coords;
+            this.api
+                .put(`/api/orders/${this.order.id}/location`, {
+                    latitude,
+                    longitude,
+                })
+                .subscribe((res) => {
+                    this.order.location = res;
+                    this.snackbar.open('Tracking geupdated!', '', {
+                        duration: 2000,
+                    });
+                });
+        });
+    }
+
     onStatusChange(status: string) {
         this.api
             .patch(`/api/orders/${this.order.id}`, {
                 status,
             })
             .subscribe(() => {
+                this.order.status = status;
                 this.snackbar.open('Bestellstatus geändert!', '', {
                     duration: 2000,
                 });

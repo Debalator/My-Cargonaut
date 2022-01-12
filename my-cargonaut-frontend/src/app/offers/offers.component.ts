@@ -3,6 +3,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { ApiService } from '../api/api.service';
 import { OrderOfferComponent } from '../order-offer/order-offer.component';
+import { LoginServiceService } from '../login-page/login-service.service';
+import { map, Observable } from 'rxjs';
 
 @Component({
     selector: 'app-offers',
@@ -16,7 +18,8 @@ export class OffersComponent implements OnInit {
     constructor(
         private api: ApiService,
         public dialog: MatDialog,
-        private router: Router
+        private router: Router,
+        public loginService: LoginServiceService
     ) {}
 
     ngOnInit(): void {
@@ -25,6 +28,14 @@ export class OffersComponent implements OnInit {
             this.offers = res;
             this.isLoading = false;
         });
+    }
+
+    isLoggedIn(): Observable<boolean> {
+        return this.loginService.jwtValue.pipe(
+            map((value: string) => {
+                return value != '';
+            })
+        );
     }
 
     openDialog(offerID: number) {

@@ -71,7 +71,10 @@
         <h3>Anfrage</h3>
         <app-request [request]="order.request"></app-request>
         <app-rating
-            *ngIf="order.request.creator.id === +this.loginService.id"
+            *ngIf="
+                order.request.creator.id === +this.loginService.id &&
+                order.status === 'finished'
+            "
             [order]="order"
         ></app-rating>
     </div>

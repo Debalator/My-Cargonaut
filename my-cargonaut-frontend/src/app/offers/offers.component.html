@@ -11,15 +11,17 @@
     <div class="offers">
         <div *ngFor="let offer of offers">
             <app-offer [offer]="offer">
-                <mat-card-actions>
-                    <button
-                        mat-button
-                        color="primary"
-                        (click)="openDialog(offer.id)"
-                    >
-                        Buchen
-                    </button>
-                </mat-card-actions>
+                <div *ngIf="(this.isLoggedIn() | async) === true">
+                    <mat-card-actions>
+                        <button
+                            mat-button
+                            color="primary"
+                            (click)="openDialog(offer.id)"
+                        >
+                            Buchen
+                        </button>
+                    </mat-card-actions>
+                </div>
             </app-offer>
         </div>
     </div>

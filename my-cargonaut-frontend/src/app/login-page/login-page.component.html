@@ -1,4 +1,10 @@
-<mat-card style="background-color: aliceblue; margin: 60px auto; max-width:fit-content">
+<mat-card
+    style="
+        background-color: aliceblue;
+        margin: 60px auto;
+        max-width: fit-content;
+    "
+>
     <mat-card-title>Login</mat-card-title>
     <form class="loginform" [formGroup]="loginForm">
         <div class="row">
@@ -24,13 +30,11 @@
             </mat-form-field>
         </div>
 
-        <mat-card-actions
-            style="margin-bottom: 0; padding-bottom: 0"
-        >
+        <mat-card-actions style="margin-bottom: 0; padding-bottom: 0">
             <button mat-stroked-button color="primary" (click)="save()">
-                Login
+                Einloggen
             </button>
-            <a mat-stroked-button routerLink="/register">Register</a>
+            <a mat-stroked-button routerLink="/register">Registrieren</a>
         </mat-card-actions>
     </form>
 </mat-card>

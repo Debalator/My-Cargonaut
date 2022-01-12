@@ -8,7 +8,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
     templateUrl: './edit-vehicle.component.html',
     styleUrls: ['./edit-vehicle.component.scss'],
 })
-export class EditVehicleComponent {
+export class EditVehicleComponent implements OnInit {
     public car: any = {};
 
     constructor(

@@ -73,7 +73,7 @@ export class RegisterPageComponent implements OnInit {
                     this.loginService.jwt = res.access_token;
                     //window.localStorage.setItem('jwt', res.access_token);
                 },
-                error: (e: any) => console.error(e),
+                error: (e: any) => this.displayError(),
                 complete: () => {
                     console.info('complete');
                     this.router.navigateByUrl('/');

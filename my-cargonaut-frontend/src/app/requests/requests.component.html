@@ -11,13 +11,15 @@
     <div class="requests">
         <div *ngFor="let request of requests">
             <app-request [request]="request">
-                <button
-                    mat-button
-                    color="primary"
-                    (click)="openDialog(request.id)"
-                >
-                    Buchen
-                </button>
+                <div *ngIf="(this.isLoggedIn() | async) === true">
+                    <button
+                        mat-button
+                        color="primary"
+                        (click)="openDialog(request.id)"
+                    >
+                        Buchen
+                    </button>
+                </div>
             </app-request>
         </div>
     </div>

@@ -3,6 +3,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { ApiService } from '../api/api.service';
 import { OrderRequestComponent } from '../order-request/order-request.component';
+import { LoginServiceService } from '../login-page/login-service.service';
+import { map, Observable } from 'rxjs';
 
 @Component({
     selector: 'app-requests',
@@ -16,8 +18,17 @@ export class RequestsComponent implements OnInit {
     constructor(
         private api: ApiService,
         public dialog: MatDialog,
-        private router: Router
+        private router: Router,
+        public loginService: LoginServiceService
     ) {}
+
+    isLoggedIn(): Observable<boolean> {
+        return this.loginService.jwtValue.pipe(
+            map((value: string) => {
+                return value != '';
+            })
+        );
+    }
 
     ngOnInit(): void {
         this.api.get('/api/requests').subscribe((res) => {

@@ -111,21 +111,9 @@
         </mat-grid-tile>
 
         <mat-grid-tile>
-            <mat-form-field appearance="fill">
-                <mat-select
-                    id="vehicle"
-                    formControlName="vehicleInput"
-                    placeholder="Fahrzeug *"
-                    required
-                >
-                    <mat-option
-                        *ngFor="let vehicle of vehicles"
-                        [value]="vehicle"
-                        >{{ vehicle.brand }} {{ vehicle.model }}</mat-option
-                    >
-                    <!--                  <mat-option>{{vehicle.brand}} {{vehicle.model}}</mat-option>-->
-                </mat-select>
-            </mat-form-field>
+            <app-vehicles
+                (changeVehicleEvent)="applyVehicle($event)"
+            ></app-vehicles>
         </mat-grid-tile>
 
         <mat-grid-tile rowspan="1">
@@ -138,31 +126,6 @@
                 />
             </mat-form-field>
         </mat-grid-tile>
-
-        <!--        <mat-grid-tile colspan="3">-->
-        <!--            <mat-form-field id="spaceField" appearance="fill">-->
-        <!--                <input-->
-        <!--                    id="space"-->
-        <!--                    formControlName="spaceInput"-->
-        <!--                    matInput-->
-        <!--                    placeholder="Freie Ladefläche *"-->
-        <!--                    required-->
-        <!--                />-->
-        <!--                <mat-icon matSuffix>㎡</mat-icon>-->
-        <!--            </mat-form-field>-->
-        <!--        </mat-grid-tile>-->
-
-        <!--        <mat-grid-tile colspan="3">-->
-        <!--            <mat-form-field id="seatsField" appearance="fill">-->
-        <!--                <input-->
-        <!--                    id="seats"-->
-        <!--                    formControlName="seatsInput"-->
-        <!--                    matInput-->
-        <!--                    placeholder="Freie Sitze *"-->
-        <!--                    required-->
-        <!--                />-->
-        <!--            </mat-form-field>-->
-        <!--        </mat-grid-tile>-->
 
         <mat-grid-tile colspan="3">
             <mat-form-field appearance="fill">

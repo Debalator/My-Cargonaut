@@ -35,7 +35,7 @@
                     (selectionChange)="onStatusChange($event.value)"
                     [value]="order.status"
                     [disabled]="
-                        order.request.creator.id == this.loginService.id
+                        order.request.creator.id === +this.loginService.id
                     "
                 >
                     <mat-option
@@ -58,7 +58,7 @@
                 mat-raised-button
                 color="primary"
                 (click)="updateLocation()"
-                *ngIf="order.offer.creator.id == this.loginService.id"
+                *ngIf="order.offer.creator.id === +this.loginService.id"
                 style="margin-top: 8px"
             >
                 Update
@@ -71,7 +71,7 @@
         <h3>Anfrage</h3>
         <app-request [request]="order.request"></app-request>
         <app-rating
-            *ngIf="order.request.creator.id == this.loginService.id"
+            *ngIf="order.request.creator.id === +this.loginService.id"
             [order]="order"
         ></app-rating>
     </div>

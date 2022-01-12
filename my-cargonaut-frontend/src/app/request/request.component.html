@@ -5,7 +5,11 @@
         ({{ request.startAddress.country }}) - {{ request.destAddress.zip }}
         {{ request.destAddress.city }} ({{ request.destAddress.country }})
     </mat-card-title>
-    <mat-card-subtitle>{{ request.creator.username }}</mat-card-subtitle>
+    <mat-card-subtitle
+        class="link"
+        [routerLink]="'/users/' + request.creator.id"
+        >{{ request.creator.username }}</mat-card-subtitle
+    >
     <mat-card-content>
         <div>
             <mat-form-field
@@ -32,7 +36,11 @@
                 style="margin-right: 8px"
             >
                 <mat-label>Abfahrt</mat-label>
-                <input matInput disabled [value]="request.startDate" />
+                <input
+                    matInput
+                    disabled
+                    [value]="request.startDate | date: 'longDate'"
+                />
             </mat-form-field>
 
             <mat-form-field
@@ -41,7 +49,11 @@
                 style="margin-right: 8px"
             >
                 <mat-label>Ankunft</mat-label>
-                <input matInput disabled [value]="request.destDate" />
+                <input
+                    matInput
+                    disabled
+                    [value]="request.destDate | date: 'longDate'"
+                />
             </mat-form-field>
         </div>
 

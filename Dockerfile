@@ -12,7 +12,7 @@ RUN npm ci
 COPY ./my-cargonaut-frontend ./
 RUN npm run build
 
-FROM node:16
+FROM node:16-alpine
 WORKDIR /app
 COPY ./my-cargonaut-backend/package*.json ./
 COPY ./my-cargonaut-backend/ormconfig_docker.json ormconfig.json

@@ -24,10 +24,7 @@ export class CreaterequestComponent {
         private dialog: MatDialog
     ) {}
 
-    itemsInput: DialogData[] = [
-        { description: 'Koffer', size: 5, weight: 3 },
-        { description: 'Rucksack', size: 5, weight: 3 },
-    ];
+    itemsInput: DialogData[] = [];
     items!: any[];
 
     description!: string;

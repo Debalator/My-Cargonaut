@@ -26,6 +26,8 @@ services:
       - 3075:3000
     labels:
       - com.centurylinklabs.watchtower.enable=true
+    volumes:
+      - ./uploads:/uploads
 
 volumes:
   my_cargonaut_db:

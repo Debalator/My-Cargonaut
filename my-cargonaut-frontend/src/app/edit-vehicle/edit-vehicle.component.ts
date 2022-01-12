@@ -1,6 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { ApiService } from '../api/api.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
     selector: 'app-edit-vehicle',
@@ -8,43 +9,35 @@ import { ApiService } from '../api/api.service';
     styleUrls: ['./edit-vehicle.component.scss'],
 })
 export class EditVehicleComponent implements OnInit {
-    brand = '';
-    model = '';
-    seats = 0;
-    loadingArea = 0;
+    public car: any = {};
 
     constructor(
+        private snackbar: MatSnackBar,
         public api: ApiService,
         public dialogRef: MatDialogRef<EditVehicleComponent>,
         @Inject(MAT_DIALOG_DATA) public data: { car: any }
     ) {}
+
+    ngOnInit(): void {
+        this.car = this.data;
+    }
 
     onNoClick(): void {
         this.dialogRef.close();
     }
 
     saveCar() {
-        console.log('Car saved');
+        const { brand, model, seats, loadingArea } = this.car;
 
-        this.api
-            .patch(`api/vehicles/${this.data.car.id}`, {
-                brand: this.brand,
-                model: this.model,
-                seats: this.seats,
-                loadingArea: this.loadingArea,
-            })
-            .subscribe((order) => {
-                this.dialogRef.close(order);
+        if (!brand || !model || !seats || !loadingArea)
+            this.snackbar.open('Bitte alle Felder ausfüllen!', '', {
+                duration: 2000,
             });
-    }
-
-    //TODO!!!
-    ngOnInit(): void {
-        this.api.get(`/api/vehicles/${this.data.car.id}`, (thiscar: any) => {
-            this.brand = thiscar.brand;
-            this.model = thiscar.model;
-            this.seats = thiscar.seats;
-            this.loadingArea = thiscar.loadingArea;
-        });
+        else
+            this.api
+                .patch(`api/vehicles/${this.car.id}`, this.car)
+                .subscribe((res) => {
+                    this.dialogRef.close(res);
+                });
     }
 }

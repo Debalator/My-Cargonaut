@@ -68,6 +68,7 @@ import { GoogleMapsModule } from '@angular/google-maps';
 import { OrderTrackingComponent } from './order-tracking/order-tracking.component';
 import { RatingComponent } from './rating/rating.component';
 import { ProfilePictureUploadDialogComponent } from './profile-view/profile-picture-upload-dialog/profile-picture-upload-dialog.component';
+import { UsersViewComponent } from './users-view/users-view.component';
 
 @NgModule({
     declarations: [
@@ -101,6 +102,7 @@ import { ProfilePictureUploadDialogComponent } from './profile-view/profile-pict
         OrderTrackingComponent,
         RatingComponent,
         ProfilePictureUploadDialogComponent,
+        UsersViewComponent,
     ],
     imports: [
         BrowserModule,

@@ -72,7 +72,7 @@ export class AppComponent implements OnInit {
     profilePicturePath!: string;
 
     constructor(
-        private loginService: LoginServiceService,
+        public loginService: LoginServiceService,
         private api: ApiService,
         private router: Router
     ) {}

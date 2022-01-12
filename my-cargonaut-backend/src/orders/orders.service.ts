@@ -184,7 +184,13 @@ export class OrdersService {
                     creator: id,
                 },
             },
-            relations: ["offer", "offer.creator", "rating"],
+            relations: [
+                "offer",
+                "offer.creator",
+                "request",
+                "request.creator",
+                "rating",
+            ],
         });
 
         const ratings = [];
@@ -193,7 +199,7 @@ export class OrdersService {
             if (order.rating)
                 ratings.push({
                     ...order.rating,
-                    author: order.offer.creator,
+                    author: order.request.creator,
                 });
 
         return ratings;

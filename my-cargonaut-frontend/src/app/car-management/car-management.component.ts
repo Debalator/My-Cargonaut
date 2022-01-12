@@ -73,40 +73,26 @@ export class CarManagementComponent implements OnInit {
     editVehicle(id: number) {
         const car = this.cars.find((car) => car.id === id);
 
-        console.log(car);
-
         const dialogRef = this.dialog.open(EditVehicleComponent, {
             width: '350px',
-            data: { carid : id,
-            carbrand: car.brand,
-            carmodel: car.model,
-            carseats: car.seats,
-            carArea: car.loadingArea
+            data: {
+                id,
+                ...car,
             },
         });
 
-        dialogRef.afterClosed().subscribe((result) => {
-            console.log(this.cars.values());
-            if (result.brand == undefined) result.brand = this.brand;
-            if (result.model == undefined) result.model = this.model;
-            if (result.seats == undefined) result.seats = this.seats;
-            if (result.loadingArea == undefined)
-                result.loadingArea = this.loadingArea;
-            this.api.patch('/api/vehicles/:id', {
-                brand: result.brand,
-                model: result.model,
-                seats: result.seats,
-                loadingArea: result.loadingArea,
-            });
-
-            this.renderList();
-            window.location.reload();
+        dialogRef.afterClosed().subscribe((updatedCar) => {
+            const copy = [...this.cars];
+            const idx = this.cars.findIndex((car) => car.id === updatedCar.id);
+            copy[idx] = updatedCar;
+            this.cars = copy;
         });
     }
 
     deleteVehicle(id: number) {
-            this.api.delete(`/api/vehicles/${id}`);
-            this.renderList();
+        this.api.delete(`/api/vehicles/${id}`).subscribe(() => {
+            this.cars = this.cars.filter((car) => car.id !== id);
+        });
     }
 
     renderList() {

@@ -28,10 +28,10 @@ export class Request {
     @PrimaryGeneratedColumn()
     id: number;
 
-    @Column("date")
+    @Column("datetime")
     startDate: Date;
 
-    @Column("date")
+    @Column("datetime")
     destDate: Date;
 
     @Column("tinyint", { default: 0 })

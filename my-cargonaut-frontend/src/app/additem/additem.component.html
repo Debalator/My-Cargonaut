@@ -13,7 +13,13 @@
 <div mat-dialog-content>
     <!--  <p>Größe</p>-->
     <mat-form-field appearance="fill">
-        <input matInput [(ngModel)]="data.size" placeholder="Größe" required />
+        <input
+            matInput
+            [(ngModel)]="data.size"
+            type="number"
+            placeholder="Größe"
+            required
+        />
     </mat-form-field>
 </div>
 <div mat-dialog-content>
@@ -24,6 +30,7 @@
             [(ngModel)]="data.weight"
             placeholder="Gewicht"
             required
+            type="number"
         />
     </mat-form-field>
 </div>

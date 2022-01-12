@@ -27,13 +27,13 @@ export class Offer {
     @PrimaryGeneratedColumn()
     id: number;
 
-    @Column("date")
+    @Column("datetime")
     startDate: Date;
 
-    @Column("date")
+    @Column("datetime")
     destDate: Date;
 
-    @Column("decimal", { precision: 6, scale: 2 })
+    @Column("decimal", { precision: 8, scale: 2 })
     price: number;
 
     @Column("boolean", { default: true })

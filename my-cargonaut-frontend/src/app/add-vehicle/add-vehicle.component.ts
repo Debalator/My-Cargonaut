@@ -1,6 +1,7 @@
 import { Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { ApiService } from '../api/api.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
     selector: 'app-add-vehicle',
@@ -8,15 +9,17 @@ import { ApiService } from '../api/api.service';
     styleUrls: ['./add-vehicle.component.scss'],
 })
 export class AddVehicleComponent {
-    brand = '';
-    model = '';
-    seats = 0;
-    loadingArea = 0;
+    public car: any = {
+        brand: '',
+        model: '',
+        seats: 0,
+        loadingArea: 0,
+    };
 
     constructor(
         public api: ApiService,
         public dialogRef: MatDialogRef<AddVehicleComponent>,
-        @Inject(MAT_DIALOG_DATA) public data: { car: any }
+        private snackbar: MatSnackBar
     ) {}
 
     onNoClick(): void {
@@ -24,16 +27,14 @@ export class AddVehicleComponent {
     }
 
     saveCar() {
-        console.log('Car saved');
+        const { brand, model, seats, loadingArea } = this.car;
 
-        this.api
-            .post('/api/vehicles', {
-                brand: this.brand,
-                model: this.model,
-                seats: this.seats,
-                loadingArea: this.loadingArea,
-            })
-            .subscribe((order) => {
+        if (!brand || !model || !seats || !loadingArea)
+            this.snackbar.open('Bitte alle Felder ausfüllen!', '', {
+                duration: 2000,
+            });
+        else
+            this.api.post('/api/vehicles', this.car).subscribe((order) => {
                 this.dialogRef.close(order);
             });
     }

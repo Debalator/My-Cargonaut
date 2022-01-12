@@ -5,7 +5,7 @@ import { Component, Input, OnInit } from '@angular/core';
     templateUrl: './order-tracking.component.html',
     styleUrls: ['./order-tracking.component.scss'],
 })
-export class OrderTrackingComponent implements OnInit {
+export class OrderTrackingComponent {
     constructor() {}
 
     @Input() location: {
@@ -15,6 +15,4 @@ export class OrderTrackingComponent implements OnInit {
         latitude: 0,
         longitude: 0,
     };
-
-    ngOnInit(): void {}
 }

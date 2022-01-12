@@ -1,13 +1,6 @@
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
-import {
-    FormBuilder,
-    FormControl,
-    FormGroup,
-    Validators,
-} from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { MatInput } from '@angular/material/input';
-import { Observable } from 'rxjs';
 import { ApiService } from '../api/api.service';
 
 @Component({
@@ -47,7 +40,10 @@ export class CreateofferComponent implements OnInit {
     //kein bereits vergangenes Datum auswählbar
     minDate = new Date();
 
+    vehicle: any = null;
+
     sendData(message: string) {
+        console.log(this.checkoutForm.value);
         if (
             this.checkoutForm.value.startZip == null ||
             this.checkoutForm.value.startCity == null ||
@@ -58,7 +54,7 @@ export class CreateofferComponent implements OnInit {
             this.checkoutForm.value.startDate == null ||
             this.checkoutForm.value.stopDate == null ||
             this.checkoutForm.value.priceInput == null ||
-            this.checkoutForm.value.vehicleInput == null
+            !this.vehicle
         ) {
             this.snackbar.open('Alle benötigten Felder ausfüllen!', '', {
                 duration: 2000,
@@ -71,13 +67,17 @@ export class CreateofferComponent implements OnInit {
         }
     }
 
+    applyVehicle(vehicle: any) {
+        this.vehicle = vehicle;
+    }
+
     public sendInput() {
         this.api
             .post('/api/offers', {
                 startDate: this.checkoutForm.value.startDate,
                 destDate: this.checkoutForm.value.stopDate,
                 price: this.checkoutForm.value.priceInput,
-                vehicle: 1,
+                vehicle: this.vehicle.id,
                 startAddress: {
                     zip: this.checkoutForm.value.startZip,
                     city: this.checkoutForm.value.startCity,

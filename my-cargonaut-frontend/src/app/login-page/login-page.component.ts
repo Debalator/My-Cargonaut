@@ -56,15 +56,15 @@ export class LoginPageComponent implements OnInit {
                 },
                 complete: () => {
                     console.info('complete');
-                    this.router.navigateByUrl('/');
+                    this.router.navigateByUrl('/profil');
                 },
             });
     }
 
     displayError() {
-        var message = "Username or Password is wrong"
-        this.snackBar.open(message, "Dismiss" , {
-            duration: 3000
-          });
-      }
+        var message = 'Username or Password is wrong';
+        this.snackBar.open(message, 'Dismiss', {
+            duration: 3000,
+        });
+    }
 }

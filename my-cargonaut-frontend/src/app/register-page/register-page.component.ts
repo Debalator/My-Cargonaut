@@ -21,8 +21,8 @@ export class RegisterPageComponent implements OnInit {
         private formBuilder: FormBuilder,
         private loginService: LoginServiceService,
         private router: Router,
-        private snackBar: MatSnackBar,
-    ) { }
+        private snackBar: MatSnackBar
+    ) {}
 
     registerForm = new FormGroup({
         username: new FormControl(''),
@@ -71,20 +71,23 @@ export class RegisterPageComponent implements OnInit {
                 next: (res: any) => {
                     //console.log(res);
                     this.loginService.jwt = res.access_token;
+                    this.loginService.id = res.id;
+                    this.loginService.username = res.username;
                     //window.localStorage.setItem('jwt', res.access_token);
                 },
                 error: (e: any) => this.displayError(),
                 complete: () => {
                     console.info('complete');
-                    this.router.navigateByUrl('/');
+                    this.router.navigateByUrl('/profil');
                 },
             });
     }
 
     displayError() {
-        var message = "Please check if all form fields are filled out. Otherwise the email or username might not be unique"
-        this.snackBar.open(message, "Dismiss", {
-            duration: 3000
-          });
+        var message =
+            'Please check if all form fields are filled out. Otherwise the email or username might not be unique';
+        this.snackBar.open(message, 'Dismiss', {
+            duration: 3000,
+        });
     }
 }

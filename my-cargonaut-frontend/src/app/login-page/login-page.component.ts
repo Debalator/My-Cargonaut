@@ -25,7 +25,7 @@ export class LoginPageComponent implements OnInit {
         private formBuilder: FormBuilder,
         private loginService: LoginServiceService,
         private router: Router,
-        private snackbar: MatSnackBar
+        private snackBar: MatSnackBar
     ) {}
 
     loginForm = new FormGroup({
@@ -49,13 +49,22 @@ export class LoginPageComponent implements OnInit {
                     this.loginService.jwt = access_token;
                     this.loginService.id = id;
                     this.loginService.username = username;
-                    this.router.navigateByUrl('/profil');
                 },
-                error: (e: any) =>
-                    this.snackbar.open('Falscher Benutzername / Password', '', {
-                        duration: 2000,
-                    }),
-                complete: () => console.info('complete'),
+                error: (e: any) => {
+                    console.error(e);
+                    this.displayError();
+                },
+                complete: () => {
+                    console.info('complete');
+                    this.router.navigateByUrl('/');
+                },
             });
     }
+
+    displayError() {
+        var message = "Username or Password is wrong"
+        this.snackBar.open(message, "Dismiss" , {
+            duration: 3000
+          });
+      }
 }

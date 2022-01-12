@@ -1,4 +1,4 @@
-<mat-card style="background-color: aliceblue">
+<mat-card style="background-color: aliceblue; margin: 60px auto; max-width:fit-content">
     <mat-card-title>Register</mat-card-title>
     <form [formGroup]="registerForm">
         <div class="row">
@@ -48,13 +48,12 @@
         </div>
 
         <mat-card-actions
-            align="end"
             style="margin-bottom: 0; padding-bottom: 0"
         >
             <button mat-stroked-button color="primary" (click)="register()">
                 Register
             </button>
-            <a mat-stroked-button routerLink="/..">Back to login</a>
+            <a mat-stroked-button routerLink="/login">Back to login</a>
         </mat-card-actions>
     </form>
 </mat-card>

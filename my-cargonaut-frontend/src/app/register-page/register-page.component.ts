@@ -8,6 +8,7 @@ import {
 import { Router } from '@angular/router';
 import { ApiService } from '../api/api.service';
 import { LoginServiceService } from '../login-page/login-service.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
     selector: 'app-register-page',
@@ -19,8 +20,9 @@ export class RegisterPageComponent implements OnInit {
         private api: ApiService,
         private formBuilder: FormBuilder,
         private loginService: LoginServiceService,
-        private router: Router
-    ) {}
+        private router: Router,
+        private snackBar: MatSnackBar,
+    ) { }
 
     registerForm = new FormGroup({
         username: new FormControl(''),
@@ -39,8 +41,6 @@ export class RegisterPageComponent implements OnInit {
         var birthdate = this.registerForm.value.birthdate;
         var password = this.registerForm.value.password;
 
-        console.log(username, password, birthdate, email);
-
         this.api
             .post('api/users', {
                 username: username,
@@ -49,10 +49,11 @@ export class RegisterPageComponent implements OnInit {
                 password,
             })
             .subscribe({
-                next: (res: any) => {
-                    console.log(res);
+                next: (res: any) => {},
+                error: (e: any) => {
+                    console.error(e);
+                    this.displayError();
                 },
-                error: (e: any) => console.error(e),
                 complete: () => {
                     this.login();
                     console.info('complete');
@@ -70,12 +71,20 @@ export class RegisterPageComponent implements OnInit {
                 next: (res: any) => {
                     //console.log(res);
                     this.loginService.jwt = res.access_token;
-                    console.log('hello');
-                    this.router.navigateByUrl('/');
                     //window.localStorage.setItem('jwt', res.access_token);
                 },
-                error: (e: any) => console.error(e),
-                complete: () => console.info('complete'),
+                error: (e: any) => this.displayError(),
+                complete: () => {
+                    console.info('complete');
+                    this.router.navigateByUrl('/');
+                },
             });
+    }
+
+    displayError() {
+        var message = "Please check if all form fields are filled out. Otherwise the email or username might not be unique"
+        this.snackBar.open(message, "Dismiss", {
+            duration: 3000
+          });
     }
 }

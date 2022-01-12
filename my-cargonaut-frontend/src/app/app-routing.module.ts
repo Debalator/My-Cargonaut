@@ -14,8 +14,13 @@ import { RequestsComponent } from './requests/requests.component';
 import { OrdersComponent } from './orders/orders.component';
 import { OrderComponent } from './order/order.component';
 import { ProfileViewComponent } from './profile-view/profile-view.component';
+import { UsersViewComponent } from './users-view/users-view.component';
 
 const routes: Routes = [
+    {
+        path: 'users/:id',
+        component: UsersViewComponent,
+    },
     {
         path: 'orders',
         component: OrdersComponent,

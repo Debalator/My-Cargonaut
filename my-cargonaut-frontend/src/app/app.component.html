@@ -16,9 +16,34 @@
         <div fxShow="true" fxHide.lt-md="true">
             <a mat-button routerLink="offers">Angebote</a>
             <a mat-button routerLink="requests">Anfragen</a>
-            <a mat-button routerLink="createrequest">Anfrage anlegen</a>
-            <a mat-button routerLink="createoffer">Angebot anlegen</a>
-            <a mat-button routerLink="orders">Transaktionen</a>
+
+            <a
+                mat-button
+                *ngIf="(isLoggedIn() | async) === true"
+                routerLink="createrequest"
+                >Anfrage anlegen</a
+            >
+            <a
+                mat-button
+                *ngIf="(isLoggedIn() | async) === true"
+                routerLink="createoffer"
+                >Angebot anlegen</a
+            >
+
+            <a
+                mat-button
+                *ngIf="(isLoggedIn() | async) === true"
+                routerLink="cars"
+                >Fahrzeuge</a
+            >
+
+            <a
+                mat-button
+                *ngIf="(isLoggedIn() | async) === true"
+                routerLink="orders"
+                >Transaktionen</a
+            >
+
             <ng-container *ngIf="(isLoggedIn() | async) === false">
                 <a mat-raised-button routerLink="login" color="primary"
                     >Login</a
@@ -29,6 +54,13 @@
                     <img class="profile" [src]="profilePicturePath" />
                 </a>
             </ng-container>
+
+            <small
+                *ngIf="(isLoggedIn() | async) === true"
+                style="margin-right: 12px"
+                >{{ this.loginService.username }}</small
+            >
+
             <ng-container *ngIf="(isLoggedIn() | async) === true">
                 <a mat-raised-button (click)="logout()" color="primary"
                     >Logout</a

@@ -28,7 +28,11 @@
                     <button mat-raised-button (click)="editVehicle(obj.id)">
                         Edit
                     </button>
-                    <button mat-raised-button (click)="deleteVehicle(obj.id)">
+                    <button
+                        mat-raised-button
+                        (click)="deleteVehicle(obj.id)"
+                        color="warn"
+                    >
                         Delete
                     </button>
                 </mat-card-actions>

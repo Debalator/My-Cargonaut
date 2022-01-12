@@ -5,7 +5,11 @@
         ({{ offer.startAddress.country }}) - {{ offer.destAddress.zip }}
         {{ offer.destAddress.city }} ({{ offer.destAddress.country }})
     </mat-card-title>
-    <mat-card-subtitle>{{ offer.creator.username }}</mat-card-subtitle>
+    <mat-card-subtitle
+        class="link"
+        [routerLink]="'/users/' + offer.creator.id"
+        >{{ offer.creator.username }}</mat-card-subtitle
+    >
     <mat-card-content>
         <div>
             <mat-form-field
@@ -23,7 +27,11 @@
                 style="margin-right: 8px"
             >
                 <mat-label>Abfahrt</mat-label>
-                <input matInput disabled [value]="offer.startDate" />
+                <input
+                    matInput
+                    disabled
+                    [value]="offer.startDate | date: 'longDate'"
+                />
             </mat-form-field>
 
             <mat-form-field
@@ -32,7 +40,11 @@
                 style="margin-right: 8px"
             >
                 <mat-label>Ankunft</mat-label>
-                <input matInput disabled [value]="offer.destDate" />
+                <input
+                    matInput
+                    disabled
+                    [value]="offer.destDate | date: 'longDate'"
+                />
             </mat-form-field>
         </div>
 

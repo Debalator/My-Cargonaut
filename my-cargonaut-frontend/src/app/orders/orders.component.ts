@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 export class OrdersComponent implements OnInit {
     offers: any[] = [];
     requests: any[] = [];
+    isLoading = true;
 
     constructor(private api: ApiService, private router: Router) {}
 
@@ -17,6 +18,7 @@ export class OrdersComponent implements OnInit {
         this.api.get('/api/users/orders').subscribe((orders) => {
             this.offers = orders.offers;
             this.requests = orders.requests;
+            this.isLoading = false;
         });
     }
 

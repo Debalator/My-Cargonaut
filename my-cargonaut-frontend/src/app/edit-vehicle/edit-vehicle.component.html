@@ -1,6 +1,7 @@
 <h1 mat-dialog-title>Fahrzeug bearbeiten</h1>
 <div mat-dialog-content>
     <mat-form-field appearance="fill">
+        <mat-label>Marke</mat-label>
         <input
             matInput
             [(ngModel)]="this.car.brand"
@@ -11,6 +12,7 @@
 </div>
 <div mat-dialog-content>
     <mat-form-field appearance="fill">
+        <mat-label>Modell</mat-label>
         <input
             matInput
             [(ngModel)]="this.car.model"
@@ -21,6 +23,7 @@
 </div>
 <div mat-dialog-content>
     <mat-form-field appearance="fill">
+        <mat-label>Sitzplätze</mat-label>
         <input
             matInput
             [(ngModel)]="this.car.seats"
@@ -32,6 +35,7 @@
 </div>
 <div mat-dialog-content>
     <mat-form-field appearance="fill">
+        <mat-label>Ladefläche</mat-label>
         <input
             matInput
             [(ngModel)]="this.car.loadingArea"

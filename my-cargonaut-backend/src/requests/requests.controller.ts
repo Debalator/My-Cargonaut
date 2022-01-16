@@ -15,7 +15,6 @@ import { RequestsService } from "./requests.service";
 import { CreateRequestDto } from "./dto/create-request.dto";
 import { UpdateRequestDto } from "./dto/update-request.dto";
 import { AddressesService } from "../addresses/addresses.service";
-import { CreateRequestFromOfferDto } from "./dto/create-request-from-offer.dto";
 
 @Controller("requests")
 export class RequestsController {
@@ -53,6 +52,7 @@ export class RequestsController {
         return this.requestsService.findOne(+id);
     }
 
+    @UseGuards(JwtAuthGuard)
     @Patch(":id")
     update(
         @Param("id") id: string,
@@ -61,6 +61,7 @@ export class RequestsController {
         return this.requestsService.update(+id, updateRequestDto);
     }
 
+    @UseGuards(JwtAuthGuard)
     @Delete(":id")
     remove(@Param("id") id: string) {
         return this.requestsService.remove(+id);

@@ -31,21 +31,25 @@ export class OrdersController {
         private readonly requestsService: RequestsService
     ) {}
 
+    @UseGuards(JwtAuthGuard)
     @Post()
     create(@Body() createOrderDto: CreateOrderDto) {
         return this.ordersService.create(createOrderDto);
     }
 
+    @UseGuards(JwtAuthGuard)
     @Get()
     findAll() {
         return this.ordersService.findAll();
     }
 
+    @UseGuards(JwtAuthGuard)
     @Get(":id")
     findOne(@Param("id") id: string) {
         return this.ordersService.findOne(+id);
     }
 
+    @UseGuards(JwtAuthGuard)
     @Post(":id/rating")
     createRating(
         @Param("id") id: string,
@@ -54,6 +58,7 @@ export class OrdersController {
         return this.ordersService.createRating(+id, createRatingDto);
     }
 
+    @UseGuards(JwtAuthGuard)
     @Patch(":orderID/rating/:ratingID")
     updateRating(
         @Param("orderID") orderID: string,
@@ -67,11 +72,13 @@ export class OrdersController {
         );
     }
 
+    @UseGuards(JwtAuthGuard)
     @Get(":id/location")
     findLocation(@Param("id") id: string) {
         return this.ordersService.findLocation(+id);
     }
 
+    @UseGuards(JwtAuthGuard)
     @Put(":id/location")
     updateLocation(
         @Param("id") id: string,
@@ -80,11 +87,13 @@ export class OrdersController {
         return this.ordersService.updateLocation(+id, updateLocationDto);
     }
 
+    @UseGuards(JwtAuthGuard)
     @Patch(":id")
     update(@Param("id") id: string, @Body() updateOrderDto: UpdateOrderDto) {
         return this.ordersService.update(+id, updateOrderDto);
     }
 
+    @UseGuards(JwtAuthGuard)
     @Delete(":id")
     remove(@Param("id") id: string) {
         return this.ordersService.remove(+id);

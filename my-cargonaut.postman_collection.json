@@ -1,0 +1,675 @@
+{
+	"info": {
+		"_postman_id": "a3a06b43-e883-4735-9347-9641aea0fb48",
+		"name": "KMS",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "POST",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"lars\",\r\n    \"birthDate\": \"1997-07-19\",\r\n    \"mail\": \"dummy@gmails.com\",\r\n    \"password\": \"lars\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://192.168.178.46:3000/api/users",
+							"protocol": "http",
+							"host": [
+								"192",
+								"168",
+								"178",
+								"46"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"lars\",\r\n    \"password\": \"lars\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://192.168.178.46:3000/api/auth/login",
+							"protocol": "http",
+							"host": [
+								"192",
+								"168",
+								"178",
+								"46"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://192.168.178.46:3000/api/users",
+							"protocol": "http",
+							"host": [
+								"192",
+								"168",
+								"178",
+								"46"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET_Ratings",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://192.168.178.46:3000/api/users/1/ratings",
+							"protocol": "http",
+							"host": [
+								"192",
+								"168",
+								"178",
+								"46"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"users",
+								"1",
+								"ratings"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Offer",
+			"item": [
+				{
+					"name": "POST",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"startDate\": \"2020-05-15\",\r\n    \"destDate\": \"2020-05-17\",\r\n    \"price\": 450.99,\r\n    \"vehicle\": 14,\r\n    \"startAddress\": {\r\n        \"zip\": 35516,\r\n        \"city\": \"Münzenberg\",\r\n        \"country\": \"Germany\"\r\n    },\r\n    \"destAddress\": {\r\n        \"zip\": 35510,\r\n        \"city\": \"Butzbach\",\r\n        \"country\": \"Germany\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://192.168.178.46:3000/api/offers",
+							"protocol": "http",
+							"host": [
+								"192",
+								"168",
+								"178",
+								"46"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"offers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PATCH",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"destDate\": \"2020-05-17\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://192.168.178.46:3000/api/offers/2",
+							"protocol": "http",
+							"host": [
+								"192",
+								"168",
+								"178",
+								"46"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"offers",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://192.168.178.46:3000/api/offers/",
+							"protocol": "http",
+							"host": [
+								"192",
+								"168",
+								"178",
+								"46"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"offers",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Vehicle",
+			"item": [
+				{
+					"name": "POST",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"brand\": \"Audi\",\r\n    \"model\": \"Q8\",\r\n    \"seats\": 4,\r\n    \"loadingArea\": 3\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://192.168.178.46:3000/api/vehicles",
+							"protocol": "http",
+							"host": [
+								"192",
+								"168",
+								"178",
+								"46"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"vehicles"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://192.168.178.46:3000/api/vehicles",
+							"protocol": "http",
+							"host": [
+								"192",
+								"168",
+								"178",
+								"46"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"vehicles"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Request",
+			"item": [
+				{
+					"name": "POST",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"startDate\": \"2020-05-15\",\r\n    \"destDate\": \"2020-05-17\",\r\n    \"price\": 450.99,\r\n    \"persons\": 2,\r\n    \"startAddress\": {\r\n        \"zip\": 35516,\r\n        \"city\": \"Münzenberg\",\r\n        \"country\": \"Germany\"\r\n    },\r\n    \"destAddress\": {\r\n        \"zip\": 35510,\r\n        \"city\": \"Butzbach\",\r\n        \"country\": \"Germany\"\r\n    },\r\n    \"items\": [\r\n        {\r\n            \"description\": \"my first item\",\r\n            \"size\": 1,\r\n            \"weight\": 8\r\n        },\r\n        {\r\n            \"description\": \"my second item\",\r\n            \"size\": 2,\r\n            \"weight\": 45\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://192.168.178.46:3000/api/requests",
+							"protocol": "http",
+							"host": [
+								"192",
+								"168",
+								"178",
+								"46"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"requests"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://192.168.178.46:3000/api/requests?creator=1",
+							"protocol": "http",
+							"host": [
+								"192",
+								"168",
+								"178",
+								"46"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"requests"
+							],
+							"query": [
+								{
+									"key": "creator",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PATCH",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"persons\": 4\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://192.168.178.46:3000/api/requests/2",
+							"protocol": "http",
+							"host": [
+								"192",
+								"168",
+								"178",
+								"46"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"requests",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Order",
+			"item": [
+				{
+					"name": "POST",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"offer\": 9,\n    \"request\": 25\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://192.168.178.46:3000/api/orders",
+							"protocol": "http",
+							"host": [
+								"192",
+								"168",
+								"178",
+								"46"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"orders"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://192.168.178.46:3000/api/orders/5",
+							"protocol": "http",
+							"host": [
+								"192",
+								"168",
+								"178",
+								"46"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"orders",
+								"5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PUT_Location",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"latitude\": 50.4656214,\n    \"longitude\": 8.7380931\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://192.168.178.46:3000/api/orders/9/location",
+							"protocol": "http",
+							"host": [
+								"192",
+								"168",
+								"178",
+								"46"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"orders",
+								"9",
+								"location"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET_Location",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://192.168.178.46:3000/api/orders/9/location",
+							"protocol": "http",
+							"host": [
+								"192",
+								"168",
+								"178",
+								"46"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"orders",
+								"9",
+								"location"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST_FromOffer",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"persons\": 2,\n    \"items\": [\n        {\n            \"description\": \"my #1 item\",\n            \"size\": 1,\n            \"weight\": 8\n        },\n        {\n            \"description\": \"my #2 item\",\n            \"size\": 1,\n            \"weight\": 45\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://192.168.178.46:3000/api/orders/offers/16",
+							"protocol": "http",
+							"host": [
+								"192",
+								"168",
+								"178",
+								"46"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"orders",
+								"offers",
+								"16"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST_FromRequest",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"vehicle\": 14\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://192.168.178.46:3000/api/orders/requests/32",
+							"protocol": "http",
+							"host": [
+								"192",
+								"168",
+								"178",
+								"46"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"orders",
+								"requests",
+								"32"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Rating",
+			"item": [
+				{
+					"name": "POST",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"My first rating\",\n    \"description\": \"This is the description of my first rating!\",\n    \"stars\": 1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://192.168.178.46:3000/api/orders/10/rating",
+							"protocol": "http",
+							"host": [
+								"192",
+								"168",
+								"178",
+								"46"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"orders",
+								"10",
+								"rating"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PATCH",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"My second updated rating\",\n    \"description\": \"This is the description of my second updated rating!\",\n    \"stars\": 2\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://192.168.178.46:3000/api/orders/10/rating/2",
+							"protocol": "http",
+							"host": [
+								"192",
+								"168",
+								"178",
+								"46"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"orders",
+								"10",
+								"rating",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsInVzZXJuYW1lIjoibGFycyIsIm1haWwiOiJkdW1teUBnbWFpbC5jb20iLCJwcm9maWxlUGljdHVyZVBhdGgiOiJkZWZhdWx0LnBuZyIsImJpcnRoRGF0ZSI6IjE5OTctMDctMTkiLCJpYXQiOjE2NDE2NjMyMjYsImV4cCI6MTY0NDI1NTIyNn0.3sFlg3vlzYsDefAauIvRMXoNk6EQ4HxmCwQadKjA8fo",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

@@ -14,7 +14,6 @@ import { CreateOfferDto } from "./dto/create-offer.dto";
 import { UpdateOfferDto } from "./dto/update-offer.dto";
 import { AddressesService } from "../addresses/addresses.service";
 import { JwtAuthGuard } from "../auth/jwt-auth.guard";
-import { CreateOfferFromRequestDto } from "./dto/create-offer-from-request.dto";
 
 @Controller("offers")
 export class OffersController {
@@ -53,11 +52,13 @@ export class OffersController {
         return this.offersService.findOne(+id);
     }
 
+    @UseGuards(JwtAuthGuard)
     @Patch(":id")
     update(@Param("id") id: string, @Body() updateOfferDto: UpdateOfferDto) {
         return this.offersService.update(+id, updateOfferDto);
     }
 
+    @UseGuards(JwtAuthGuard)
     @Delete(":id")
     remove(@Param("id") id: string) {
         return this.offersService.remove(+id);

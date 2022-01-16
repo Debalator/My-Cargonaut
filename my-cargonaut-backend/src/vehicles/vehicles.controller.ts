@@ -33,11 +33,13 @@ export class VehiclesController {
         return this.vehiclesService.findAllByOwner(req.user.id);
     }
 
+    @UseGuards(JwtAuthGuard)
     @Get(":id")
     findOne(@Param("id") id: string) {
         return this.vehiclesService.findOne(+id);
     }
 
+    @UseGuards(JwtAuthGuard)
     @Patch(":id")
     update(
         @Param("id") id: string,
@@ -46,6 +48,7 @@ export class VehiclesController {
         return this.vehiclesService.update(+id, updateVehicleDto);
     }
 
+    @UseGuards(JwtAuthGuard)
     @Delete(":id")
     remove(@Param("id") id: string) {
         return this.vehiclesService.remove(+id);

@@ -1,6 +1,7 @@
 <h1 mat-dialog-title>Fahrzeug hinzufügen</h1>
 <div mat-dialog-content>
     <mat-form-field appearance="fill">
+        <mat-label>Marke</mat-label>
         <input
             matInput
             [(ngModel)]="this.car.brand"
@@ -12,6 +13,7 @@
 <div mat-dialog-content>
     <!--  <p>Größe</p>-->
     <mat-form-field appearance="fill">
+        <mat-label>Modell</mat-label>
         <input
             matInput
             [(ngModel)]="this.car.model"
@@ -23,6 +25,7 @@
 <div mat-dialog-content>
     <!--  <p>Gewicht</p>-->
     <mat-form-field appearance="fill">
+        <mat-label>Sitzplätze</mat-label>
         <input
             matInput
             [(ngModel)]="this.car.seats"
@@ -35,6 +38,7 @@
 <div mat-dialog-content>
     <!--  <p>Größe</p>-->
     <mat-form-field appearance="fill">
+        <mat-label>Ladefläche</mat-label>
         <input
             matInput
             [(ngModel)]="this.car.loadingArea"

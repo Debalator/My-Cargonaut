@@ -3,9 +3,7 @@ import { AddVehicleComponent } from '../add-vehicle/add-vehicle.component';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ApiService } from '../api/api.service';
-import { interval, Subscription, switchMap } from 'rxjs';
 import { EditVehicleComponent } from '../edit-vehicle/edit-vehicle.component';
-import { ActivatedRoute } from '@angular/router';
 
 @Component({
     selector: 'app-car-management',
@@ -21,7 +19,6 @@ export class CarManagementComponent implements OnInit {
     loadingArea!: number;
 
     constructor(
-        private route: ActivatedRoute,
         private dialog: MatDialog,
         private snackbar: MatSnackBar,
         private api: ApiService

@@ -15,6 +15,31 @@ describe('OfferComponent', () => {
     beforeEach(() => {
         fixture = TestBed.createComponent(OfferComponent);
         component = fixture.componentInstance;
+        component.offer = {
+            price: '',
+            startDate: '',
+            destDate: '',
+            startAddress: {
+                zip: '',
+                city: '',
+                country: '',
+            },
+            destAddress: {
+                zip: '',
+                city: '',
+                country: '',
+            },
+            creator: {
+                id: '',
+                username: '',
+            },
+            vehicle: {
+                brand: '',
+                model: '',
+                loadingArea: '',
+                seats: '',
+            },
+        };
         fixture.detectChanges();
     });
 

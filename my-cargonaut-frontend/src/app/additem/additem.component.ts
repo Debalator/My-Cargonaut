@@ -1,9 +1,6 @@
 import { Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import {
-    CreaterequestComponent,
-    DialogData,
-} from '../createrequest/createrequest.component';
+import { DialogData } from '../createrequest/createrequest.component';
 
 @Component({
     selector: 'app-additem',

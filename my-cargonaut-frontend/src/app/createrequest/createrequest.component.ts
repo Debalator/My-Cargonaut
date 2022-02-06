@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { Component } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ApiService } from '../api/api.service';
 import { MatDialog } from '@angular/material/dialog';
@@ -18,7 +18,6 @@ export interface DialogData {
 })
 export class CreaterequestComponent {
     constructor(
-        private formBuilder: FormBuilder,
         private snackbar: MatSnackBar,
         private api: ApiService,
         private dialog: MatDialog

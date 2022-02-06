@@ -1,15 +1,8 @@
-import { prepareEventListenerParameters } from '@angular/compiler/src/render3/view/template';
-import { Component, OnInit, EventEmitter, Output } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ApiService } from '../api/api.service';
-import {
-    FormBuilder,
-    FormControl,
-    FormGroup,
-    Validators,
-} from '@angular/forms';
+import { FormControl, FormGroup } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { MatInput } from '@angular/material/input';
 import { LoginServiceService } from './login-service.service';
 
 @Component({
@@ -22,7 +15,6 @@ export class LoginPageComponent implements OnInit {
 
     constructor(
         private api: ApiService,
-        private formBuilder: FormBuilder,
         private loginService: LoginServiceService,
         private router: Router,
         private snackBar: MatSnackBar

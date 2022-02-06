@@ -1,4 +1,10 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {
+    MatDialogModule,
+    MatDialogRef,
+    MAT_DIALOG_DATA,
+} from '@angular/material/dialog';
+import { TestbedHarnessEnvironment } from '@angular/cdk/testing/testbed';
 
 import { AdditemComponent } from './additem.component';
 
@@ -9,6 +15,20 @@ describe('AdditemComponent', () => {
     beforeEach(async () => {
         await TestBed.configureTestingModule({
             declarations: [AdditemComponent],
+            imports: [MatDialogModule],
+            providers: [
+                {
+                    provide: MAT_DIALOG_DATA,
+                    useValue: {
+                        ActionButton: 'Test',
+                        SupportingText: 'Test',
+                    },
+                },
+                {
+                    provide: MatDialogRef,
+                    useValue: { close: (_: any) => {} },
+                },
+            ],
         }).compileComponents();
     });
 

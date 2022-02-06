@@ -1,10 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {
-    FormBuilder,
-    FormControl,
-    FormGroup,
-    Validators,
-} from '@angular/forms';
+import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ApiService } from '../api/api.service';
 import { LoginServiceService } from '../login-page/login-service.service';
@@ -18,7 +13,6 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 export class RegisterPageComponent implements OnInit {
     constructor(
         private api: ApiService,
-        private formBuilder: FormBuilder,
         private loginService: LoginServiceService,
         private router: Router,
         private snackBar: MatSnackBar

@@ -17,8 +17,10 @@ export const TypeOrmSQLITETestingModule = () => [
         port: 3306,
         username: "root",
         password: "root",
-        entities: ["./**/*.entity.ts"],
+        synchronize: true,
+        entities: ["dist/**/*.entity{.ts,.js}"],
         keepConnectionAlive: true,
+        dropSchema: true,
     }),
     TypeOrmModule.forFeature([
         Address,

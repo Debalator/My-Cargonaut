@@ -1,17 +1,36 @@
 import { Test, TestingModule } from "@nestjs/testing";
+import { TypeOrmModule } from "@nestjs/typeorm";
 import { AddressesService } from "./addresses.service";
-import { TypeOrmSQLITETestingModule } from "../testing/TypeORMSQLITETestingModule";
+import { Address } from "./entities/address.entity";
 
 describe("AddressesService", () => {
+    let moduleRef: TestingModule;
     let service: AddressesService;
 
-    beforeEach(async () => {
-        const module: TestingModule = await Test.createTestingModule({
-            imports: [...TypeOrmSQLITETestingModule()],
+    beforeAll(async () => {
+        moduleRef = await Test.createTestingModule({
+            imports: [
+                TypeOrmModule.forFeature([Address]),
+                TypeOrmModule.forRoot({
+                    type: "mariadb",
+                    database: "unit_test",
+                    host: "localhost",
+                    port: 3306,
+                    username: "root",
+                    password: "root",
+                    autoLoadEntities: true,
+                    synchronize: true,
+                    logging: false,
+                }),
+            ],
             providers: [AddressesService],
         }).compile();
 
-        service = module.get<AddressesService>(AddressesService);
+        service = moduleRef.get<AddressesService>(AddressesService);
+    });
+
+    afterAll(async () => {
+        await moduleRef.close();
     });
 
     it("createAddress", async () => {

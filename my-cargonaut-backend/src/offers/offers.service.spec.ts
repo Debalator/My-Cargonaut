@@ -12,5 +12,5 @@ describe("OffersService", () => {
         service = module.get<OffersService>(OffersService);
     });
 
-    it.todo("implement tests");
+    it.todo("implement tests ");
 });

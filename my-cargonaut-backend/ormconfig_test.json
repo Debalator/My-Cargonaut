@@ -1,0 +1,11 @@
+{
+  "type": "mariadb",
+  "database": "unit_test",
+  "host": "localhost",
+  "port": 3306,
+  "username": "root",
+  "password": "root",
+  "autoLoadEntities": true,
+  "synchronize": true,
+  "logging": false
+}

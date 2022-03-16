@@ -2,6 +2,7 @@ import { Test, TestingModule } from "@nestjs/testing";
 import { TypeOrmModule } from "@nestjs/typeorm";
 import { AddressesService } from "./addresses.service";
 import { Address } from "./entities/address.entity";
+import { readFileSync } from "fs";
 
 describe("AddressesService", () => {
     let moduleRef: TestingModule;
@@ -11,17 +12,13 @@ describe("AddressesService", () => {
         moduleRef = await Test.createTestingModule({
             imports: [
                 TypeOrmModule.forFeature([Address]),
-                TypeOrmModule.forRoot({
-                    type: "mariadb",
-                    database: "unit_test",
-                    host: "localhost",
-                    port: 3306,
-                    username: "root",
-                    password: "root",
-                    autoLoadEntities: true,
-                    synchronize: true,
-                    logging: false,
-                }),
+                TypeOrmModule.forRoot(
+                    JSON.parse(
+                        readFileSync("ormconfig_test.json", {
+                            encoding: "utf-8",
+                        })
+                    )
+                ),
             ],
             providers: [AddressesService],
         }).compile();

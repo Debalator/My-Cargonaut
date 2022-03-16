@@ -1,7 +1,5 @@
 import { Test, TestingModule } from "@nestjs/testing";
 import { UsersService } from "./users.service";
-import { TypeOrmSQLITETestingModule } from "../testing/TypeORMSQLITETestingModule";
-import { AddressesService } from "../addresses/addresses.service";
 import { TypeOrmModule } from "@nestjs/typeorm";
 import { Address } from "../addresses/entities/address.entity";
 import { User } from "./entities/user.entity";
@@ -12,6 +10,7 @@ import { Order } from "../orders/entities/order.entity";
 import { Item } from "../requests/entities/item.entity";
 import { Location } from "../orders/entities/location.entity";
 import { Rating } from "../orders/entities/rating.entity";
+import { readFileSync } from "fs";
 
 describe("UsersService", () => {
     let moduleRef: TestingModule;
@@ -31,17 +30,13 @@ describe("UsersService", () => {
                     Location,
                     Rating,
                 ]),
-                TypeOrmModule.forRoot({
-                    type: "mariadb",
-                    database: "unit_test",
-                    host: "localhost",
-                    port: 3306,
-                    username: "root",
-                    password: "root",
-                    autoLoadEntities: true,
-                    synchronize: true,
-                    logging: false,
-                }),
+                TypeOrmModule.forRoot(
+                    JSON.parse(
+                        readFileSync("ormconfig_test.json", {
+                            encoding: "utf-8",
+                        })
+                    )
+                ),
             ],
             providers: [UsersService],
         }).compile();
@@ -53,8 +48,39 @@ describe("UsersService", () => {
         await moduleRef.close();
     });
 
+    it("createUser", async () => {
+        const now = new Date();
+
+        const user = await service.create({
+            mail: "max@mustermann.com",
+            birthDate: now,
+            password: "abc",
+            username: "maxmustermann",
+            profilePicturePath: "/assets/default.jpg",
+        });
+        expect(user.mail).toBe("max@mustermann.com");
+        expect(user.birthDate).toBe(now);
+        expect(user.username).toBe("maxmustermann");
+        expect(user.profilePicturePath).toBe("/assets/default.jpg");
+    });
+
     it("findAllUsers", async () => {
-        const addresses = await service.findAll();
-        expect(addresses).toHaveLength(0);
+        const users = await service.findAll();
+        expect(users).toHaveLength(1);
+    });
+
+    it("updateUser", async () => {
+        const address = await service.update(1, {
+            mail: "test@test.com",
+            username: "testos",
+        });
+        expect(address.mail).toBe("test@test.com");
+        expect(address.username).toBe("testos");
+    });
+
+    it("removeUser", async () => {
+        await service.remove(1);
+        const users = await service.findAll();
+        expect(users).toHaveLength(0);
     });
 });

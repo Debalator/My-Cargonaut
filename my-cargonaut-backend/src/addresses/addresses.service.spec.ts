@@ -1,33 +1,30 @@
-import { Test, TestingModule } from "@nestjs/testing";
-import { TypeOrmModule } from "@nestjs/typeorm";
 import { AddressesService } from "./addresses.service";
 import { Address } from "./entities/address.entity";
-import { readFileSync } from "fs";
+import { Repository } from "typeorm";
+import { createTestConfiguration } from "../utils/createDB";
+import { Test, TestingModule } from "@nestjs/testing";
+import { getRepositoryToken, TypeOrmModule } from "@nestjs/typeorm";
 
 describe("AddressesService", () => {
-    let moduleRef: TestingModule;
+    let repo: Repository<Address>;
     let service: AddressesService;
+    let module: TestingModule;
 
     beforeAll(async () => {
-        moduleRef = await Test.createTestingModule({
+        module = await Test.createTestingModule({
             imports: [
+                TypeOrmModule.forRoot(await createTestConfiguration([Address])),
                 TypeOrmModule.forFeature([Address]),
-                TypeOrmModule.forRoot(
-                    JSON.parse(
-                        readFileSync("ormconfig_test.json", {
-                            encoding: "utf-8",
-                        })
-                    )
-                ),
             ],
             providers: [AddressesService],
         }).compile();
 
-        service = moduleRef.get<AddressesService>(AddressesService);
+        service = module.get<AddressesService>(AddressesService);
+        repo = module.get<Repository<Address>>(getRepositoryToken(Address));
     });
 
-    afterAll(async () => {
-        await moduleRef.close();
+    afterAll(() => {
+        module.close();
     });
 
     it("createAddress", async () => {

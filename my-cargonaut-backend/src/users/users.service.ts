@@ -18,6 +18,16 @@ export class UsersService {
         return await getRepository(User).save(user);
     }
 
+    createDummy() {
+        return this.create({
+            mail: "max@mustermann.com",
+            birthDate: new Date(),
+            password: "abc",
+            username: "maxmustermann",
+            profilePicturePath: "/assets/default.jpg",
+        });
+    }
+
     async findAll(): Promise<User[]> {
         return await getRepository(User).find({
             select: ["id", "username", "profilePicturePath"],

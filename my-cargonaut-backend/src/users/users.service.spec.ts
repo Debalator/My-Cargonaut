@@ -1,6 +1,6 @@
 import { Test, TestingModule } from "@nestjs/testing";
 import { UsersService } from "./users.service";
-import { TypeOrmModule } from "@nestjs/typeorm";
+import { getRepositoryToken, TypeOrmModule } from "@nestjs/typeorm";
 import { Address } from "../addresses/entities/address.entity";
 import { User } from "./entities/user.entity";
 import { Offer } from "../offers/entities/offer.entity";
@@ -10,19 +10,34 @@ import { Order } from "../orders/entities/order.entity";
 import { Item } from "../requests/entities/item.entity";
 import { Location } from "../orders/entities/location.entity";
 import { Rating } from "../orders/entities/rating.entity";
-import { readFileSync } from "fs";
+import { Repository } from "typeorm";
+import { createTestConfiguration } from "../utils/createDB";
 
 describe("UsersService", () => {
-    let moduleRef: TestingModule;
+    let repo: Repository<User>;
     let service: UsersService;
+    let module: TestingModule;
 
     beforeAll(async () => {
-        moduleRef = await Test.createTestingModule({
+        module = await Test.createTestingModule({
             imports: [
+                TypeOrmModule.forRoot(
+                    await createTestConfiguration([
+                        Vehicle,
+                        User,
+                        Offer,
+                        Address,
+                        Request,
+                        Item,
+                        Order,
+                        Location,
+                        Rating,
+                    ])
+                ),
                 TypeOrmModule.forFeature([
+                    Vehicle,
                     User,
                     Offer,
-                    Vehicle,
                     Address,
                     Request,
                     Item,
@@ -30,22 +45,16 @@ describe("UsersService", () => {
                     Location,
                     Rating,
                 ]),
-                TypeOrmModule.forRoot(
-                    JSON.parse(
-                        readFileSync("ormconfig_test.json", {
-                            encoding: "utf-8",
-                        })
-                    )
-                ),
             ],
             providers: [UsersService],
         }).compile();
 
-        service = moduleRef.get<UsersService>(UsersService);
+        service = module.get<UsersService>(UsersService);
+        repo = module.get<Repository<User>>(getRepositoryToken(User));
     });
 
-    afterAll(async () => {
-        await moduleRef.close();
+    afterAll(() => {
+        module.close();
     });
 
     it("createUser", async () => {

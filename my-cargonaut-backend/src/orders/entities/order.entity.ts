@@ -29,7 +29,7 @@ export class Order {
     created: Date;
 
     @Column({
-        type: "enum",
+        type: "simple-enum",
         enum: OrderStatus,
         default: OrderStatus.RECEIVED,
     })

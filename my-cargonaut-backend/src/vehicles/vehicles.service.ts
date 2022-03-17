@@ -5,6 +5,7 @@ import { Repository } from "typeorm";
 import { CreateVehicleDto } from "./dto/create-vehicle.dto";
 import { UpdateVehicleDto } from "./dto/update-vehicle.dto";
 import { Vehicle } from "./entities/vehicle.entity";
+import { User } from "../users/entities/user.entity";
 
 @Injectable()
 export class VehiclesService {
@@ -15,6 +16,16 @@ export class VehiclesService {
 
     create(createVehicleDto: CreateVehicleDto) {
         return this.vehicleRepository.save(createVehicleDto);
+    }
+
+    createDummy(owner: User) {
+        return this.create({
+            brand: "VW",
+            model: "Golf",
+            loadingArea: 3,
+            seats: 3,
+            owner,
+        });
     }
 
     findAll() {

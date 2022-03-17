@@ -1,7 +1,6 @@
 import { Test, TestingModule } from "@nestjs/testing";
 import { VehiclesService } from "./vehicles.service";
-import { TypeOrmModule } from "@nestjs/typeorm";
-import { readFileSync } from "fs";
+import { getRepositoryToken, TypeOrmModule } from "@nestjs/typeorm";
 import { Vehicle } from "./entities/vehicle.entity";
 import { User } from "../users/entities/user.entity";
 import { Offer } from "../offers/entities/offer.entity";
@@ -11,14 +10,30 @@ import { Item } from "../requests/entities/item.entity";
 import { Order } from "../orders/entities/order.entity";
 import { Location } from "../orders/entities/location.entity";
 import { Rating } from "../orders/entities/rating.entity";
+import { Repository } from "typeorm";
+import { createTestConfiguration } from "../utils/createDB";
 
 describe("VehiclesService", () => {
-    let moduleRef: TestingModule;
+    let repo: Repository<Vehicle>;
     let service: VehiclesService;
+    let module: TestingModule;
 
     beforeAll(async () => {
-        moduleRef = await Test.createTestingModule({
+        module = await Test.createTestingModule({
             imports: [
+                TypeOrmModule.forRoot(
+                    await createTestConfiguration([
+                        Vehicle,
+                        User,
+                        Offer,
+                        Address,
+                        Request,
+                        Item,
+                        Order,
+                        Location,
+                        Rating,
+                    ])
+                ),
                 TypeOrmModule.forFeature([
                     Vehicle,
                     User,
@@ -30,22 +45,16 @@ describe("VehiclesService", () => {
                     Location,
                     Rating,
                 ]),
-                TypeOrmModule.forRoot(
-                    JSON.parse(
-                        readFileSync("ormconfig_test.json", {
-                            encoding: "utf-8",
-                        })
-                    )
-                ),
             ],
             providers: [VehiclesService],
         }).compile();
 
-        service = moduleRef.get<VehiclesService>(VehiclesService);
+        service = module.get<VehiclesService>(VehiclesService);
+        repo = module.get<Repository<Vehicle>>(getRepositoryToken(Vehicle));
     });
 
-    afterAll(async () => {
-        await moduleRef.close();
+    afterAll(() => {
+        module.close();
     });
 
     it("createVehicle", async () => {

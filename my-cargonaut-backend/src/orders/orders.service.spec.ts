@@ -118,8 +118,6 @@ describe("OrdersService", () => {
     });
 
     it("createRating", async () => {
-        const order = await service.findOne(1);
-
         const rat = {
             description: "Very nice!",
             stars: 3,

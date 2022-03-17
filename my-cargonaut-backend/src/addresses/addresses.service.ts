@@ -16,6 +16,14 @@ export class AddressesService {
         return this.addressRepository.save(createAddressDto);
     }
 
+    createDummy() {
+        return this.create({
+            city: "Lazy Town",
+            zip: 12312,
+            country: "Germany",
+        });
+    }
+
     findAll() {
         return this.addressRepository.find();
     }

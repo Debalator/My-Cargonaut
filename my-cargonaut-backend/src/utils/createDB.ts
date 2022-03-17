@@ -1,7 +1,7 @@
 import { createConnection, EntitySchema } from "typeorm";
 import { TypeOrmModuleOptions } from "@nestjs/typeorm";
 
-type Entity = Function | string | EntitySchema<any>;
+type Entity = string | EntitySchema<any>;
 
 export const createTestConfiguration = (
     entities: Entity[]

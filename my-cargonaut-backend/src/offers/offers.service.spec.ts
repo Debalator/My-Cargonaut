@@ -16,6 +16,7 @@ import { Rating } from "../orders/entities/rating.entity";
 import { AddressesService } from "../addresses/addresses.service";
 import { RequestsService } from "../requests/requests.service";
 import { VehiclesService } from "../vehicles/vehicles.service";
+import { BadRequestException } from "@nestjs/common";
 
 describe("OffersService", () => {
     let repo: Repository<Offer>;
@@ -121,5 +122,81 @@ describe("OffersService", () => {
         await service.remove(1);
         const offers = await service.findAll({});
         expect(offers).toHaveLength(0);
+    });
+
+    it("createFromRequest", async () => {
+        const creator = await userService.findOne(1);
+        const address = await addService.findOne(1);
+        const vehicle = await vehiclesService.findOne(1);
+
+        const request: Request = {
+            id: 1,
+            persons: 2,
+            items: [
+                {
+                    id: 1,
+                    size: 3,
+                    description: "ABC",
+                    weight: 100,
+                    request: null,
+                },
+            ],
+            price: 300,
+            active: true,
+            startDate: new Date(),
+            destDate: new Date(),
+            startAddress: address,
+            destAddress: address,
+            creator,
+            created: new Date(),
+        };
+
+        // Too few seats
+        await expect(
+            service.createFromRequest(
+                {
+                    creator,
+                    vehicle: await vehiclesService.create({
+                        brand: "VW",
+                        model: "Golf",
+                        owner: creator,
+                        loadingArea: 5,
+                        seats: 1,
+                    }),
+                },
+                request
+            )
+        ).rejects.toThrow(BadRequestException);
+
+        // Too small loading area
+        await expect(
+            service.createFromRequest(
+                {
+                    creator,
+                    vehicle: await vehiclesService.create({
+                        brand: "VW",
+                        model: "Golf",
+                        owner: creator,
+                        loadingArea: 1,
+                        seats: 5,
+                    }),
+                },
+                request
+            )
+        ).rejects.toThrow(BadRequestException);
+
+        const offer = await service.createFromRequest(
+            {
+                creator,
+                vehicle,
+            },
+            request
+        );
+
+        expect(offer.price).toBe(request.price);
+        expect(offer.startAddress).toBe(request.startAddress);
+        expect(offer.destAddress).toBe(request.destAddress);
+        expect(offer.startDate).toBe(request.startDate);
+        expect(offer.destDate).toBe(request.destDate);
     });
 });
